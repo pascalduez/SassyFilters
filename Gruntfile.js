@@ -40,13 +40,29 @@ module.exports = function(grunt) {
           dest: "<%= conf.css %>/",
           ext: ".css"
         }]
+      },
+      dist: {
+        options: {
+          //trace: true,
+          bundleExec: true,
+          style: "expanded",
+          require: ["./lib/helpers.rb"],
+          loadPath: ["./<%= conf.dist %>"]
+        },
+        files: [{
+          expand: true,
+          cwd: "<%= conf.scss %>",
+          src: ["*.scss"],
+          dest: "<%= conf.css %>/",
+          ext: ".css"
+        }]
       }
     },
 
     watch: {
       test: {
         files: ["<%= conf.scss %>/*.scss"],
-        tasks: ["sass"]
+        tasks: ["sass:test"]
       }
     },
 
@@ -86,6 +102,7 @@ module.exports = function(grunt) {
         src: [
           // config
           "<%= conf.src %>/config/_config.scss",
+          "<%= conf.src %>/config/_filters.scss",
           // helpers
           "<%= conf.src %>/helpers/_helpers.scss",
           "<%= conf.src %>/helpers/_svg-filter.scss",
@@ -95,7 +112,7 @@ module.exports = function(grunt) {
           "<%= conf.src %>/filters/_contrast.scss",
           "<%= conf.src %>/filters/_custom.scss",
           "<%= conf.src %>/filters/_drop-shadow.scss",
-          "<%= conf.src %>/filters/_filter.scss",
+          "<%= conf.src %>/filters/_filters.scss",
           "<%= conf.src %>/filters/_grayscale.scss",
           "<%= conf.src %>/filters/_hue-rotate.scss",
           "<%= conf.src %>/filters/_invert.scss",
@@ -116,7 +133,8 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask("dist", [
-    "concat:dist"
+    "concat:dist",
+    "sass:dist"
   ]);
 
   grunt.registerTask("prefix", [

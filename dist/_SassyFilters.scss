@@ -5,6 +5,91 @@ $filters-data-type: "raw" !default;
 $filters-ie-support: true !default;
 
 
+
+$svg-wrapper: '<svg xmlns="http://www.w3.org/2000/svg"><filter id="{{id}}">{{filter}}</filter></svg>';
+
+// https://dvcs.w3.org/hg/FXTF/raw-file/tip/filters/index.html#ShorthandEquivalents
+
+$svg-filters: (
+
+  grayscale-tpl:
+    '<feColorMatrix type="matrix"
+        values="(0.2126 + 0.7874 * (1 - {{amount}})) (0.7152 - 0.7152 * (1 - {{amount}})) (0.0722 - 0.0722 * (1 - {{amount}})) 0 0
+                (0.2126 - 0.2126 * (1 - {{amount}})) (0.7152 + 0.2848 * (1 - {{amount}})) (0.0722 - 0.0722 * (1 - {{amount}})) 0 0
+                (0.2126 - 0.2126 * (1 - {{amount}})) (0.7152 - 0.7152 * (1 - {{amount}})) (0.0722 + 0.9278 * (1 - {{amount}})) 0 0
+                 0 0 0 1 0"/>',
+
+  grayscale:
+    '<feColorMatrix type="matrix" values="{{matrix}}"/>',
+
+  sepia-tpl:
+    '<feColorMatrix type="matrix"
+        values="(0.393 + 0.607 * (1 - {{amount}})) (0.769 - 0.769 * (1 - {{amount}})) (0.189 - 0.189 * (1 - {{amount}})) 0 0
+                (0.349 - 0.349 * (1 - {{amount}})) (0.686 + 0.314 * (1 - {{amount}})) (0.168 - 0.168 * (1 - {{amount}})) 0 0
+                (0.272 - 0.272 * (1 - {{amount}})) (0.534 - 0.534 * (1 - {{amount}})) (0.131 + 0.869 * (1 - {{amount}})) 0 0
+                 0 0 0 1 0"/>',
+
+  sepia:
+    '<feColorMatrix type="matrix" values="{{matrix}}"/>',
+
+  saturate-tpl:
+    '<feColorMatrix type="saturate" values="(1 - [amount])"/>',
+
+  saturate:
+    '<feColorMatrix type="saturate" values="{{values}}"/>',
+
+  hue-rotate:
+    '<feColorMatrix type="hueRotate" values="{{angle}}"/>',
+
+  invert-tpl:
+    '<feComponentTransfer>
+      <feFuncR type="table" tableValues="{{amount}} (1 - {{amount}})"/>
+      <feFuncG type="table" tableValues="{{amount}} (1 - {{amount}})"/>
+      <feFuncB type="table" tableValues="{{amount}} (1 - {{amount}})"/>
+    </feComponentTransfer>',
+
+  invert:
+    '<feComponentTransfer>
+      <feFuncR type="table" tableValues="{{values}}"/>
+      <feFuncG type="table" tableValues="{{values}}"/>
+      <feFuncB type="table" tableValues="{{values}}"/>
+    </feComponentTransfer>',
+
+  opacity:
+    '<feComponentTransfer>
+      <feFuncA type="table" tableValues="0 {{amount}}"/>
+    </feComponentTransfer>',
+
+  brightness:
+    '<feComponentTransfer>
+      <feFuncR type="linear" slope="{{amount}}"/>
+      <feFuncG type="linear" slope="{{amount}}"/>
+      <feFuncB type="linear" slope="{{amount}}"/>
+    </feComponentTransfer>',
+
+  contrast:
+    '<feComponentTransfer>
+      <feFuncR type="linear" slope="{{amount}}" intercept="-(0.5 * {{amount}}) + 0.5"/>
+      <feFuncG type="linear" slope="{{amount}}" intercept="-(0.5 * {{amount}}) + 0.5"/>
+      <feFuncB type="linear" slope="{{amount}}" intercept="-(0.5 * {{amount}}) + 0.5"/>
+    </feComponentTransfer>',
+
+  blur:
+    '<feGaussianBlur stdDeviation="{{radius}}" edgeMode="none"/>',
+
+  drop-shadow:
+    '<feGaussianBlur in="SourceAlpha" stdDeviation="{{blur-radius}}"/>
+     <feOffset dx="{{offset-x}}" dy="{{offset-y}}" result="offsetblur"/>
+     <feFlood flood-color="{{color}}"/>
+     <feComposite in2="offsetblur" operator="in"/>
+     <feMerge>
+      <feMergeNode/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>'
+
+);
+
+
 // Push new entry to `$map`
 // --------------------------------------------------------------------------------
 // @param [map] $map
@@ -332,6 +417,16 @@ $filters-ie-support: true !default;
                //progid:DXImageTransform.Microsoft.Shadow(color='#{ie-hex-str($color)}', Direction=#{$offset-x * 100}, Strength=#{$blur-radius * 10})
   filter: unquote($ie-filter); // IE < 8
   -ms-filter: $ie-filter;      // IE 8+
+}
+
+
+//
+// multiple filters.
+//
+@mixin filters() {
+  //
+  // Helper mixin to add multiple filters.
+  //
 }
 
 
