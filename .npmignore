@@ -1,0 +1,7 @@
+**/.*
+node_modules
+test
+Gemfile
+Gemfile.lock
+sache.json
+Gruntfile.js

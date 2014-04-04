@@ -1,0 +1,23 @@
+
+//
+// Filter: drop-shadow.
+//
+@mixin drop-shadow($offset-x: 0px, $offset-y: $offset-x, $blur-radius: 0px, $spread-radius: 0px, $color: #000) {
+
+  // Webkit, Blink
+  -webkit-filter: drop-shadow($offset-x $offset-y $blur-radius $color);
+
+  // Gecko
+  filter: svg-filter(drop-shadow,
+                     $offset-x: _strip-unit($offset-x),
+                     $offset-y: _strip-unit($offset-y),
+                     $blur-radius: _strip-unit($blur-radius),
+                     $color: $color);
+
+  // IE
+  $ie-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=#{$offset-x}, OffY=#{$offset-y}, Color='#{ie-hex-str($color)}')";
+               //progid:DXImageTransform.Microsoft.Glow(Color='#{ie-hex-str($color)}', Strength=#{$blur-radius})
+               //progid:DXImageTransform.Microsoft.Shadow(color='#{ie-hex-str($color)}', Direction=#{$offset-x * 100}, Strength=#{$blur-radius * 10})
+  filter: unquote($ie-filter); // IE < 8
+  -ms-filter: $ie-filter;      // IE 8+
+}

@@ -1,0 +1,21 @@
+
+//
+// filter: brightness
+//
+@mixin brightness($value: 1) {
+
+  $in-range: check-in-range(brightness, 0 10, $value);
+
+  // Webkit, Blink
+  -webkit-filter: brightness($value);
+
+  // Gecko
+  filter: svg-filter(brightness, $amount: $value);
+
+  // IE
+  // Needs a behavior
+  // $ie-filter: "progid:DXImageTransform.Microsoft.Light().addAmbient(255, 255, 255, #{$value})";
+  // $ie-filter: "progid:DXImageTransform.Microsoft.Light()";
+  // filter: unquote($ie-filter); // IE < 8
+  // -ms-filter: $ie-filter;      // IE 8+
+}

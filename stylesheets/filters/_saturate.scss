@@ -1,0 +1,19 @@
+
+//
+// filter: saturate
+//
+@mixin saturate($value: 1) {
+
+  $in-range: check-in-range(saturate, 0 10, $value);
+
+  // Webkit, Blink
+  -webkit-filter: saturate($value);
+
+  // Gecko
+  filter: svg-filter(saturate, $values: $value);
+
+  // IE
+  // $ie-filter: "progid:DXImageTransform.Microsoft";
+  // filter: unquote($ie-filter); // IE < 8
+  // -ms-filter: $ie-filter;      // IE 8+
+}

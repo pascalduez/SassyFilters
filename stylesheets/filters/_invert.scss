@@ -1,0 +1,19 @@
+
+//
+// filter: invert
+//
+@mixin invert($value: 0) {
+
+  $in-range: check-in-range(invert, 0 1, $value);
+
+  // Webkit, Blink
+  -webkit-filter: invert($value);
+
+  // Gecko
+  filter: svg-filter(invert, $values: ($value (1 - $value)));
+
+  // IE
+  $ie-filter: "progid:DXImageTransform.Microsoft.BasicImage(invert=1)";
+  filter: unquote($ie-filter); // IE < 8
+  -ms-filter: $ie-filter;      // IE 8+
+}

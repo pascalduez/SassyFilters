@@ -1,0 +1,20 @@
+
+//
+// filter: hue-rotate
+//
+@mixin hue-rotate($angle: 0deg) {
+
+  $in-range: check-in-range(hue-rotate, 0 360, $angle);
+
+  // Webkit, Blink
+  -webkit-filter: hue-rotate($angle);
+
+  // Gecko
+  filter: svg-filter(hue-rotate, $angle: _strip-unit($angle));
+
+  // IE
+  // Needs a behavior
+  // $ie-filter: "progid:DXImageTransform.Microsoft.Light()";
+  // filter: unquote($ie-filter); // IE < 8
+  // -ms-filter: $ie-filter;      // IE 8+
+}

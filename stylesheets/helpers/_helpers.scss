@@ -1,0 +1,133 @@
+
+// Push new entry to `$map`
+// --------------------------------------------------------------------------------
+// @param [map] $map
+// @param $key
+// @param $value
+// --------------------------------------------------------------------------------
+// @return [map]
+
+@function _map-set($map, $key, $value) {
+  @return map-merge($map, ($key: $value));
+}
+
+
+
+// Remove unit from `$number`
+// --------------------------------------------------------------------------------
+// @param [number] $number
+// --------------------------------------------------------------------------------
+// @return [number]
+
+@function _strip-unit($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+
+
+// Join `$list` into a string
+// --------------------------------------------------------------------------------
+// @param [list] $list
+// @param [string] $glue
+// --------------------------------------------------------------------------------
+// @return [string]
+
+@function _join($list, $glue: "") {
+  $result: "";
+
+  @if length($list) < 1 {
+    @return $result;
+  }
+
+  @for $i from 1 through length($list) {
+    $result: $result + nth($list, $i) + if($i != length($list), $glue, "");
+  }
+
+  @return $result;
+}
+
+
+
+// A Sass micro-templating function.
+// --------------------------------------------------------------------------------
+// @param [string] $format
+// @param [arglist] $args
+// --------------------------------------------------------------------------------
+// @return [string]
+
+@function template($format, $args...) {
+  $result: $format;
+
+  @each $key, $value in keywords($args) {
+    $token: "{{#{$key}}}";
+    $length: str-length($token);
+    $index: str-index($result, $token);
+
+    @if not $index { @return $result; }
+
+    @if $index {
+      $result: str-slice($result, 1, $index - 1) + $value + str-slice($result, ($index + $length));
+
+      @if str-index($result, $token) {
+        $result: template($result, $args...);
+      }
+    }
+  }
+
+  @return $result;
+}
+
+
+
+// Test whether `$value` is containedd between `$min` and `$max`
+// --------------------------------------------------------------------------------
+// @param [number] $min: minimum range value
+// @param [number] $max: maximum range value
+// @param [number] $value: the value to be tested
+// --------------------------------------------------------------------------------
+// @return [boolean]
+
+@function _in-range($min, $max, $value) {
+  @return ($value >= $min) and ($value <= $max);
+}
+
+
+
+// Logs an error at `$pointer` if `$value` is not in `$range`
+// --------------------------------------------------------------------------------
+// @param [string] $pointer: caller function/mixin name
+// @param [list] $range: range the value must be contained in
+// @param [number] $value: the value to be tested
+// --------------------------------------------------------------------------------
+// @return [boolean]
+
+@function check-in-range($pointer, $range, $value) {
+  $min: nth($range, 1);
+  $max: nth($range, 2);
+
+  @if not _in-range($min, $max, $value) {
+    @warn "ERROR::#{$pointer}::$value must be in range [#{$min}, #{$max}]; #{$value} given.";
+    @return false;
+  }
+
+  @return true;
+}
+
+
+
+// Logs an error at `$pointer` if `$value` is not of type `$type`
+// --------------------------------------------------------------------------------
+// @param [string] $pointer: caller function/mixin name
+// @param [base] $value: the value to inspect
+// @param [string] $type: the unquoted string name of the value’s type
+// --------------------------------------------------------------------------------
+// @return [boolean]
+
+@function check-typeof($pointer, $value, $type) {
+  @if type-of($value) != $type {
+    @warn "ERROR::#{$pointer}::$value must be of type #{$type}; #{type-of($value)} given.";
+    @return false;
+  }
+
+  @return true;
+}

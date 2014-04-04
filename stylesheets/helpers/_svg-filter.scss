@@ -1,0 +1,99 @@
+
+// Format a proper url() SVG filter
+// --------------------------------------------------------------------------------
+// @param [string] $id: filter id
+// @param [string] $data: inlined SVG
+// @param [string] $mime-type
+// @param [string] $encoding
+// --------------------------------------------------------------------------------
+// @return [string]
+
+@function _svg-filter-url($id: "", $svgStr: "", $mime-type: "image/svg+xml", $encoding: "charset=utf-8") {
+  $parts: ("data:");
+
+  @if $mime-type and $mime-type != "" {
+    $parts: append($parts, "#{$mime-type};");
+  }
+  @if $encoding and $encoding != "" {
+    $parts: append($parts, "#{$encoding},");
+  }
+  $parts: append($parts, $svgStr);
+  @if $id and $id != "" {
+    $parts: append($parts, "##{$id}");
+  }
+
+  @return url(_join($parts));
+}
+
+
+
+// Format and encode a proper inline SVG data.
+// --------------------------------------------------------------------------------
+// @param [string] $id: filter id
+// @param [string] $svgStr: stringified SVG
+// @param [boolean] $base64: inline SVG as base64
+// @param [boolean] $escape: inline SVG url escaped
+// --------------------------------------------------------------------------------
+// @return [string]
+
+@function _svg-filter-data($id, $svgStr, $type: "raw") {
+  @if type-of($svgStr) != "string" {
+    @warn "`_svg-data` function expecting a string for $svgStr; #{type-of($svgStr)} given.";
+    @return false;
+  }
+
+  $return: "";
+
+  @if $type == "base64" {
+    $data: inline-svg($svgStr, true);
+    $return: _svg-filter-url($id, $data, $encoding: "base64");
+  }
+  @else if $type == "escape" {
+    $data: inline-svg($svgStr, false, true);
+    $return: _svg-filter-url($id, $data);
+  }
+  @else {
+    $data: inline-svg($svgStr);
+    $return: _svg-filter-url($id, $data);
+  }
+
+  @return $return;
+}
+
+
+
+// Get and format an SVG filter.
+// --------------------------------------------------------------------------------
+// @param [string] $id: filter id
+// @param [arglist] $args: arguments to be passed to the SVG filter
+// --------------------------------------------------------------------------------
+// @return [string]
+
+@function _svg-filter-get($id, $args...) {
+  $tpl: map-get($svg-filters, $id);
+  @return template($svg-wrapper, $id: $id, $filter: template($tpl, $args...));
+}
+
+
+
+// Format a proper inline SVG filter as data uri.
+// --------------------------------------------------------------------------------
+// @param [string] $id: filter id
+// @param [arglist] $args: arguments to be passed to the SVG filter
+// --------------------------------------------------------------------------------
+// @return [string]
+
+@function svg-filter($id, $args...) {
+  @if not map-has-key($svg-filters, $id) {
+    @warn "`svg-filter` function, no filter found for id: #{$id}.";
+    @return false;
+  }
+
+  $return: "";
+  $svgStr: _svg-filter-get($id, $args...);
+  $return: _svg-filter-data($id, $svgStr, $type: $filters-data-type);
+
+  @return $return;
+}
+
+

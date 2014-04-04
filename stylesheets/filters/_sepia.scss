@@ -1,0 +1,25 @@
+
+//
+// filter: sepia
+//
+@mixin sepia($value: 1) {
+
+  $in-range: check-in-range(sepia, 0 1, $value);
+
+  // Webkit, Blink
+  -webkit-filter: sepia($value);
+
+  // Gecko
+  $matrix: (0.393 + 0.607 * (1 - $value)), (0.769 - 0.769 * (1 - $value)), (0.189 - 0.189 * (1 - $value)), 0 0,
+           (0.349 - 0.349 * (1 - $value)), (0.686 + 0.314 * (1 - $value)), (0.168 - 0.168 * (1 - $value)), 0 0,
+           (0.272 - 0.272 * (1 - $value)), (0.534 - 0.534 * (1 - $value)), (0.131 + 0.869 * (1 - $value)), 0 0,
+            0 0 0 1 0;
+
+  filter: svg-filter(sepia, $matrix: _join($matrix, " "));
+
+  // IE
+  // Needs a behavior
+  // $ie-filter: "progid:DXImageTransform.Microsoft.Light()";
+  // -ms-filter: $ie-filter;      // IE 8+
+  // filter: unquote($ie-filter); // IE < 8
+}

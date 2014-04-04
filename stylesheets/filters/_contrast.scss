@@ -1,0 +1,19 @@
+
+//
+// filter: contrast
+//
+@mixin contrast($value: 1) {
+
+  $in-range: check-in-range(contrast, 0 10, $value);
+
+  // Webkit, Blink
+  -webkit-filter: contrast($value);
+
+  // Gecko
+  filter: svg-filter(contrast, $amount: $value);
+
+  // IE
+  // $ie-filter: "progid:DXImageTransform.Microsoft";
+  // filter: unquote($ie-filter); // IE < 8
+  // -ms-filter: $ie-filter;      // IE 8+
+}

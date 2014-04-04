@@ -1,0 +1,9 @@
+
+//
+// Disable filter
+//
+@mixin disable-filter() {
+  -webkit-filter: none;
+  -ms-filter: none;
+  filter: none;
+}

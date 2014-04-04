@@ -1,0 +1,24 @@
+
+//
+// filter: greyscale
+//
+@mixin grayscale($value: 0) {
+
+  $in-range: check-in-range(grayscale, 0 1, $value);
+
+  // Webkit, Blink
+  -webkit-filter: grayscale($value);
+
+  // Gecko
+  $matrix: (0.2126 + 0.7874 * (1 - $value)), (0.7152 - 0.7152 * (1 - $value)), (0.0722 - 0.0722 * (1 - $value)), 0 0,
+           (0.2126 - 0.2126 * (1 - $value)), (0.7152 + 0.2848 * (1 - $value)), (0.0722 - 0.0722 * (1 - $value)), 0 0,
+           (0.2126 - 0.2126 * (1 - $value)), (0.7152 - 0.7152 * (1 - $value)), (0.0722 + 0.9278 * (1 - $value)), 0 0,
+            0 0 0 1 0;
+
+  filter: svg-filter(grayscale, $matrix: _join($matrix, " "));
+
+  // IE
+  $ie-filter: "progid:DXImageTransform.Microsoft.BasicImage(grayscale=1)";
+  -ms-filter: $ie-filter;      // IE 8+
+  filter: unquote($ie-filter); // IE < 8
+}

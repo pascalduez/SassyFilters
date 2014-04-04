@@ -1,0 +1,19 @@
+
+//
+// filter: opacity
+//
+@mixin opacity($value: 1) {
+
+  $in-range: check-in-range(opacity, 0 1, $value);
+
+  // Webkit, Blink
+  -webkit-filter: opacity($value);
+
+  // Gecko
+  filter: svg-filter(opacity, $amount: $value);
+
+  // IE
+  $ie-filter: "progid:DXImageTransform.Microsoft.BasicImage(opacity=#{$value})";
+  -ms-filter: $ie-filter;      // IE 8+
+  filter: unquote($ie-filter); // IE < 8
+}

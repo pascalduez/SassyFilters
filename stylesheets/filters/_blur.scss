@@ -1,0 +1,19 @@
+
+//
+// filter: blur
+//
+@mixin blur($radius: 0px) {
+
+  $in-range: check-in-range(blur, 0 10, $radius);
+
+  // Webkit, Blink
+  -webkit-filter: blur($radius);
+
+  // Gecko
+  filter: svg-filter(blur, $radius: _strip-unit($radius));
+
+  // IE
+  $ie-filter: "progid:DXImageTransform.Microsoft.Blur(pixelRadius=#{_strip-unit($radius)})";
+  filter: unquote($ie-filter); // IE < 8
+  -ms-filter: $ie-filter;      // IE 8+
+}

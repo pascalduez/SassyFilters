@@ -1,0 +1,182 @@
+
+@import "SassyFilters";
+
+
+/*
+ * Global test styles.
+ */
+$box-width: 20%;
+$box-height: 8em;
+
+body {
+  font-family: sans-serif;
+  background: lightGrey;
+}
+
+main {
+  width: 80%;
+  margin: 0 auto;
+}
+
+h3 {
+  color: white;
+}
+
+.test {
+  margin: 0 0 3em;
+}
+
+.test--helpers {
+  overflow: hidden;
+
+  .test {
+    line-height: $box-height;
+    text-align: center;
+    float: left;
+    margin: 0 3em 3em 0;
+  }
+}
+
+.test--box {
+  width: $box-width;
+  height: $box-height;
+  background: white;
+}
+
+.test--img {
+  .original {
+    margin: 0 1rem 0 0;
+  }
+}
+
+
+
+/*
+ * Test helpers
+ */
+.test--helpers {
+  $svgStr: '<svg xmlns="http://www.w3.org/2000/svg">
+    <filter id="custom">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1"/>
+      <feComponentTransfer>
+        <feFuncA tableValues="0 .7" type="table"></feFuncA>
+      </feComponentTransfer>
+    </filter>
+  </svg>';
+
+  .svg-filter--raw {
+    filter: _svg-filter-data(custom, $svgStr);
+  }
+  .svg-filter--escape {
+    filter: _svg-filter-data(custom, $svgStr, $type: "escape");
+  }
+  .svg-filter--base64 {
+    filter: _svg-filter-data(custom, $svgStr, $type: "base64");
+  }
+}
+
+
+
+/*
+ * Test blur.
+ */
+.test--blur {
+  @include blur(8px);
+}
+
+
+
+/*
+ * Test brightness.
+ */
+.test--brightness {
+  .target {
+    @include brightness(3);
+  }
+}
+
+
+
+/*
+ * Test contrast.
+ */
+.test--contrast {
+  .target {
+    @include contrast(4);
+  }
+}
+
+
+
+/*
+ * Test drop-shadow.
+ */
+.test--drop-shadow {
+  @include drop-shadow($offset-x: 3px, $offset-y: 3px, $blur-radius: 4px, $color: rgba(0, 0, 0, .5));
+}
+
+
+
+/*
+ * Test grayscale.
+ */
+.test--grayscale {
+  .target {
+    @include grayscale(1);
+  }
+}
+
+
+
+/*
+ * Test hue-rotate.
+ */
+.test--hue-rotate {
+  .target {
+    @include hue-rotate(180deg);
+  }
+}
+
+
+
+/*
+ * Test invert.
+ */
+.test--invert {
+  .target {
+    @include invert(1);
+  }
+}
+
+
+
+/*
+ * Test opacity.
+ */
+.test--opacity {
+  .target {
+    @include opacity(.4);
+  }
+}
+
+
+
+/*
+ * Test saturate.
+ */
+.test--saturate {
+  .target {
+    @include saturate(7);
+  }
+}
+
+
+
+/*
+ * Test sepia.
+ */
+.test--sepia {
+  .target {
+    @include sepia;
+  }
+}
