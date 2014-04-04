@@ -4,18 +4,18 @@ Cross-Browser configurable CSS-SVG filters.
 
 ##
 
-blur()
-brightness()
-contrast()
-// custom()
-drop-shadow()
-// filters()
-grayscale()
-hue-rotate()
-invert()
-opacity()
-saturate()
-sepia()
+`blur()`  
+`brightness()`  
+`contrast()`  
+`custom()`  
+`drop-shadow()`  
+`filters()`  
+`grayscale()`  
+`hue-rotate()`  
+`invert()`  
+`opacity()`  
+`saturate()`  
+`sepia()`  
 
 ## Requirements
 
