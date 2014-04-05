@@ -27,7 +27,7 @@ $svg-filters: (
     '<feColorMatrix type="matrix" values="{{matrix}}"/>',
 
   saturate-tpl:
-    '<feColorMatrix type="saturate" values="(1 - [amount])"/>',
+    '<feColorMatrix type="saturate" values="(1 - {{amount}})"/>',
 
   saturate:
     '<feColorMatrix type="saturate" values="{{values}}"/>',

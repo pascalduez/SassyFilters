@@ -4,22 +4,56 @@ Cross-Browser configurable CSS-SVG filters.
 
 ##
 
-`blur()`  
-`brightness()`  
-`contrast()`  
-`custom()`  
-`drop-shadow()`  
-`filters()`  
-`grayscale()`  
-`hue-rotate()`  
-`invert()`  
-`opacity()`  
-`saturate()`  
-`sepia()`  
+`blur($radius: 0px)`  
+`brightness($value: 1)`  
+`contrast($value: 1)`  
+`drop-shadow($offset-x: 0px, $offset-y: $offset-x, $blur-radius: 0px, $spread-radius: 0px, $color: #000)`  
+`grayscale($value: 0)`  
+`hue-rotate($angle: 0deg)`  
+`invert($value: 0)`  
+`opacity($value: 1)`  
+`saturate($value: 1)`  
+`sepia($value: 1)`  
+
+
+## Browser support
+
+Work in progress...
+
+CSS Filter Effects  
+Chrome 18.0+ Safari 6.0+ Opera 15.0+  
+
+SVG effects for HTML  
+Firefox 3.5+  
+
+Microsoft Extensions to CSS  
+filter IE 6, 7, 8  
+-ms-filter IE 8, 9  
 
 ## Requirements
 
 * Sass ~> 3.3.0
+
+## Install
+
+Work in progress...
+
+#### Git
+
+```
+git clone git@github.com:pascalduez/SassyFilters.git && cd SassyFilters
+```
+
+#### Bower
+
+```
+bower install SassyFilters --save
+```
+
+#### npm
+
+```
+npm install SassyFilters --save
 
 ## Development
 

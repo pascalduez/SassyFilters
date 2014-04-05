@@ -1,4 +1,4 @@
-/*! SassyFilters – v0.0.1 – 2014-04-04 */
+/*! SassyFilters – v0.0.1 – 2014-04-05 */
 
 
 $filters-data-type: "raw" !default;
@@ -33,7 +33,7 @@ $svg-filters: (
     '<feColorMatrix type="matrix" values="{{matrix}}"/>',
 
   saturate-tpl:
-    '<feColorMatrix type="saturate" values="(1 - [amount])"/>',
+    '<feColorMatrix type="saturate" values="(1 - {{amount}})"/>',
 
   saturate:
     '<feColorMatrix type="saturate" values="{{values}}"/>',

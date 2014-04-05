@@ -10,12 +10,12 @@ module.exports = function(grunt) {
   require("time-grunt")(grunt);
 
   var config = {
-    base: "test",
-    scss: "test/sass",
-    css: "test/css",
-    img: "test/img",
-    src: "stylesheets",
-    dist: "dist"
+    base: "./test",
+    scss: "./test/sass",
+    css: "./test/css",
+    img: "./test/img",
+    src: "./stylesheets",
+    dist: "./dist"
   }
 
   grunt.initConfig({
@@ -31,13 +31,13 @@ module.exports = function(grunt) {
           bundleExec: true,
           style: "expanded",
           require: ["./lib/helpers.rb"],
-          loadPath: ["./<%= conf.src %>"]
+          loadPath: ["<%= conf.src %>"]
         },
         files: [{
           expand: true,
           cwd: "<%= conf.scss %>",
           src: ["*.scss"],
-          dest: "<%= conf.css %>/",
+          dest: "<%= conf.css %>",
           ext: ".css"
         }]
       },
@@ -47,13 +47,13 @@ module.exports = function(grunt) {
           bundleExec: true,
           style: "expanded",
           require: ["./lib/helpers.rb"],
-          loadPath: ["./<%= conf.dist %>"]
+          loadPath: ["<%= conf.dist %>"]
         },
         files: [{
           expand: true,
           cwd: "<%= conf.scss %>",
           src: ["*.scss"],
-          dest: "<%= conf.css %>/",
+          dest: "<%= conf.css %>",
           ext: ".css"
         }]
       }
