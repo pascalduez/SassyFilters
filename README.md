@@ -54,6 +54,7 @@ bower install SassyFilters --save
 
 ```
 npm install SassyFilters --save
+``` 
 
 ## Development
 
