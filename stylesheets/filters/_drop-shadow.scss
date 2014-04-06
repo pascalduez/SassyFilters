@@ -15,9 +15,8 @@
                      $color: $color);
 
   // IE
-  $ie-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=#{$offset-x}, OffY=#{$offset-y}, Color='#{ie-hex-str($color)}')";
-               //progid:DXImageTransform.Microsoft.Glow(Color='#{ie-hex-str($color)}', Strength=#{$blur-radius})
-               //progid:DXImageTransform.Microsoft.Shadow(color='#{ie-hex-str($color)}', Direction=#{$offset-x * 100}, Strength=#{$blur-radius * 10})
-  filter: unquote($ie-filter); // IE < 8
-  -ms-filter: $ie-filter;      // IE 8+
+  // progid:DXImageTransform.Microsoft.Dropshadow(OffX=#{$offset-x}, OffY=#{$offset-y}, Color='#{ie-hex-str($color)}')
+  // progid:DXImageTransform.Microsoft.Glow(Color='#{ie-hex-str($color)}', Strength=#{$blur-radius})
+  // pprogid:DXImageTransform.Microsoft.Shadow(color='#{ie-hex-str($color)}', Direction=#{$offset-x * 100}, Strength=#{$blur-radius * 10})
+  @include ie-filter(Dropshadow, $OffX: $offset-x, $OffY: $offset-y, $Color: $color);
 }

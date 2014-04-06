@@ -13,7 +13,5 @@
   filter: svg-filter(opacity, $amount: $value);
 
   // IE
-  $ie-filter: "progid:DXImageTransform.Microsoft.BasicImage(opacity=#{$value})";
-  -ms-filter: $ie-filter;      // IE 8+
-  filter: unquote($ie-filter); // IE < 8
+  @include ie-filter(BasicImage, $opacity: $value);
 }

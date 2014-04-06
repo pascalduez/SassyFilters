@@ -13,7 +13,6 @@
   filter: svg-filter(saturate, $values: $value);
 
   // IE
-  // $ie-filter: "progid:DXImageTransform.Microsoft";
-  // filter: unquote($ie-filter); // IE < 8
-  // -ms-filter: $ie-filter;      // IE 8+
+  // Needs a behavior
+  // @include ie-filter(Light);
 }

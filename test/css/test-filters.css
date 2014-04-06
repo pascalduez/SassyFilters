@@ -60,8 +60,8 @@ h3 {
 .test--blur {
   -webkit-filter: blur(8px);
   filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="blur"><feGaussianBlur stdDeviation="8" edgeMode="none"/></filter></svg>#blur');
-  filter: progid:DXImageTransform.Microsoft.Blur(pixelRadius=8);
   -ms-filter: "progid:DXImageTransform.Microsoft.Blur(pixelRadius=8)";
+  filter: progid:DXImageTransform.Microsoft.Blur(pixelRadius=8);
 }
 
 /*
@@ -86,8 +86,8 @@ h3 {
 .test--drop-shadow {
   -webkit-filter: drop-shadow(3px 3px 4px rgba(0, 0, 0, 0.5));
   filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="drop-shadow"><feGaussianBlur in="SourceAlpha" stdDeviation="4"/><feOffset dx="3" dy="3" result="offsetblur"/><feFlood flood-color="rgba(0, 0, 0, 0.5)"/><feComposite in2="offsetblur" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter></svg>#drop-shadow');
-  filter: progid:DXImageTransform.Microsoft.Dropshadow(OffX=3px, OffY=3px, Color='#80000000');
   -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=3px, OffY=3px, Color='#80000000')";
+  filter: progid:DXImageTransform.Microsoft.Dropshadow(OffX=3px, OffY=3px, Color='#80000000');
 }
 
 /*
@@ -114,8 +114,8 @@ h3 {
 .test--invert .target {
   -webkit-filter: invert(1);
   filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="invert"><feComponentTransfer><feFuncR type="table" tableValues="1 0"/><feFuncG type="table" tableValues="1 0"/><feFuncB type="table" tableValues="1 0"/></feComponentTransfer></filter></svg>#invert');
-  filter: progid:DXImageTransform.Microsoft.BasicImage(invert=1);
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(invert=1)";
+  filter: progid:DXImageTransform.Microsoft.BasicImage(invert=1);
 }
 
 /*

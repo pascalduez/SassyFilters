@@ -231,6 +231,56 @@ $svg-filters: (
 }
 
 
+
+// Capitalize string
+// --------------------------------------------------------------------------------
+// @param [string] $string
+// --------------------------------------------------------------------------------
+// @return [string]
+
+@function capitalize($string) {
+  @return to-upper-case(str-slice($string, 1, 1)) + str-slice($string, 2);
+}
+
+
+
+// IE filters formatting helper
+// --------------------------------------------------------------------------------
+// @param [filter] $string: filter name
+// @param [arglist] $args: filter properties
+// --------------------------------------------------------------------------------
+// @return [string]
+
+@function _ie-filter($filter, $args...) {
+  $result: ();
+  $properties: ();
+
+  $result: append($result, "progid:DXImageTransform.Microsoft.#{capitalize($filter)}(");
+
+  @each $key, $value in keywords($args) {
+    @if type-of($value) == color {
+      $value: "'#{ie-hex-str($value)}'";
+    }
+    $properties: append($properties, "#{$key}=#{$value}");
+  }
+
+  $result: append($result, _join($properties, ", "));
+  $result: append($result, ")");
+
+  @return _join($result);
+}
+
+
+@mixin ie-filter($filter, $args...) {
+  -ms-filter: quote(_ie-filter($filter, $args...));  // IE 8+
+  filter: unquote(_ie-filter($filter, $args...));    // IE < 8
+}
+
+
+
+
+
+
 // Format a proper url() SVG filter
 // --------------------------------------------------------------------------------
 // @param [string] $id: filter id
@@ -345,9 +395,7 @@ $svg-filters: (
   filter: svg-filter(blur, $radius: _strip-unit($radius));
 
   // IE
-  $ie-filter: "progid:DXImageTransform.Microsoft.Blur(pixelRadius=#{_strip-unit($radius)})";
-  filter: unquote($ie-filter); // IE < 8
-  -ms-filter: $ie-filter;      // IE 8+
+  @include ie-filter(Blur, $pixelRadius: _strip-unit($radius));
 }
 
 
@@ -367,9 +415,7 @@ $svg-filters: (
   // IE
   // Needs a behavior
   // $ie-filter: "progid:DXImageTransform.Microsoft.Light().addAmbient(255, 255, 255, #{$value})";
-  // $ie-filter: "progid:DXImageTransform.Microsoft.Light()";
-  // filter: unquote($ie-filter); // IE < 8
-  // -ms-filter: $ie-filter;      // IE 8+
+  // @include ie-filter(Light);
 }
 
 
@@ -387,9 +433,8 @@ $svg-filters: (
   filter: svg-filter(contrast, $slope: $value, $intercept: (-(0.5 * $value) + 0.5));
 
   // IE
-  // $ie-filter: "progid:DXImageTransform.Microsoft";
-  // filter: unquote($ie-filter); // IE < 8
-  // -ms-filter: $ie-filter;      // IE 8+
+  // Needs a behavior
+  // @include ie-filter(Light);
 }
 
 
@@ -419,11 +464,10 @@ $svg-filters: (
                      $color: $color);
 
   // IE
-  $ie-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=#{$offset-x}, OffY=#{$offset-y}, Color='#{ie-hex-str($color)}')";
-               //progid:DXImageTransform.Microsoft.Glow(Color='#{ie-hex-str($color)}', Strength=#{$blur-radius})
-               //progid:DXImageTransform.Microsoft.Shadow(color='#{ie-hex-str($color)}', Direction=#{$offset-x * 100}, Strength=#{$blur-radius * 10})
-  filter: unquote($ie-filter); // IE < 8
-  -ms-filter: $ie-filter;      // IE 8+
+  // progid:DXImageTransform.Microsoft.Dropshadow(OffX=#{$offset-x}, OffY=#{$offset-y}, Color='#{ie-hex-str($color)}')
+  // progid:DXImageTransform.Microsoft.Glow(Color='#{ie-hex-str($color)}', Strength=#{$blur-radius})
+  // pprogid:DXImageTransform.Microsoft.Shadow(color='#{ie-hex-str($color)}', Direction=#{$offset-x * 100}, Strength=#{$blur-radius * 10})
+  @include ie-filter(Dropshadow, $OffX: $offset-x, $OffY: $offset-y, $Color: $color);
 }
 
 
@@ -456,9 +500,7 @@ $svg-filters: (
   filter: svg-filter(grayscale, $matrix: _join($matrix, " "));
 
   // IE
-  $ie-filter: "progid:DXImageTransform.Microsoft.BasicImage(grayscale=1)";
-  -ms-filter: $ie-filter;      // IE 8+
-  filter: unquote($ie-filter); // IE < 8
+  @include ie-filter(BasicImage, $grayscale: 1);
 }
 
 
@@ -477,9 +519,7 @@ $svg-filters: (
 
   // IE
   // Needs a behavior
-  // $ie-filter: "progid:DXImageTransform.Microsoft.Light()";
-  // filter: unquote($ie-filter); // IE < 8
-  // -ms-filter: $ie-filter;      // IE 8+
+  // @include ie-filter(Light);
 }
 
 
@@ -497,9 +537,7 @@ $svg-filters: (
   filter: svg-filter(invert, $values: ($value (1 - $value)));
 
   // IE
-  $ie-filter: "progid:DXImageTransform.Microsoft.BasicImage(invert=1)";
-  filter: unquote($ie-filter); // IE < 8
-  -ms-filter: $ie-filter;      // IE 8+
+  @include ie-filter(BasicImage, $invert: 1);
 }
 
 
@@ -517,9 +555,7 @@ $svg-filters: (
   filter: svg-filter(opacity, $amount: $value);
 
   // IE
-  $ie-filter: "progid:DXImageTransform.Microsoft.BasicImage(opacity=#{$value})";
-  -ms-filter: $ie-filter;      // IE 8+
-  filter: unquote($ie-filter); // IE < 8
+  @include ie-filter(BasicImage, $opacity: $value);
 }
 
 
@@ -537,9 +573,8 @@ $svg-filters: (
   filter: svg-filter(saturate, $values: $value);
 
   // IE
-  // $ie-filter: "progid:DXImageTransform.Microsoft";
-  // filter: unquote($ie-filter); // IE < 8
-  // -ms-filter: $ie-filter;      // IE 8+
+  // Needs a behavior
+  // @include ie-filter(Light);
 }
 
 
@@ -563,7 +598,5 @@ $svg-filters: (
 
   // IE
   // Needs a behavior
-  // $ie-filter: "progid:DXImageTransform.Microsoft.Light()";
-  // -ms-filter: $ie-filter;      // IE 8+
-  // filter: unquote($ie-filter); // IE < 8
+  // @include ie-filter(Light);
 }

@@ -19,7 +19,5 @@
 
   // IE
   // Needs a behavior
-  // $ie-filter: "progid:DXImageTransform.Microsoft.Light()";
-  // -ms-filter: $ie-filter;      // IE 8+
-  // filter: unquote($ie-filter); // IE < 8
+  // @include ie-filter(Light);
 }

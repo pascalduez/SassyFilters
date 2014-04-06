@@ -18,7 +18,5 @@
   filter: svg-filter(grayscale, $matrix: _join($matrix, " "));
 
   // IE
-  $ie-filter: "progid:DXImageTransform.Microsoft.BasicImage(grayscale=1)";
-  -ms-filter: $ie-filter;      // IE 8+
-  filter: unquote($ie-filter); // IE < 8
+  @include ie-filter(BasicImage, $grayscale: 1);
 }

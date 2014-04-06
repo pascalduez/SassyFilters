@@ -15,7 +15,5 @@
   // IE
   // Needs a behavior
   // $ie-filter: "progid:DXImageTransform.Microsoft.Light().addAmbient(255, 255, 255, #{$value})";
-  // $ie-filter: "progid:DXImageTransform.Microsoft.Light()";
-  // filter: unquote($ie-filter); // IE < 8
-  // -ms-filter: $ie-filter;      // IE 8+
+  // @include ie-filter(Light);
 }

@@ -13,7 +13,6 @@
   filter: svg-filter(contrast, $slope: $value, $intercept: (-(0.5 * $value) + 0.5));
 
   // IE
-  // $ie-filter: "progid:DXImageTransform.Microsoft";
-  // filter: unquote($ie-filter); // IE < 8
-  // -ms-filter: $ie-filter;      // IE 8+
+  // Needs a behavior
+  // @include ie-filter(Light);
 }

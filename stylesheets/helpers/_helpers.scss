@@ -131,3 +131,53 @@
 
   @return true;
 }
+
+
+
+// Capitalize string
+// --------------------------------------------------------------------------------
+// @param [string] $string
+// --------------------------------------------------------------------------------
+// @return [string]
+
+@function capitalize($string) {
+  @return to-upper-case(str-slice($string, 1, 1)) + str-slice($string, 2);
+}
+
+
+
+// IE filters formatting helper
+// --------------------------------------------------------------------------------
+// @param [filter] $string: filter name
+// @param [arglist] $args: filter properties
+// --------------------------------------------------------------------------------
+// @return [string]
+
+@function _ie-filter($filter, $args...) {
+  $result: ();
+  $properties: ();
+
+  $result: append($result, "progid:DXImageTransform.Microsoft.#{capitalize($filter)}(");
+
+  @each $key, $value in keywords($args) {
+    @if type-of($value) == color {
+      $value: "'#{ie-hex-str($value)}'";
+    }
+    $properties: append($properties, "#{$key}=#{$value}");
+  }
+
+  $result: append($result, _join($properties, ", "));
+  $result: append($result, ")");
+
+  @return _join($result);
+}
+
+
+@mixin ie-filter($filter, $args...) {
+  -ms-filter: quote(_ie-filter($filter, $args...));  // IE 8+
+  filter: unquote(_ie-filter($filter, $args...));    // IE < 8
+}
+
+
+
+
