@@ -1,4 +1,4 @@
-/*! SassyFilters – v0.0.1 – 2014-04-05 */
+/*! SassyFilters – v0.0.1 – 2014-04-06 */
 
 
 $filters-data-type: "raw" !default;
@@ -67,11 +67,18 @@ $svg-filters: (
       <feFuncB type="linear" slope="{{amount}}"/>
     </feComponentTransfer>',
 
-  contrast:
+  contrast-tpl:
     '<feComponentTransfer>
       <feFuncR type="linear" slope="{{amount}}" intercept="-(0.5 * {{amount}}) + 0.5"/>
       <feFuncG type="linear" slope="{{amount}}" intercept="-(0.5 * {{amount}}) + 0.5"/>
       <feFuncB type="linear" slope="{{amount}}" intercept="-(0.5 * {{amount}}) + 0.5"/>
+    </feComponentTransfer>',
+
+  contrast:
+    '<feComponentTransfer>
+      <feFuncR type="linear" slope="{{slope}}" intercept="{{intercept}}"/>
+      <feFuncG type="linear" slope="{{slope}}" intercept="{{intercept}}"/>
+      <feFuncB type="linear" slope="{{slope}}" intercept="{{intercept}}"/>
     </feComponentTransfer>',
 
   blur:
@@ -377,7 +384,7 @@ $svg-filters: (
   -webkit-filter: contrast($value);
 
   // Gecko
-  filter: svg-filter(contrast, $amount: $value);
+  filter: svg-filter(contrast, $slope: $value, $intercept: (-(0.5 * $value) + 0.5));
 
   // IE
   // $ie-filter: "progid:DXImageTransform.Microsoft";

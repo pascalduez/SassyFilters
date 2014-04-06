@@ -10,7 +10,7 @@
   -webkit-filter: contrast($value);
 
   // Gecko
-  filter: svg-filter(contrast, $amount: $value);
+  filter: svg-filter(contrast, $slope: $value, $intercept: (-(0.5 * $value) + 0.5));
 
   // IE
   // $ie-filter: "progid:DXImageTransform.Microsoft";

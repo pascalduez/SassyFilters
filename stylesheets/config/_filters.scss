@@ -61,11 +61,18 @@ $svg-filters: (
       <feFuncB type="linear" slope="{{amount}}"/>
     </feComponentTransfer>',
 
-  contrast:
+  contrast-tpl:
     '<feComponentTransfer>
       <feFuncR type="linear" slope="{{amount}}" intercept="-(0.5 * {{amount}}) + 0.5"/>
       <feFuncG type="linear" slope="{{amount}}" intercept="-(0.5 * {{amount}}) + 0.5"/>
       <feFuncB type="linear" slope="{{amount}}" intercept="-(0.5 * {{amount}}) + 0.5"/>
+    </feComponentTransfer>',
+
+  contrast:
+    '<feComponentTransfer>
+      <feFuncR type="linear" slope="{{slope}}" intercept="{{intercept}}"/>
+      <feFuncG type="linear" slope="{{slope}}" intercept="{{intercept}}"/>
+      <feFuncB type="linear" slope="{{slope}}" intercept="{{intercept}}"/>
     </feComponentTransfer>',
 
   blur:

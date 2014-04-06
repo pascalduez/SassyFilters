@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*! SassyFilters – v0.0.1 – 2014-04-05 */
+/*! SassyFilters – v0.0.1 – 2014-04-06 */
 /*
  * Global test styles.
  */
@@ -77,7 +77,7 @@ h3 {
  */
 .test--contrast .target {
   -webkit-filter: contrast(4);
-  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="contrast"><feComponentTransfer><feFuncR type="linear" slope="4" intercept="-(0.5 * 4) + 0.5"/><feFuncG type="linear" slope="4" intercept="-(0.5 * 4) + 0.5"/><feFuncB type="linear" slope="4" intercept="-(0.5 * 4) + 0.5"/></feComponentTransfer></filter></svg>#contrast');
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="contrast"><feComponentTransfer><feFuncR type="linear" slope="4" intercept="-1.5"/><feFuncG type="linear" slope="4" intercept="-1.5"/><feFuncB type="linear" slope="4" intercept="-1.5"/></feComponentTransfer></filter></svg>#contrast');
 }
 
 /*
