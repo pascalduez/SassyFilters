@@ -47,7 +47,7 @@ git clone git@github.com:pascalduez/SassyFilters.git && cd SassyFilters
 #### Bower
 
 ```
-bower install SassyFilters --save
+bower install sassyfilters --save
 ```
 
 #### npm
