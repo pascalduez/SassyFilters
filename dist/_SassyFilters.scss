@@ -1,4 +1,4 @@
-/*! SassyFilters – v0.0.1 – 2014-04-06 */
+/*! sassyfilters – v0.0.1 – 2014-04-08 */
 
 
 $filters-data-type: "raw" !default;
@@ -272,13 +272,13 @@ $svg-filters: (
 
 
 @mixin ie-filter($filter, $args...) {
-  -ms-filter: quote(_ie-filter($filter, $args...));  // IE 8+
-  filter: unquote(_ie-filter($filter, $args...));    // IE < 8
+  @if $filters-ie-support {
+    // IE 8+
+    -ms-filter: quote(_ie-filter($filter, $args...));
+    // IE < 8
+    filter: unquote(_ie-filter($filter, $args...));
+  }
 }
-
-
-
-
 
 
 // Format a proper url() SVG filter
