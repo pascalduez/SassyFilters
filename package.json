@@ -1,10 +1,10 @@
 {
   "name": "sassyfilters",
   "version": "0.0.1",
-  "license": "unlicence",
   "keywords": [
     "sass",
     "scss",
+    "css",
     "filters",
     "svg"
   ],
@@ -18,9 +18,6 @@
     "type": "git",
     "url": "git://github.com/pascalduez/SassyFilters.git"
   },
-  "files": [
-    "dist/"
-  ],
   "devDependencies": {
     "grunt": "^0.4.4",
     "grunt-autoprefixer": "^0.7.2",
@@ -33,6 +30,10 @@
   },
   "engines": {
     "node": ">=0.10.0"
+  },
+  "license": {
+    "type": "unlicence",
+    "url": "http://unlicense.org"
   },
   "scripts": {
     "install": "bundle install --path .",

@@ -2,7 +2,7 @@
 
 Cross-Browser configurable CSS-SVG filters.
 
-##
+## Filters
 
 `blur($radius: 0px)`  
 `brightness($value: 1)`  
@@ -47,13 +47,13 @@ git clone git@github.com:pascalduez/SassyFilters.git && cd SassyFilters
 #### Bower
 
 ```
-bower install sassyfilters --save
+bower install SassyFilters --save
 ```
 
 #### npm
 
 ```
-npm install SassyFilters --save
+npm install sassyfilters --save
 ``` 
 
 ## Development
