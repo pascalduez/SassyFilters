@@ -4,17 +4,16 @@ Cross-Browser configurable CSS-SVG filters.
 
 ## Filters
 
-`blur($radius: 0px)`  
-`brightness($value: 1)`  
-`contrast($value: 1)`  
-`drop-shadow($offset-x: 0px, $offset-y: $offset-x, $blur-radius: 0px, $spread-radius: 0px, $color: #000)`  
-`grayscale($value: 0)`  
-`hue-rotate($angle: 0deg)`  
-`invert($value: 0)`  
-`opacity($value: 1)`  
-`saturate($value: 1)`  
-`sepia($value: 1)`  
-
+`blur($radius)`  
+`brightness($value)`  
+`contrast($value)`  
+`drop-shadow($offset-x, $offset-y, $blur-radius, $color [, $spread-radius])`  
+`grayscale($value)`  
+`hue-rotate($angle)`  
+`invert($value)`  
+`opacity($value)`  
+`saturate($value)`  
+`sepia($value)`
 
 ## Browser support
 
@@ -54,16 +53,21 @@ bower install SassyFilters --save
 
 ```
 npm install sassyfilters --save
-``` 
+```
+## Roadmap
+
+* Multi filters mixin
+* Custom SVG filters mixin
+* More IE support trough behaviors
 
 ## Development
 
 ### You need
 
-  * [NodeJS](http://nodejs.org)
-  * [Ruby](https://www.ruby-lang.org)
-  * [Bundler](http://bundler.io) via `gem install bundler`
-  * `grunt-cli` via `npm install -g grunt-cli`
+* [NodeJS](http://nodejs.org)
+* [Ruby](https://www.ruby-lang.org)
+* [Bundler](http://bundler.io) via `gem install bundler`
+* `grunt-cli` via `npm install -g grunt-cli`
 
 ### How to
 

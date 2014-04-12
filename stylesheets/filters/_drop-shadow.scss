@@ -2,7 +2,7 @@
 //
 // Filter: drop-shadow.
 //
-@mixin drop-shadow($offset-x: 0px, $offset-y: $offset-x, $blur-radius: 0px, $spread-radius: 0px, $color: #000) {
+@mixin drop-shadow($offset-x: 0px, $offset-y: $offset-x, $blur-radius: 0px, $color: #000, $spread-radius: 0px) {
 
   // Webkit, Blink
   -webkit-filter: drop-shadow($offset-x $offset-y $blur-radius $color);

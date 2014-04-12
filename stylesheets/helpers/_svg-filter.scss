@@ -31,8 +31,7 @@
 // --------------------------------------------------------------------------------
 // @param [string] $id: filter id
 // @param [string] $svgStr: stringified SVG
-// @param [boolean] $base64: inline SVG as base64
-// @param [boolean] $escape: inline SVG url escaped
+// @param [string] $type: data type "raw" | "base64" | "escape"
 // --------------------------------------------------------------------------------
 // @return [string]
 
