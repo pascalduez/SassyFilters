@@ -54,6 +54,18 @@ bower install SassyFilters --save
 ```
 npm install sassyfilters --save
 ```
+#### Example config with [grunt-contrib-sass](https://github.com/gruntjs/grunt-contrib-compass)
+
+```js
+sass: {
+  options: {
+    bundleExec: true, // Optional usage of Bundler, but recommended.
+    require: ["./node_modules/sassyfilters/lib/helpers.rb"],
+    loadPath: ["./node_modules/sassyfilters/dist/_SassyFilters.scss"]
+  }
+}
+```
+
 ## Roadmap
 
 * Multi filters mixin
