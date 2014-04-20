@@ -35,18 +35,10 @@ filter IE 6, 7, 8
 
 ## Install
 
-Work in progress...
-
 #### Git
 
 ```
 git clone git@github.com:pascalduez/SassyFilters.git && cd SassyFilters
-```
-
-#### Bower
-
-```
-bower install SassyFilters --save
 ```
 
 #### npm
