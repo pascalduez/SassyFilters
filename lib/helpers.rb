@@ -32,7 +32,7 @@ module SassyFilters
     elsif escape.to_bool
       inline = ERB::Util.url_encode(svgStr)
     else
-      inline = svgStr
+      inline = svgStr.gsub(/#/, "%23")
     end
 
     unquoted_string(inline)
