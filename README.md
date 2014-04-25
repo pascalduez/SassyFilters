@@ -79,5 +79,4 @@ sass: {
   2. Run `npm install`
   4. Make your changes + write tests
   3. `grunt test`
-  3. `grunt dist`
-  5. Commit + Pull request
+  4. Commit + Pull request
