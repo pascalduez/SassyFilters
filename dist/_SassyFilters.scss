@@ -1,8 +1,26 @@
-/*! sassyfilters – v0.0.4 – 2014-04-22 */
+/*! sassyfilters – v0.0.5 – 2014-04-26 */
+//
+// SassyFilters: Configuration
+//
 
+// Default settings.
+$filters-defaults: (
+  data-type: "raw",
+  ie-support: true
+);
 
-$filters-data-type: "raw" !default;
-$filters-ie-support: true !default;
+// User settings.
+$filters-settings: () !default;
+
+// Retreive a configuration item.
+@function conf($key) {
+  @if not map-has-key($filters-defaults, $key) {
+    @warn "No item `#{$key}` found in configuration.";
+    @return false;
+  }
+
+  @return map-get(map-merge($filters-defaults, $filters-settings), $key);
+}
 
 
 
@@ -272,7 +290,7 @@ $svg-filters: (
 
 
 @mixin ie-filter($filter, $args...) {
-  @if $filters-ie-support {
+  @if conf(ie-support) {
     // IE 8+
     -ms-filter: quote(_ie-filter($filter, $args...));
     // IE < 8
@@ -372,12 +390,10 @@ $svg-filters: (
 
   $return: "";
   $svgStr: _svg-filter-get($id, $args...);
-  $return: _svg-filter-data($id, $svgStr, $type: $filters-data-type);
+  $return: _svg-filter-data($id, $svgStr, $type: conf(data-type));
 
   @return $return;
 }
-
-
 
 
 //
