@@ -174,7 +174,7 @@
 
 
 @mixin ie-filter($filter, $args...) {
-  @if $filters-ie-support {
+  @if conf(ie-support) {
     // IE 8+
     -ms-filter: quote(_ie-filter($filter, $args...));
     // IE < 8

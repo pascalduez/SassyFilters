@@ -1,4 +1,22 @@
+//
+// SassyFilters: Configuration
+//
 
+// Default settings.
+$filters-defaults: (
+  data-type: "raw",
+  ie-support: true
+);
 
-$filters-data-type: "raw" !default;
-$filters-ie-support: true !default;
+// User settings.
+$filters-settings: () !default;
+
+// Retreive a configuration item.
+@function conf($key) {
+  @if not map-has-key($filters-defaults, $key) {
+    @warn "No item `#{$key}` found in configuration.";
+    @return false;
+  }
+
+  @return map-get(map-merge($filters-defaults, $filters-settings), $key);
+}

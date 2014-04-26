@@ -90,9 +90,7 @@
 
   $return: "";
   $svgStr: _svg-filter-get($id, $args...);
-  $return: _svg-filter-data($id, $svgStr, $type: $filters-data-type);
+  $return: _svg-filter-data($id, $svgStr, $type: conf(data-type));
 
   @return $return;
 }
-
-
