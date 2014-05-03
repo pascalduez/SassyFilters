@@ -15,6 +15,17 @@ Cross-Browser configurable CSS-SVG filters.
 `saturate($value)`  
 `sepia($value)`
 
+## Configuration
+
+```scss
+// Default settings.
+$filters-defaults: (
+  data-type: "raw",  // Encoding of the SVG filters as data URI: raw | escaped | base64
+  ie-support: true   // Whether to add IE proprietary filters or not
+);
+```
+Override default values in a new `$filters-settings` map.
+
 ## Browser support
 
 Work in progress...
