@@ -57,7 +57,7 @@ git clone git@github.com:pascalduez/SassyFilters.git && cd SassyFilters
 ```
 npm install sassyfilters --save
 ```
-#### Example config with [grunt-contrib-sass](https://github.com/gruntjs/grunt-contrib-compass)
+#### Example config with [grunt-contrib-sass](https://github.com/gruntjs/grunt-contrib-sass)
 
 ```js
 sass: {
