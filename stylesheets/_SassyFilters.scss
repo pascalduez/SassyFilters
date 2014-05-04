@@ -1,8 +1,8 @@
-// -------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // SassyFilters - Cross-Browser configurable CSS-SVG filters.
-// -------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // Repository: https://github.com/pascalduez/SassyFilters
-// -------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 //
 // Import configuration
@@ -14,7 +14,8 @@
 // Import helpers
 //
 @import "helpers/helpers";
-@import "helpers/svg-filter";
+@import "helpers/svg";
+@import "helpers/filters";
 @import "helpers/disable-filter";
 
 //
@@ -23,9 +24,8 @@
 @import "filters/blur";
 @import "filters/brightness";
 @import "filters/contrast";
-//@import "filters/custom";
+// @import "filters/custom";
 @import "filters/drop-shadow";
-//@import "filters/filters";
 @import "filters/grayscale";
 @import "filters/hue-rotate";
 @import "filters/invert";

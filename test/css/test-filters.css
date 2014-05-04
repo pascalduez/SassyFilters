@@ -1,15 +1,22 @@
-@charset "UTF-8";
-/*! sassyfilters – v0.0.3 – 2014-04-15 */
 /*
  * Global test styles.
  */
+.test--helpers:before, .test--img:before, .test--helpers:after, .test--img:after {
+  content: " ";
+  display: table;
+}
+.test--helpers:after, .test--img:after {
+  clear: both;
+}
+
 body {
   font-family: sans-serif;
-  background: lightGrey;
+  background: PaleTurquoise;
+  margin: 0;
 }
 
 main {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -21,33 +28,54 @@ h3 {
   margin: 0 0 3em;
 }
 
-.test--helpers {
-  overflow: hidden;
-}
 .test--helpers .test {
-  line-height: 8em;
+  line-height: 4em;
   text-align: center;
-  float: left;
-  margin: 0 3em 3em 0;
+  margin: 0 0 1em;
+}
+@media (min-width: 450px) {
+  .test--helpers .test {
+    width: 30%;
+    width: calc((100% - 2em) / 3);
+    float: left;
+    margin-right: 1em;
+  }
+  .test--helpers .test:last-child {
+    margin-right: 0;
+  }
 }
 
 .test--box {
-  width: 20%;
-  height: 8em;
+  max-width: 400px;
+  height: 4em;
   background: white;
 }
 
-.test--img .original {
-  margin: 0 1rem 0 0;
+.test--img img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin: 0 0 1em;
+}
+@media (min-width: 450px) {
+  .test--img img {
+    width: 48%;
+    width: calc((100% - 1em) / 2);
+    float: left;
+    margin-right: 1em;
+  }
+  .test--img img:last-child {
+    margin-right: 0;
+  }
 }
 
 /*
- * Test helpers
+ * Test SVG helpers
  */
 .test--helpers .svg-filter--raw {
   filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="custom"><feGaussianBlur in="SourceGraphic" stdDeviation="1"/><feComponentTransfer><feFuncA tableValues="0 .7" type="table"></feFuncA></feComponentTransfer></filter></svg>#custom');
 }
-.test--helpers .svg-filter--escape {
+.test--helpers .svg-filter--escaped {
   filter: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cfilter%20id%3D%22custom%22%3E%3CfeGaussianBlur%20in%3D%22SourceGraphic%22%20stdDeviation%3D%221%22%2F%3E%3CfeComponentTransfer%3E%3CfeFuncA%20tableValues%3D%220%20.7%22%20type%3D%22table%22%3E%3C%2FfeFuncA%3E%3C%2FfeComponentTransfer%3E%3C%2Ffilter%3E%3C%2Fsvg%3E#custom");
 }
 .test--helpers .svg-filter--base64 {
@@ -114,8 +142,8 @@ h3 {
 .test--invert .target {
   -webkit-filter: invert(1);
   filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="invert"><feComponentTransfer><feFuncR type="table" tableValues="1 0"/><feFuncG type="table" tableValues="1 0"/><feFuncB type="table" tableValues="1 0"/></feComponentTransfer></filter></svg>#invert');
-  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(invert=1)";
-  filter: progid:DXImageTransform.Microsoft.BasicImage(invert=1);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Invert(invert=1)";
+  filter: progid:DXImageTransform.Microsoft.Invert(invert=1);
 }
 
 /*
@@ -142,4 +170,25 @@ h3 {
 .test--sepia .target {
   -webkit-filter: sepia(1);
   filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="sepia"><feColorMatrix type="matrix" values="0.393 0.769 0.189 0 0 0.349 0.686 0.168 0 0 0.272 0.534 0.131 0 0 0 0 0 1 0"/></filter></svg>#sepia');
+}
+
+/*
+ * Test multi filters.
+ */
+.test--multi .target {
+  -webkit-filter: brightness(3) invert(1) blur(5px);
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="custom"><feComponentTransfer><feFuncR type="linear" slope="3"/><feFuncG type="linear" slope="3"/><feFuncB type="linear" slope="3"/></feComponentTransfer><feComponentTransfer><feFuncR type="table" tableValues="1 0"/><feFuncG type="table" tableValues="1 0"/><feFuncB type="table" tableValues="1 0"/></feComponentTransfer><feGaussianBlur stdDeviation="5" edgeMode="none"/></filter></svg>#custom');
+  -ms-filter: "progid:DXImageTransform.Microsoft.Invert(invert=1), progid:DXImageTransform.Microsoft.Blur(pixelRadius=5)";
+  filter: progid:DXImageTransform.Microsoft.Invert(invert=1) progid:DXImageTransform.Microsoft.Blur(pixelRadius=5);
+}
+
+/*
+ * Test disable.
+ */
+.test--disable {
+  -webkit-filter: none;
+  -ms-filter: none;
+  filter: none;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Blur(enabled=false)";
+  filter: progid:DXImageTransform.Microsoft.Blur(enabled=false);
 }

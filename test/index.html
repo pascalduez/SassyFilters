@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Test: filters</title>
+    <title>SassyFilters | test: filters</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="initial-scale=1.0">
     <link rel="stylesheet" href="css/test-filters.css">
@@ -11,11 +11,11 @@
 
     <main>
 
-      <h3>Helpers</h3>
+      <h3>SVG helpers</h3>
       <div class="test--helpers">
-        <div class="test test--box svg-filter--raw">Raw</div>
-        <div class="test test--box svg-filter--escape">Escaped</div>
-        <div class="test test--box svg-filter--base64">Base64</div>
+        <div class="test test--box svg-filter--raw">raw</div>
+        <div class="test test--box svg-filter--escaped">escaped</div>
+        <div class="test test--box svg-filter--base64">base64</div>
       </div>
 
       <h3>Blur</h3>
@@ -68,6 +68,12 @@
 
       <h3>Hue-rotate</h3>
       <div class="test test--img test--hue-rotate">
+        <img class="original" src="img/image.jpg">
+        <img class="target" src="img/image.jpg">
+      </div>
+
+      <h3>Multi filters</h3>
+      <div class="test test--img test--multi">
         <img class="original" src="img/image.jpg">
         <img class="target" src="img/image.jpg">
       </div>

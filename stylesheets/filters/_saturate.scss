@@ -2,17 +2,49 @@
 //
 // filter: saturate
 //
-@mixin saturate($value: 1) {
 
-  $in-range: check-in-range(saturate, 0 10, $value);
 
-  // Webkit, Blink
-  -webkit-filter: saturate($value);
+// @private `saturate` filter function
+// -----------------------------------------------------------------------------
+// @param [number]: $value
+// -----------------------------------------------------------------------------
+// @dependencies `_svg-filter`, `_ie-filter`
+// -----------------------------------------------------------------------------
+// @return [map]
 
-  // Gecko
-  filter: svg-filter(saturate, $values: $value);
+@function _fn-saturate(
+  $value
+) {
+  // CSS filter function
+  $css: saturate($value);
 
-  // IE
-  // Needs a behavior
-  // @include ie-filter(Light);
+  // SVG filter equivalent
+  $svg: _svg-filter(saturate, $values: $value);
+
+  // IE static filter
+  // @todo: needs a behavior
+  // $ie: _ie-filter(light);
+
+  @return (
+    css: $css,
+    svg: $svg
+  );
+}
+
+
+
+// @public `saturate` filter mixin
+// -----------------------------------------------------------------------------
+// @spec saturate() = saturate( [ <number> | <percentage> ] )
+// -----------------------------------------------------------------------------
+// @param [number]: $value
+// -----------------------------------------------------------------------------
+// @print [css]
+
+@mixin saturate(
+  $value: 1
+) {
+  @include check-in-range(saturate, 0 10, $value);
+
+  @include filters((saturate: (value: $value)));
 }

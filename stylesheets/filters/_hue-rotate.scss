@@ -2,17 +2,49 @@
 //
 // filter: hue-rotate
 //
-@mixin hue-rotate($angle: 0deg) {
 
-  $in-range: check-in-range(hue-rotate, 0 360, $angle);
 
-  // Webkit, Blink
-  -webkit-filter: hue-rotate($angle);
+// @private `hue-rotate` filter function
+// -----------------------------------------------------------------------------
+// @param [number]: $angle
+// -----------------------------------------------------------------------------
+// @dependencies `_svg-filter`, `_ie-filter`
+// -----------------------------------------------------------------------------
+// @return [map]
 
-  // Gecko
-  filter: svg-filter(hue-rotate, $angle: _strip-unit($angle));
+@function _fn-hue-rotate(
+  $angle
+) {
+  // CSS filter function
+  $css: hue-rotate($angle);
 
-  // IE
-  // Needs a behavior
-  // @include ie-filter(Light);
+  // SVG filter equivalent
+  $svg: _svg-filter(hue-rotate, $angle: ($angle / 1deg));
+
+  // IE static filter
+  // @todo: needs a behavior
+  // $ie: _ie-filter(light);
+
+  @return (
+    css: $css,
+    svg: $svg
+  );
+}
+
+
+
+// @public `hue-rotate` filter mixin
+// -----------------------------------------------------------------------------
+// @spec hue-rotate() = hue-rotate( <angle> )
+// -----------------------------------------------------------------------------
+// @param [number]: $angle
+// -----------------------------------------------------------------------------
+// @print [css]
+
+@mixin hue-rotate(
+  $angle: 0deg
+) {
+  @include check-in-range(hue-rotate, 0 360, $angle);
+
+  @include filters((hue-rotate: (angle: $angle)));
 }

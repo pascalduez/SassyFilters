@@ -1,46 +1,73 @@
+//
+// SassyFilters: helpers
+//
 
-// Push new entry to `$map`
-// --------------------------------------------------------------------------------
+
+
+// Returns a list of all keys in a map.
+// -----------------------------------------------------------------------------
 // @param [map] $map
-// @param $key
-// @param $value
-// --------------------------------------------------------------------------------
-// @return [map]
+// @param [string] $separator: space | comma | auto
+// -----------------------------------------------------------------------------
+// @return [list]
 
-@function _map-set($map, $key, $value) {
-  @return map-merge($map, ($key: $value));
+@function _map-keys($map, $separator: space) {
+  @return join((), map-keys($map), $separator);
 }
 
 
 
-// Remove unit from `$number`
-// --------------------------------------------------------------------------------
-// @param [number] $number
-// --------------------------------------------------------------------------------
-// @return [number]
+// Returns a list of all values in a map.
+// -----------------------------------------------------------------------------
+// @param [map] $map
+// @param [string] $separator: space | comma | auto
+// -----------------------------------------------------------------------------
+// @return [list]
 
-@function _strip-unit($number) {
-  @return $number / ($number * 0 + 1);
+@function _map-values($map, $separator: space) {
+  @return join((), map-values($map), $separator);
+}
+
+
+
+// Test whether `$value` is empty.
+// -----------------------------------------------------------------------------
+// @param [literal] $value
+// -----------------------------------------------------------------------------
+// @return [boolean]
+
+@function empty($value) {
+  @if not $value
+       or $value == ""
+       or $value == 0
+       or $value == ()
+       or length($value) == 0 {
+    @return true;
+  }
+  @return false;
 }
 
 
 
 // Join `$list` into a string
-// --------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // @param [list] $list
 // @param [string] $glue
-// --------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // @return [string]
 
 @function _join($list, $glue: "") {
   $result: "";
+  $length: length($list);
 
-  @if length($list) < 1 {
+  @if $length < 1 {
     @return $result;
   }
 
-  @for $i from 1 through length($list) {
-    $result: $result + nth($list, $i) + if($i != length($list), $glue, "");
+  @for $i from 1 through $length {
+    $result: $result
+             + nth($list, $i)
+             + if($i != $length, $glue, "");
   }
 
   @return $result;
@@ -49,10 +76,10 @@
 
 
 // A Sass micro-templating function.
-// --------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // @param [string] $format
-// @param [arglist] $args
-// --------------------------------------------------------------------------------
+// @param [arglist | map] $args
+// -----------------------------------------------------------------------------
 // @return [string]
 
 @function template($format, $args...) {
@@ -63,10 +90,10 @@
     $length: str-length($token);
     $index: str-index($result, $token);
 
-    @if not $index { @return $result; }
-
     @if $index {
-      $result: str-slice($result, 1, $index - 1) + $value + str-slice($result, ($index + $length));
+      $result: if($index > 1, str-slice($result, 1, $index - 1), "")
+               + $value
+               + str-slice($result, ($index + $length));
 
       @if str-index($result, $token) {
         $result: template($result, $args...);
@@ -80,11 +107,11 @@
 
 
 // Test whether `$value` is containedd between `$min` and `$max`
-// --------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // @param [number] $min: minimum range value
 // @param [number] $max: maximum range value
 // @param [number] $value: the value to be tested
-// --------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // @return [boolean]
 
 @function _in-range($min, $max, $value) {
@@ -94,11 +121,11 @@
 
 
 // Logs an error at `$pointer` if `$value` is not in `$range`
-// --------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // @param [string] $pointer: caller function/mixin name
 // @param [list] $range: range the value must be contained in
 // @param [number] $value: the value to be tested
-// --------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // @return [boolean]
 
 @function check-in-range($pointer, $range, $value) {
@@ -113,71 +140,18 @@
   @return true;
 }
 
-
-
-// Logs an error at `$pointer` if `$value` is not of type `$type`
-// --------------------------------------------------------------------------------
-// @param [string] $pointer: caller function/mixin name
-// @param [base] $value: the value to inspect
-// @param [string] $type: the unquoted string name of the value’s type
-// --------------------------------------------------------------------------------
-// @return [boolean]
-
-@function check-typeof($pointer, $value, $type) {
-  @if type-of($value) != $type {
-    @warn "ERROR::#{$pointer}::$value must be of type #{$type}; #{type-of($value)} given.";
-    @return false;
-  }
-
-  @return true;
+@mixin check-in-range($pointer, $range, $value) {
+  $in-range: check-in-range($pointer, $range, $value);
 }
 
 
 
 // Capitalize string
-// --------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // @param [string] $string
-// --------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // @return [string]
 
 @function capitalize($string) {
   @return to-upper-case(str-slice($string, 1, 1)) + str-slice($string, 2);
-}
-
-
-
-// IE filters formatting helper
-// --------------------------------------------------------------------------------
-// @param [filter] $string: filter name
-// @param [arglist] $args: filter properties
-// --------------------------------------------------------------------------------
-// @return [string]
-
-@function _ie-filter($filter, $args...) {
-  $result: ();
-  $properties: ();
-
-  $result: append($result, "progid:DXImageTransform.Microsoft.#{capitalize($filter)}(");
-
-  @each $key, $value in keywords($args) {
-    @if type-of($value) == color {
-      $value: "'#{ie-hex-str($value)}'";
-    }
-    $properties: append($properties, "#{$key}=#{$value}");
-  }
-
-  $result: append($result, _join($properties, ", "));
-  $result: append($result, ")");
-
-  @return _join($result);
-}
-
-
-@mixin ie-filter($filter, $args...) {
-  @if $filters-ie-support {
-    // IE 8+
-    -ms-filter: quote(_ie-filter($filter, $args...));
-    // IE < 8
-    filter: unquote(_ie-filter($filter, $args...));
-  }
 }

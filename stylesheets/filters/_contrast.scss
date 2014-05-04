@@ -2,17 +2,49 @@
 //
 // filter: contrast
 //
-@mixin contrast($value: 1) {
 
-  $in-range: check-in-range(contrast, 0 10, $value);
 
-  // Webkit, Blink
-  -webkit-filter: contrast($value);
+// @private contrast filter function
+// -----------------------------------------------------------------------------
+// @param [number]: $value
+// -----------------------------------------------------------------------------
+// @dependencies `_svg-filter`, `_ie-filter`
+// -----------------------------------------------------------------------------
+// @return [map]
 
-  // Gecko
-  filter: svg-filter(contrast, $slope: $value, $intercept: (-(0.5 * $value) + 0.5));
+@function _fn-contrast(
+  $value
+) {
+  // CSS filter function
+  $css: contrast($value);
 
-  // IE
-  // Needs a behavior
-  // @include ie-filter(Light);
+  // SVG filter equivalent
+  $svg: _svg-filter(contrast, $slope: $value, $intercept: (-(0.5 * $value) + 0.5));
+
+  // IE static filter
+  // @todo: needs a behavior
+  // $ie: _ie-filter(light);
+
+  @return (
+    css: $css,
+    svg: $svg
+  );
+}
+
+
+
+// @public `contrast` filter mixin
+// -----------------------------------------------------------------------------
+// @spec contrast() = contrast( [ <number> | <percentage> ] )
+// -----------------------------------------------------------------------------
+// @param [number]: $value
+// -----------------------------------------------------------------------------
+// @print [css]
+
+@mixin contrast(
+  $value: 1
+) {
+  @include check-in-range(contrast, 0 10, $value);
+
+  @include filters((contrast: (value: $value)));
 }

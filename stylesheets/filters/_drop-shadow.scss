@@ -2,21 +2,76 @@
 //
 // Filter: drop-shadow.
 //
-@mixin drop-shadow($offset-x: 0px, $offset-y: $offset-x, $blur-radius: 0px, $color: #000, $spread-radius: 0px) {
 
-  // Webkit, Blink
-  -webkit-filter: drop-shadow($offset-x $offset-y $blur-radius $color);
 
-  // Gecko
-  filter: svg-filter(drop-shadow,
-                     $offset-x: _strip-unit($offset-x),
-                     $offset-y: _strip-unit($offset-y),
-                     $blur-radius: _strip-unit($blur-radius),
-                     $color: $color);
+// @private `drop-shadow` filter function
+// -----------------------------------------------------------------------------
+// @param [number]: $offset-x
+// @param [number]: $offset-y
+// @param [number]: $blur-radius
+// @param [color]: $color
+// @param [number]: $spread-radius (not implemented yet)
+// -----------------------------------------------------------------------------
+// @dependencies `_svg-filter`, `_ie-filter`
+// -----------------------------------------------------------------------------
+// @return [map]
 
-  // IE
-  // progid:DXImageTransform.Microsoft.Dropshadow(OffX=#{$offset-x}, OffY=#{$offset-y}, Color='#{ie-hex-str($color)}')
-  // progid:DXImageTransform.Microsoft.Glow(Color='#{ie-hex-str($color)}', Strength=#{$blur-radius})
-  // pprogid:DXImageTransform.Microsoft.Shadow(color='#{ie-hex-str($color)}', Direction=#{$offset-x * 100}, Strength=#{$blur-radius * 10})
-  @include ie-filter(Dropshadow, $OffX: $offset-x, $OffY: $offset-y, $Color: $color);
+@function _fn-drop-shadow(
+  $offset-x,
+  $offset-y,
+  $blur-radius,
+  $color,
+  $spread-radius: null
+) {
+  // CSS filter function
+  $css: drop-shadow($offset-x $offset-y $blur-radius $color);
+
+  // SVG filter equivalent
+  $svg: _svg-filter(
+            drop-shadow,
+            $offset-x: ($offset-x / 1px),
+            $offset-y: ($offset-y / 1px),
+            $blur-radius: ($blur-radius / 1px),
+            $color: $color
+          );
+
+  // IE static filter
+  // Glow(Color, Strength)
+  // Shadow(color, Direction, Strength)
+  $ie: _ie-filter(dropshadow, $OffX: $offset-x, $OffY: $offset-y, $Color: $color);
+
+  @return (
+    css: $css,
+    svg: $svg,
+     ie: $ie
+  );
+}
+
+
+
+// @public `drop-shadow` filter mixin
+// -----------------------------------------------------------------------------
+// @spec drop-shadow() = drop-shadow( <length>{2,3} <color>? )
+// -----------------------------------------------------------------------------
+// @param [number]: $offset-x
+// @param [number]: $offset-y
+// @param [number]: $blur-radius
+// @param [color]: $color
+// -----------------------------------------------------------------------------
+// @print [css]
+
+@mixin drop-shadow(
+  $offset-x: 0px,
+  $offset-y: $offset-x,
+  $blur-radius: 0px,
+  $color: rgba(0, 0, 0, .5)
+) {
+  @include filters((
+            drop-shadow: (
+              offset-x: $offset-x,
+              offset-y: $offset-y,
+              blur-radius: $blur-radius,
+              color: $color
+            )
+          ));
 }

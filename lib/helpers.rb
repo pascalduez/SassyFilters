@@ -3,43 +3,34 @@ require "sass"
 require "erb"
 
 module SassyFilters
-
   def self.included(base)
     if base.respond_to?(:declare)
-      base.declare :sprintf, [:format, :args]
-      base.declare :inline_svg, [:svgStr]
-      base.declare :inline_svg, [:svgStr, :base64]
-      base.declare :inline_svg, [:svgStr, :base64, :escape]
+      base.declare :svg_data, [:svgStr, :encoding]
     end
   end
 
+  def svg_data(svgStr, encoding)
+    assert_type svgStr, :String, :svgStr
+    assert_type encoding, :String, :encoding
 
-  def sprintf(format, *args)
-    assert_type format, :String
-    assert_type args, :Array
-
-    Sass::Script::String.new(format.value % args)
-  end
-
-
-  def inline_svg(svgStr, base64 = bool(false), escape = bool(false))
-    assert_type svgStr, :String
+    unless %w[base64 escaped raw].include?(encoding.value)
+      raise ArgumentError.new("$encoding must be either base64, escaped or raw")
+    end
 
     svgStr = svgStr.value.strip.gsub(/>\s+</, "><")
 
-    if base64.to_bool
-      inline = [svgStr].flatten.pack("m0")
-    elsif escape.to_bool
-      inline = ERB::Util.url_encode(svgStr)
+    case encoding.value
+    when "base64"
+      data = [svgStr].flatten.pack("m0")
+    when "escaped"
+      data = ERB::Util.url_encode(svgStr)
     else
-      inline = svgStr
+      data = svgStr.gsub(/#/, "%23")
     end
 
-    unquoted_string(inline)
+    unquoted_string(data)
   end
-
 end
-
 
 module Sass::Script::Functions
   include SassyFilters

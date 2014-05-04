@@ -2,16 +2,49 @@
 //
 // filter: blur
 //
-@mixin blur($radius: 0px) {
 
-  $in-range: check-in-range(blur, 0 10, $radius);
 
-  // Webkit, Blink
-  -webkit-filter: blur($radius);
+// @private blur `filter` function
+// -----------------------------------------------------------------------------
+// @param [number]: $radius
+// -----------------------------------------------------------------------------
+// @dependencies `_svg-filter`, `_ie-filter`
+// -----------------------------------------------------------------------------
+// @return [map]
 
-  // Gecko
-  filter: svg-filter(blur, $radius: _strip-unit($radius));
+@function _fn-blur(
+  $radius
+) {
+  // CSS filter function
+  $css: blur($radius);
 
-  // IE
-  @include ie-filter(Blur, $pixelRadius: _strip-unit($radius));
+  // SVG filter equivalent
+  $svg: _svg-filter(blur, $radius: ($radius / 1px));
+
+  // IE static filter
+  $ie: _ie-filter(blur, $pixelRadius: ($radius / 1px));
+
+  @return (
+    css: $css,
+    svg: $svg,
+     ie: $ie
+  );
+}
+
+
+
+// @public `blur` filter mixin
+// -----------------------------------------------------------------------------
+// @spec blur() = blur( <length> )
+// -----------------------------------------------------------------------------
+// @param [number]: $radius
+// -----------------------------------------------------------------------------
+// @print [css]
+
+@mixin blur(
+  $radius: 0px
+) {
+  @include check-in-range(blur, 0 10, $radius);
+
+  @include filters((blur: (radius: $radius)));
 }

@@ -18,6 +18,13 @@ module.exports = function(grunt) {
     dist: "./dist"
   }
 
+  var banner = [
+    "// <%= pkg.title %> – v<%= pkg.version %>",
+    " – <%= grunt.template.today('yyyy-mm-dd') %>\n",
+    "// <%= pkg.homepage %>\n",
+    "// License: <%= pkg.license.type %>\n\n"
+  ].join("");
+
   grunt.initConfig({
 
     pkg: grunt.file.readJSON("package.json"),
@@ -96,7 +103,7 @@ module.exports = function(grunt) {
 
     concat: {
       options: {
-        banner: "/*! <%= pkg.name %> – v<%= pkg.version %> – <%= grunt.template.today('yyyy-mm-dd') %> */\n",
+        banner: banner,
       },
       dist: {
         src: [
@@ -104,15 +111,16 @@ module.exports = function(grunt) {
           "<%= conf.src %>/config/_config.scss",
           "<%= conf.src %>/config/_filters.scss",
           // helpers
+          "<%= conf.src %>/helpers/_disable-filter.scss",
+          "<%= conf.src %>/helpers/_filters.scss",
           "<%= conf.src %>/helpers/_helpers.scss",
-          "<%= conf.src %>/helpers/_svg-filter.scss",
+          "<%= conf.src %>/helpers/_svg.scss",
           // filters
           "<%= conf.src %>/filters/_blur.scss",
           "<%= conf.src %>/filters/_brightness.scss",
           "<%= conf.src %>/filters/_contrast.scss",
-          "<%= conf.src %>/filters/_custom.scss",
+          // "<%= conf.src %>/filters/_custom.scss",
           "<%= conf.src %>/filters/_drop-shadow.scss",
-          "<%= conf.src %>/filters/_filters.scss",
           "<%= conf.src %>/filters/_grayscale.scss",
           "<%= conf.src %>/filters/_hue-rotate.scss",
           "<%= conf.src %>/filters/_invert.scss",

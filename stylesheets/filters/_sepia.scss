@@ -2,22 +2,55 @@
 //
 // filter: sepia
 //
-@mixin sepia($value: 1) {
 
-  $in-range: check-in-range(sepia, 0 1, $value);
 
-  // Webkit, Blink
-  -webkit-filter: sepia($value);
+// @private `sepia` filter function
+// -----------------------------------------------------------------------------
+// @param [number]: $value
+// -----------------------------------------------------------------------------
+// @dependencies `_svg-filter`, `_ie-filter`
+// -----------------------------------------------------------------------------
+// @return [map]
 
-  // Gecko
-  $matrix: (0.393 + 0.607 * (1 - $value)), (0.769 - 0.769 * (1 - $value)), (0.189 - 0.189 * (1 - $value)), 0 0,
-           (0.349 - 0.349 * (1 - $value)), (0.686 + 0.314 * (1 - $value)), (0.168 - 0.168 * (1 - $value)), 0 0,
-           (0.272 - 0.272 * (1 - $value)), (0.534 - 0.534 * (1 - $value)), (0.131 + 0.869 * (1 - $value)), 0 0,
-            0 0 0 1 0;
+@function _fn-sepia(
+  $value
+) {
+  // CSS filter function
+  $css: sepia($value);
 
-  filter: svg-filter(sepia, $matrix: _join($matrix, " "));
+  // SVG filter equivalent
+  $matrix:
+    (0.393 + 0.607 * (1 - $value)), (0.769 - 0.769 * (1 - $value)), (0.189 - 0.189 * (1 - $value)), 0 0,
+    (0.349 - 0.349 * (1 - $value)), (0.686 + 0.314 * (1 - $value)), (0.168 - 0.168 * (1 - $value)), 0 0,
+    (0.272 - 0.272 * (1 - $value)), (0.534 - 0.534 * (1 - $value)), (0.131 + 0.869 * (1 - $value)), 0 0,
+     0 0 0 1 0;
 
-  // IE
-  // Needs a behavior
-  // @include ie-filter(Light);
+  $svg: _svg-filter(sepia, $matrix: _join($matrix, " "));
+
+  // IE static filter
+  // @todo: needs a behavior
+  // $ie: _ie-filter(light);
+
+  @return (
+    css: $css,
+    svg: $svg
+  );
+}
+
+
+
+// @public `sepia` filter mixin
+// -----------------------------------------------------------------------------
+// @spec sepia() = sepia( [ <number> | <percentage> ] )
+// -----------------------------------------------------------------------------
+// @param [number]: $value
+// -----------------------------------------------------------------------------
+// @print [css]
+
+@mixin sepia(
+  $value: 0
+) {
+  @include check-in-range(sepia, 0 1, $value);
+
+  @include filters((sepia: (value: $value)));
 }

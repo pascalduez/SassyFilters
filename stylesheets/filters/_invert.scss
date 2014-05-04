@@ -2,16 +2,49 @@
 //
 // filter: invert
 //
-@mixin invert($value: 0) {
 
-  $in-range: check-in-range(invert, 0 1, $value);
 
-  // Webkit, Blink
-  -webkit-filter: invert($value);
+// @private `invert` filter function
+// -----------------------------------------------------------------------------
+// @param [number]: $value
+// -----------------------------------------------------------------------------
+// @dependencies `_svg-filter`, `_ie-filter`
+// -----------------------------------------------------------------------------
+// @return [map]
 
-  // Gecko
-  filter: svg-filter(invert, $values: ($value (1 - $value)));
+@function _fn-invert(
+  $value
+) {
+  // CSS filter function
+  $css: invert($value);
 
-  // IE
-  @include ie-filter(BasicImage, $invert: 1);
+  // SVG filter equivalent
+  $svg: _svg-filter(invert, $values: ($value (1 - $value)));
+
+  // IE static filter
+  $ie: _ie-filter(invert, $invert: 1);
+
+  @return (
+    css: $css,
+    svg: $svg,
+     ie: $ie
+  );
+}
+
+
+
+// @public `invert` filter mixin
+// -----------------------------------------------------------------------------
+// @spec invert() = invert( [ <number> | <percentage> ] )
+// -----------------------------------------------------------------------------
+// @param [number]: $value
+// -----------------------------------------------------------------------------
+// @print [css]
+
+@mixin invert(
+  $value: 0
+) {
+  @include check-in-range(invert, 0 1, $value);
+
+  @include filters((invert: (value: $value)));
 }

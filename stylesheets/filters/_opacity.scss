@@ -2,16 +2,50 @@
 //
 // filter: opacity
 //
-@mixin opacity($value: 1) {
 
-  $in-range: check-in-range(opacity, 0 1, $value);
 
-  // Webkit, Blink
-  -webkit-filter: opacity($value);
 
-  // Gecko
-  filter: svg-filter(opacity, $amount: $value);
+// @private `opacity` filter function
+// -----------------------------------------------------------------------------
+// @param [number]: $value
+// -----------------------------------------------------------------------------
+// @dependencies `_svg-filter`, `_ie-filter`
+// -----------------------------------------------------------------------------
+// @return [map]
 
-  // IE
-  @include ie-filter(BasicImage, $opacity: $value);
+@function _fn-opacity(
+  $value
+) {
+  // CSS filter function
+  $css: opacity($value);
+
+  // SVG filter equivalent
+  $svg: _svg-filter(opacity, $amount: $value);
+
+  // IE static filter
+  $ie: _ie-filter(BasicImage, $opacity: $value);
+
+  @return (
+    css: $css,
+    svg: $svg,
+     ie: $ie
+  );
+}
+
+
+
+// @public `opacity` filter mixin
+// -----------------------------------------------------------------------------
+// @spec opacity() = opacity( [ <number> | <percentage> ] )
+// -----------------------------------------------------------------------------
+// @param [number]: $value
+// -----------------------------------------------------------------------------
+// @print [css]
+
+@mixin opacity(
+  $value: 1
+) {
+  @include check-in-range(opacity, 0 1, $value);
+
+  @include filters((opacity: (value: $value)));
 }

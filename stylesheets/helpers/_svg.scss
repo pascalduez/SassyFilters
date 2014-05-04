@@ -1,0 +1,76 @@
+//
+// SassyFilters: SVG helpers
+//
+
+
+
+// Format a proper SVG data URI.
+// -----------------------------------------------------------------------------
+// @param [string] $data: SVG data
+// @param [string] $mime-type
+// @param [string] $encoding
+// @param [string] $fragment: fragment identifier
+// -----------------------------------------------------------------------------
+// @see https://tools.ietf.org/html/rfc2397
+// @see http://www.w3.org/TR/SVG11/linking.html
+// data:[<MIME-type>][;charset=<encoding>][;base64],<data>[#fragment]
+// -----------------------------------------------------------------------------
+// @dependencies `empty()`
+// -----------------------------------------------------------------------------
+// @return [string]
+
+@function svg-data-uri(
+  $data,
+  $mime-type: "image/svg+xml",
+  $encoding: "charset=utf-8",
+  $fragment: ""
+) {
+  $result: "";
+  $parts: (
+    "data:",
+    $mime-type,
+    ";#{$encoding}",
+    ",#{$data}",
+    "##{$fragment}"
+  );
+
+  @each $part in $parts {
+    @if not empty($part) and str-length($part) > 1 {
+      $result: $result + $part;
+    }
+  }
+
+  @return quote($result);
+}
+
+
+
+// Format and encode an inline SVG.
+// -----------------------------------------------------------------------------
+// @param [string] $svgStr: stringified SVG
+// @param [string] $encoding: data type "raw" | "base64" | "escaped"
+// @param [string] $fragment: fragment identifier
+// -----------------------------------------------------------------------------
+// @dependencies `svg-data()`, `svg-data-uri()`
+// -----------------------------------------------------------------------------
+// @return [string]
+
+@function inline-svg(
+  $svgStr,
+  $encoding: conf(data-type),
+  $fragment: ""
+) {
+  $return: "";
+
+  $args: (
+    data: svg-data($svgStr, $encoding),
+    fragment: $fragment
+  );
+  @if ($encoding == "base64") {
+    $args: map-merge($args, (encoding: "base64"));
+  }
+
+  $data-uri: svg-data-uri($args...);
+
+  @return url($data-uri);
+}

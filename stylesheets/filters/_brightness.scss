@@ -2,18 +2,50 @@
 //
 // filter: brightness
 //
-@mixin brightness($value: 1) {
 
-  $in-range: check-in-range(brightness, 0 10, $value);
 
-  // Webkit, Blink
-  -webkit-filter: brightness($value);
+// @private `brightness` filter function
+// -----------------------------------------------------------------------------
+// @param [number]: $value
+// -----------------------------------------------------------------------------
+// @dependencies `_svg-filter`, `_ie-filter`
+// -----------------------------------------------------------------------------
+// @return [map]
 
-  // Gecko
-  filter: svg-filter(brightness, $amount: $value);
+@function _fn-brightness(
+  $value
+) {
+  // CSS filter function
+  $css: brightness($value);
 
-  // IE
-  // Needs a behavior
-  // $ie-filter: "progid:DXImageTransform.Microsoft.Light().addAmbient(255, 255, 255, #{$value})";
-  // @include ie-filter(Light);
+  // SVG filter equivalent
+  $svg: _svg-filter(brightness, $amount: $value);
+
+  // IE static filter
+  // @todo: needs a behavior
+  // progid:DXImageTransform.Microsoft.Light().addAmbient(255, 255, 255, $value)
+  // $ie: _ie-filter(light);
+
+  @return (
+    css: $css,
+    svg: $svg
+  );
+}
+
+
+
+// @public `brightness` filter mixin
+// -----------------------------------------------------------------------------
+// @spec brightness() = brightness( [ <number> | <percentage> ] )
+// -----------------------------------------------------------------------------
+// @param [number]: $value
+// -----------------------------------------------------------------------------
+// @print [css]
+
+@mixin brightness(
+  $value: 1
+) {
+  @include check-in-range(brightness, 0 10, $value);
+
+  @include filters((brightness: (value: $value)));
 }

@@ -1,64 +1,64 @@
-/*! sassyfilters – v0.0.3 – 2014-04-15 */
+// SassyFilters – v0.1.0 – 2014-05-12
+// https://github.com/pascalduez/SassyFilters
+// License: unlicence
+
+//
+// SassyFilters: Configuration
+//
+
+// Default settings.
+$filters-defaults: (
+  data-type: "raw",
+  ie-support: true
+);
+
+// User settings.
+$filters-settings: () !default;
+
+// Retreive a configuration item.
+@function conf($key) {
+  @if not map-has-key($filters-defaults, $key) {
+    @warn "No item `#{$key}` found in configuration.";
+    @return false;
+  }
+
+  @return map-get(map-merge($filters-defaults, $filters-settings), $key);
+}
 
 
-$filters-data-type: "raw" !default;
-$filters-ie-support: true !default;
+//
+// SassyFilters: SVG filters
+//
 
 
+$svg-wrappers: (
 
-$svg-wrapper: '<svg xmlns="http://www.w3.org/2000/svg"><filter id="{{id}}">{{filter}}</filter></svg>';
+  svg:
+    '<svg xmlns="http://www.w3.org/2000/svg">{{svg}}</svg>',
 
-// https://dvcs.w3.org/hg/FXTF/raw-file/tip/filters/index.html#ShorthandEquivalents
+  filter:
+    '<svg xmlns="http://www.w3.org/2000/svg">
+      <filter id="{{id}}">{{filter}}</filter>
+    </svg>'
+
+);
+
+// https://dvcs.w3.org/hg/FXTF/raw-file/tip/filters/Overview.html#ShorthandEquivalents
 
 $svg-filters: (
 
-  grayscale-tpl:
-    '<feColorMatrix type="matrix"
-        values="(0.2126 + 0.7874 * (1 - {{amount}})) (0.7152 - 0.7152 * (1 - {{amount}})) (0.0722 - 0.0722 * (1 - {{amount}})) 0 0
-                (0.2126 - 0.2126 * (1 - {{amount}})) (0.7152 + 0.2848 * (1 - {{amount}})) (0.0722 - 0.0722 * (1 - {{amount}})) 0 0
-                (0.2126 - 0.2126 * (1 - {{amount}})) (0.7152 - 0.7152 * (1 - {{amount}})) (0.0722 + 0.9278 * (1 - {{amount}})) 0 0
-                 0 0 0 1 0"/>',
+  // Spec: blur
+  // <feGaussianBlur stdDeviation="[radius radius]" edgeMode="[edge mode]"/>
 
-  grayscale:
-    '<feColorMatrix type="matrix" values="{{matrix}}"/>',
+  blur:
+    '<feGaussianBlur stdDeviation="{{radius}}" edgeMode="none"/>',
 
-  sepia-tpl:
-    '<feColorMatrix type="matrix"
-        values="(0.393 + 0.607 * (1 - {{amount}})) (0.769 - 0.769 * (1 - {{amount}})) (0.189 - 0.189 * (1 - {{amount}})) 0 0
-                (0.349 - 0.349 * (1 - {{amount}})) (0.686 + 0.314 * (1 - {{amount}})) (0.168 - 0.168 * (1 - {{amount}})) 0 0
-                (0.272 - 0.272 * (1 - {{amount}})) (0.534 - 0.534 * (1 - {{amount}})) (0.131 + 0.869 * (1 - {{amount}})) 0 0
-                 0 0 0 1 0"/>',
-
-  sepia:
-    '<feColorMatrix type="matrix" values="{{matrix}}"/>',
-
-  saturate-tpl:
-    '<feColorMatrix type="saturate" values="(1 - {{amount}})"/>',
-
-  saturate:
-    '<feColorMatrix type="saturate" values="{{values}}"/>',
-
-  hue-rotate:
-    '<feColorMatrix type="hueRotate" values="{{angle}}"/>',
-
-  invert-tpl:
-    '<feComponentTransfer>
-      <feFuncR type="table" tableValues="{{amount}} (1 - {{amount}})"/>
-      <feFuncG type="table" tableValues="{{amount}} (1 - {{amount}})"/>
-      <feFuncB type="table" tableValues="{{amount}} (1 - {{amount}})"/>
-    </feComponentTransfer>',
-
-  invert:
-    '<feComponentTransfer>
-      <feFuncR type="table" tableValues="{{values}}"/>
-      <feFuncG type="table" tableValues="{{values}}"/>
-      <feFuncB type="table" tableValues="{{values}}"/>
-    </feComponentTransfer>',
-
-  opacity:
-    '<feComponentTransfer>
-      <feFuncA type="table" tableValues="0 {{amount}}"/>
-    </feComponentTransfer>',
+  // Spec: brightness:
+  // <feComponentTransfer>
+  //   <feFuncR type="linear" slope="[amount]"/>
+  //   <feFuncG type="linear" slope="[amount]"/>
+  //   <feFuncB type="linear" slope="[amount]"/>
+  // </feComponentTransfer>
 
   brightness:
     '<feComponentTransfer>
@@ -67,12 +67,12 @@ $svg-filters: (
       <feFuncB type="linear" slope="{{amount}}"/>
     </feComponentTransfer>',
 
-  contrast-tpl:
-    '<feComponentTransfer>
-      <feFuncR type="linear" slope="{{amount}}" intercept="-(0.5 * {{amount}}) + 0.5"/>
-      <feFuncG type="linear" slope="{{amount}}" intercept="-(0.5 * {{amount}}) + 0.5"/>
-      <feFuncB type="linear" slope="{{amount}}" intercept="-(0.5 * {{amount}}) + 0.5"/>
-    </feComponentTransfer>',
+  // Spec: contrast
+  // <feComponentTransfer>
+  //   <feFuncR type="linear" slope="[amount]" intercept="-(0.5 * [amount]) + 0.5"/>
+  //   <feFuncG type="linear" slope="[amount]" intercept="-(0.5 * [amount]) + 0.5"/>
+  //   <feFuncB type="linear" slope="[amount]" intercept="-(0.5 * [amount]) + 0.5"/>
+  // </feComponentTransfer>
 
   contrast:
     '<feComponentTransfer>
@@ -81,8 +81,15 @@ $svg-filters: (
       <feFuncB type="linear" slope="{{slope}}" intercept="{{intercept}}"/>
     </feComponentTransfer>',
 
-  blur:
-    '<feGaussianBlur stdDeviation="{{radius}}" edgeMode="none"/>',
+  // Spec: drop-shadow
+  // <feGaussianBlur in="[alpha-channel-of-input]" stdDeviation="[radius]"/>
+  // <feOffset dx="[offset-x]" dy="[offset-y]" result="offsetblur"/>
+  // <feFlood flood-color="[color]"/>
+  // <feComposite in2="offsetblur" operator="in"/>
+  // <feMerge>
+  //   <feMergeNode/>
+  //   <feMergeNode in="[input-image]"/>
+  // </feMerge>
 
   drop-shadow:
     '<feGaussianBlur in="SourceAlpha" stdDeviation="{{blur-radius}}"/>
@@ -92,53 +99,352 @@ $svg-filters: (
      <feMerge>
       <feMergeNode/>
       <feMergeNode in="SourceGraphic"/>
-    </feMerge>'
+    </feMerge>',
+
+  // Spec: grayscale
+  // <feColorMatrix type="matrix"
+  //  values="(0.2126 + 0.7874 * [1 - amount]) (0.7152 - 0.7152 * [1 - amount]) (0.0722 - 0.0722 * [1 - amount]) 0 0
+  //          (0.2126 - 0.2126 * [1 - amount]) (0.7152 + 0.2848 * [1 - amount]) (0.0722 - 0.0722 * [1 - amount]) 0 0
+  //          (0.2126 - 0.2126 * [1 - amount]) (0.7152 - 0.7152 * [1 - amount]) (0.0722 + 0.9278 * [1 - amount]) 0 0
+  //           0 0 0 1 0"/>
+
+  grayscale:
+    '<feColorMatrix type="matrix" values="{{matrix}}"/>',
+
+  // Spec: hue-rotate
+  // <feColorMatrix type="hueRotate" values="[angle]"/>
+
+  hue-rotate:
+    '<feColorMatrix type="hueRotate" values="{{angle}}"/>',
+
+  // Spec: invert
+  // <feComponentTransfer>
+  //   <feFuncR type="table" tableValues="[amount] (1 - [amount])"/>
+  //   <feFuncG type="table" tableValues="[amount] (1 - [amount])"/>
+  //   <feFuncB type="table" tableValues="[amount] (1 - [amount])"/>
+  // </feComponentTransfer>
+
+  invert:
+    '<feComponentTransfer>
+      <feFuncR type="table" tableValues="{{values}}"/>
+      <feFuncG type="table" tableValues="{{values}}"/>
+      <feFuncB type="table" tableValues="{{values}}"/>
+    </feComponentTransfer>',
+
+  // Spec: opacity:
+  // <feComponentTransfer>
+  //   <feFuncA type="table" tableValues="0 [amount]"/>
+  // </feComponentTransfer>
+
+  opacity:
+    '<feComponentTransfer>
+      <feFuncA type="table" tableValues="0 {{amount}}"/>
+    </feComponentTransfer>',
+
+  // Spec: saturate
+  // <feColorMatrix type="saturate" values="(1 - [amount])"/>
+
+  saturate:
+    '<feColorMatrix type="saturate" values="{{values}}"/>',
+
+  // Spec: sepia
+  // <feColorMatrix type="matrix"
+  //  values="(0.393 + 0.607 * [1 - amount]) (0.769 - 0.769 * [1 - amount]) (0.189 - 0.189 * [1 - amount]) 0 0
+  //          (0.349 - 0.349 * [1 - amount]) (0.686 + 0.314 * [1 - amount]) (0.168 - 0.168 * [1 - amount]) 0 0
+  //          (0.272 - 0.272 * [1 - amount]) (0.534 - 0.534 * [1 - amount]) (0.131 + 0.869 * [1 - amount]) 0 0
+  //          0 0 0 1 0"/>
+
+  sepia:
+    '<feColorMatrix type="matrix" values="{{matrix}}"/>',
 
 );
 
 
-// Push new entry to `$map`
-// --------------------------------------------------------------------------------
-// @param [map] $map
-// @param $key
-// @param $value
-// --------------------------------------------------------------------------------
-// @return [map]
+//
+// Disable filter
+//
 
-@function _map-set($map, $key, $value) {
-  @return map-merge($map, ($key: $value));
+@mixin disable-filter(
+  $function: null
+) {
+  -webkit-filter: none;
+      -ms-filter: none;
+          filter: none;
+
+  @if conf(ie-support) and $function {
+    $ie-filter: _ie-filter($function, $enabled: false);
+    -ms-filter: quote($ie-filter);
+    filter: unquote($ie-filter);
+  }
+}
+
+
+//
+// SassyFilters: filters helpers
+//
+
+
+
+// Get and format a single SVG filter.
+// -----------------------------------------------------------------------------
+// @param [string] $function: filter function
+// @param [arglist] $args: arguments to be passed to the SVG filter
+// -----------------------------------------------------------------------------
+// @dependencies `template()`
+// -----------------------------------------------------------------------------
+// @return [string]
+
+@function _svg-filter(
+  $function,
+  $args...
+) {
+  @if not map-has-key($svg-filters, $function) {
+    @warn "`_svg-filter-get`, no filter found for function: #{$function}.";
+    @return false;
+  }
+
+  @return template(map-get($svg-filters, $function), $args...);
 }
 
 
 
-// Remove unit from `$number`
-// --------------------------------------------------------------------------------
-// @param [number] $number
-// --------------------------------------------------------------------------------
-// @return [number]
+// IE filter formatting helper
+// -----------------------------------------------------------------------------
+// @param [filter] $string: filter name
+// @param [arglist] $args: filter properties
+// -----------------------------------------------------------------------------
+// @dependencies `_join()`, `capitalize()`
+// -----------------------------------------------------------------------------
+// @return [string]
 
-@function _strip-unit($number) {
-  @return $number / ($number * 0 + 1);
+@function _ie-filter(
+  $filter,
+  $args...
+) {
+  $properties: ();
+  $parts: (
+    "progid:DXImageTransform.Microsoft.",
+    "#{capitalize($filter)}",
+    "(",
+    "properties",
+    ")"
+  );
+
+  @each $key, $value in keywords($args) {
+    @if type-of($value) == color {
+      $value: "'#{ie-hex-str($value)}'";
+    }
+    $properties: append($properties, "#{$key}=#{$value}");
+  }
+
+  $parts: set-nth(
+            $parts,
+            index($parts, "properties"),
+            _join($properties, ", ")
+          );
+
+  @return _join($parts);
+}
+
+
+
+// Main filters mixin, used internaly or for combining several filters
+// -----------------------------------------------------------------------------
+// @param [map] $filters: a map of filters `(function: (params))`
+// @param [string] $id: filter name, default to function name or "custom"
+// -----------------------------------------------------------------------------
+// @print [css] final filters output
+
+@mixin filters(
+  $filters,
+  $id: null
+) {
+  @if type-of($filters) != map {
+    @warn "`filters` mixin, filters argument must be a map. #{type-of($value)} given.";
+  }
+
+  $id: if(length($filters) == 1, map-keys($filters), $id or "custom");
+
+  $output: (
+     id: $id,
+    css: (),
+    svg: (),
+     ie: ()
+  );
+
+  @each $function, $args in $filters {
+    @if function-exist($function) {
+      $filter: call("_fn-#{$function}", $args...);
+
+      @each $key in map-keys($filter) {
+        $output: map-merge($output,
+                  ($key: append(map-get($output, $key), map-get($filter, $key)))
+                );
+      }
+    }
+  }
+
+  @include output($output);
+}
+
+
+
+// Preprocessor: wrap a list of filters into the final SVG string.
+// -----------------------------------------------------------------------------
+// @param [map]: $output
+// -----------------------------------------------------------------------------
+// @dependencies `template()`, `_join()`
+// -----------------------------------------------------------------------------
+// @return [map]
+
+@function _preprocess-svg-filters(
+  $output
+) {
+  $filters: map-get($output, svg);
+  $id: map-get($output, id);
+  $wrapper: map-get($svg-wrappers, filter);
+
+  $svg: template(
+          $wrapper,
+          $filter: _join($filters),
+          $id: $id
+        );
+
+  @return map-merge($output, (svg: $svg));
+}
+
+
+
+// Preprocessor: apply last IE versions formating before printing.
+// -----------------------------------------------------------------------------
+// @param [map]: $output
+// -----------------------------------------------------------------------------
+// @dependencies `_join()`
+// -----------------------------------------------------------------------------
+// @return [map]
+
+@function _preprocess-ie-filters(
+  $output
+) {
+  @return map-merge($output, (
+      gte-ie8: quote(_join(map-get($output, ie), ", ")),
+      lt-ie8: unquote(_join(map-get($output, ie), " "))
+    ));
+}
+
+
+
+// Helper mixin, print final cross-browser filters declarations
+// -----------------------------------------------------------------------------
+// @param [map] $output: a map of browser specific filters
+// -----------------------------------------------------------------------------
+// @print [css] final filters output
+
+@mixin output(
+  $output
+) {
+  //
+  // Webkit, Blink
+  //
+  -webkit-filter: map-get($output, css);
+
+  //
+  // Gecko
+  //
+  $output: _preprocess-svg-filters($output);
+
+  filter: inline-svg(
+            $svgStr: map-get($output, svg),
+            $fragment: map-get($output, id)
+          );
+
+  //
+  // IE
+  //
+  $ie-support: conf(ie-support)
+               and map-has-key($output, ie)
+               and not empty(map-get($output, ie));
+
+  @if $ie-support {
+    $output: _preprocess-ie-filters($output);
+
+    // IE 8+
+    -ms-filter: map-get($output, gte-ie8);
+    // IE < 8
+    filter: map-get($output, lt-ie8);
+  }
+}
+
+//
+// SassyFilters: helpers
+//
+
+
+
+// Returns a list of all keys in a map.
+// -----------------------------------------------------------------------------
+// @param [map] $map
+// @param [string] $separator: space | comma | auto
+// -----------------------------------------------------------------------------
+// @return [list]
+
+@function _map-keys($map, $separator: space) {
+  @return join((), map-keys($map), $separator);
+}
+
+
+
+// Returns a list of all values in a map.
+// -----------------------------------------------------------------------------
+// @param [map] $map
+// @param [string] $separator: space | comma | auto
+// -----------------------------------------------------------------------------
+// @return [list]
+
+@function _map-values($map, $separator: space) {
+  @return join((), map-values($map), $separator);
+}
+
+
+
+// Test whether `$value` is empty.
+// -----------------------------------------------------------------------------
+// @param [literal] $value
+// -----------------------------------------------------------------------------
+// @return [boolean]
+
+@function empty($value) {
+  @if not $value
+       or $value == ""
+       or $value == 0
+       or $value == ()
+       or length($value) == 0 {
+    @return true;
+  }
+  @return false;
 }
 
 
 
 // Join `$list` into a string
-// --------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // @param [list] $list
 // @param [string] $glue
-// --------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // @return [string]
 
 @function _join($list, $glue: "") {
   $result: "";
+  $length: length($list);
 
-  @if length($list) < 1 {
+  @if $length < 1 {
     @return $result;
   }
 
-  @for $i from 1 through length($list) {
-    $result: $result + nth($list, $i) + if($i != length($list), $glue, "");
+  @for $i from 1 through $length {
+    $result: $result
+             + nth($list, $i)
+             + if($i != $length, $glue, "");
   }
 
   @return $result;
@@ -147,10 +453,10 @@ $svg-filters: (
 
 
 // A Sass micro-templating function.
-// --------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // @param [string] $format
-// @param [arglist] $args
-// --------------------------------------------------------------------------------
+// @param [arglist | map] $args
+// -----------------------------------------------------------------------------
 // @return [string]
 
 @function template($format, $args...) {
@@ -161,10 +467,10 @@ $svg-filters: (
     $length: str-length($token);
     $index: str-index($result, $token);
 
-    @if not $index { @return $result; }
-
     @if $index {
-      $result: str-slice($result, 1, $index - 1) + $value + str-slice($result, ($index + $length));
+      $result: if($index > 1, str-slice($result, 1, $index - 1), "")
+               + $value
+               + str-slice($result, ($index + $length));
 
       @if str-index($result, $token) {
         $result: template($result, $args...);
@@ -178,11 +484,11 @@ $svg-filters: (
 
 
 // Test whether `$value` is containedd between `$min` and `$max`
-// --------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // @param [number] $min: minimum range value
 // @param [number] $max: maximum range value
 // @param [number] $value: the value to be tested
-// --------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // @return [boolean]
 
 @function _in-range($min, $max, $value) {
@@ -192,11 +498,11 @@ $svg-filters: (
 
 
 // Logs an error at `$pointer` if `$value` is not in `$range`
-// --------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // @param [string] $pointer: caller function/mixin name
 // @param [list] $range: range the value must be contained in
 // @param [number] $value: the value to be tested
-// --------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // @return [boolean]
 
 @function check-in-range($pointer, $range, $value) {
@@ -211,391 +517,646 @@ $svg-filters: (
   @return true;
 }
 
-
-
-// Logs an error at `$pointer` if `$value` is not of type `$type`
-// --------------------------------------------------------------------------------
-// @param [string] $pointer: caller function/mixin name
-// @param [base] $value: the value to inspect
-// @param [string] $type: the unquoted string name of the value’s type
-// --------------------------------------------------------------------------------
-// @return [boolean]
-
-@function check-typeof($pointer, $value, $type) {
-  @if type-of($value) != $type {
-    @warn "ERROR::#{$pointer}::$value must be of type #{$type}; #{type-of($value)} given.";
-    @return false;
-  }
-
-  @return true;
+@mixin check-in-range($pointer, $range, $value) {
+  $in-range: check-in-range($pointer, $range, $value);
 }
 
 
 
 // Capitalize string
-// --------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // @param [string] $string
-// --------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // @return [string]
 
 @function capitalize($string) {
   @return to-upper-case(str-slice($string, 1, 1)) + str-slice($string, 2);
 }
 
+//
+// SassyFilters: SVG helpers
+//
 
 
-// IE filters formatting helper
-// --------------------------------------------------------------------------------
-// @param [filter] $string: filter name
-// @param [arglist] $args: filter properties
-// --------------------------------------------------------------------------------
-// @return [string]
 
-@function _ie-filter($filter, $args...) {
-  $result: ();
-  $properties: ();
-
-  $result: append($result, "progid:DXImageTransform.Microsoft.#{capitalize($filter)}(");
-
-  @each $key, $value in keywords($args) {
-    @if type-of($value) == color {
-      $value: "'#{ie-hex-str($value)}'";
-    }
-    $properties: append($properties, "#{$key}=#{$value}");
-  }
-
-  $result: append($result, _join($properties, ", "));
-  $result: append($result, ")");
-
-  @return _join($result);
-}
-
-
-@mixin ie-filter($filter, $args...) {
-  @if $filters-ie-support {
-    // IE 8+
-    -ms-filter: quote(_ie-filter($filter, $args...));
-    // IE < 8
-    filter: unquote(_ie-filter($filter, $args...));
-  }
-}
-
-
-// Format a proper url() SVG filter
-// --------------------------------------------------------------------------------
-// @param [string] $id: filter id
-// @param [string] $data: inlined SVG
+// Format a proper SVG data URI.
+// -----------------------------------------------------------------------------
+// @param [string] $data: SVG data
 // @param [string] $mime-type
 // @param [string] $encoding
-// --------------------------------------------------------------------------------
+// @param [string] $fragment: fragment identifier
+// -----------------------------------------------------------------------------
+// @see https://tools.ietf.org/html/rfc2397
+// @see http://www.w3.org/TR/SVG11/linking.html
+// data:[<MIME-type>][;charset=<encoding>][;base64],<data>[#fragment]
+// -----------------------------------------------------------------------------
+// @dependencies `empty()`
+// -----------------------------------------------------------------------------
 // @return [string]
 
-@function _svg-filter-url($id: "", $svgStr: "", $mime-type: "image/svg+xml", $encoding: "charset=utf-8") {
-  $parts: ("data:");
+@function svg-data-uri(
+  $data,
+  $mime-type: "image/svg+xml",
+  $encoding: "charset=utf-8",
+  $fragment: ""
+) {
+  $result: "";
+  $parts: (
+    "data:",
+    $mime-type,
+    ";#{$encoding}",
+    ",#{$data}",
+    "##{$fragment}"
+  );
 
-  @if $mime-type and $mime-type != "" {
-    $parts: append($parts, "#{$mime-type};");
-  }
-  @if $encoding and $encoding != "" {
-    $parts: append($parts, "#{$encoding},");
-  }
-  $parts: append($parts, $svgStr);
-  @if $id and $id != "" {
-    $parts: append($parts, "##{$id}");
+  @each $part in $parts {
+    @if not empty($part) and str-length($part) > 1 {
+      $result: $result + $part;
+    }
   }
 
-  @return url(_join($parts));
+  @return quote($result);
 }
 
 
 
-// Format and encode a proper inline SVG data.
-// --------------------------------------------------------------------------------
-// @param [string] $id: filter id
+// Format and encode an inline SVG.
+// -----------------------------------------------------------------------------
 // @param [string] $svgStr: stringified SVG
-// @param [string] $type: data type "raw" | "base64" | "escape"
-// --------------------------------------------------------------------------------
+// @param [string] $encoding: data type "raw" | "base64" | "escaped"
+// @param [string] $fragment: fragment identifier
+// -----------------------------------------------------------------------------
+// @dependencies `svg-data()`, `svg-data-uri()`
+// -----------------------------------------------------------------------------
 // @return [string]
 
-@function _svg-filter-data($id, $svgStr, $type: "raw") {
-  @if type-of($svgStr) != "string" {
-    @warn "`_svg-data` function expecting a string for $svgStr; #{type-of($svgStr)} given.";
-    @return false;
-  }
-
+@function inline-svg(
+  $svgStr,
+  $encoding: conf(data-type),
+  $fragment: ""
+) {
   $return: "";
 
-  @if $type == "base64" {
-    $data: inline-svg($svgStr, true);
-    $return: _svg-filter-url($id, $data, $encoding: "base64");
-  }
-  @else if $type == "escape" {
-    $data: inline-svg($svgStr, false, true);
-    $return: _svg-filter-url($id, $data);
-  }
-  @else {
-    $data: inline-svg($svgStr);
-    $return: _svg-filter-url($id, $data);
+  $args: (
+    data: svg-data($svgStr, $encoding),
+    fragment: $fragment
+  );
+  @if ($encoding == "base64") {
+    $args: map-merge($args, (encoding: "base64"));
   }
 
-  @return $return;
+  $data-uri: svg-data-uri($args...);
+
+  @return url($data-uri);
 }
-
-
-
-// Get and format an SVG filter.
-// --------------------------------------------------------------------------------
-// @param [string] $id: filter id
-// @param [arglist] $args: arguments to be passed to the SVG filter
-// --------------------------------------------------------------------------------
-// @return [string]
-
-@function _svg-filter-get($id, $args...) {
-  $tpl: map-get($svg-filters, $id);
-  @return template($svg-wrapper, $id: $id, $filter: template($tpl, $args...));
-}
-
-
-
-// Format a proper inline SVG filter as data uri.
-// --------------------------------------------------------------------------------
-// @param [string] $id: filter id
-// @param [arglist] $args: arguments to be passed to the SVG filter
-// --------------------------------------------------------------------------------
-// @return [string]
-
-@function svg-filter($id, $args...) {
-  @if not map-has-key($svg-filters, $id) {
-    @warn "`svg-filter` function, no filter found for id: #{$id}.";
-    @return false;
-  }
-
-  $return: "";
-  $svgStr: _svg-filter-get($id, $args...);
-  $return: _svg-filter-data($id, $svgStr, $type: $filters-data-type);
-
-  @return $return;
-}
-
-
 
 
 //
 // filter: blur
 //
-@mixin blur($radius: 0px) {
 
-  $in-range: check-in-range(blur, 0 10, $radius);
 
-  // Webkit, Blink
-  -webkit-filter: blur($radius);
+// @private blur `filter` function
+// -----------------------------------------------------------------------------
+// @param [number]: $radius
+// -----------------------------------------------------------------------------
+// @dependencies `_svg-filter`, `_ie-filter`
+// -----------------------------------------------------------------------------
+// @return [map]
 
-  // Gecko
-  filter: svg-filter(blur, $radius: _strip-unit($radius));
+@function _fn-blur(
+  $radius
+) {
+  // CSS filter function
+  $css: blur($radius);
 
-  // IE
-  @include ie-filter(Blur, $pixelRadius: _strip-unit($radius));
+  // SVG filter equivalent
+  $svg: _svg-filter(blur, $radius: ($radius / 1px));
+
+  // IE static filter
+  $ie: _ie-filter(blur, $pixelRadius: ($radius / 1px));
+
+  @return (
+    css: $css,
+    svg: $svg,
+     ie: $ie
+  );
+}
+
+
+
+// @public `blur` filter mixin
+// -----------------------------------------------------------------------------
+// @spec blur() = blur( <length> )
+// -----------------------------------------------------------------------------
+// @param [number]: $radius
+// -----------------------------------------------------------------------------
+// @print [css]
+
+@mixin blur(
+  $radius: 0px
+) {
+  @include check-in-range(blur, 0 10, $radius);
+
+  @include filters((blur: (radius: $radius)));
 }
 
 
 //
 // filter: brightness
 //
-@mixin brightness($value: 1) {
 
-  $in-range: check-in-range(brightness, 0 10, $value);
 
-  // Webkit, Blink
-  -webkit-filter: brightness($value);
+// @private `brightness` filter function
+// -----------------------------------------------------------------------------
+// @param [number]: $value
+// -----------------------------------------------------------------------------
+// @dependencies `_svg-filter`, `_ie-filter`
+// -----------------------------------------------------------------------------
+// @return [map]
 
-  // Gecko
-  filter: svg-filter(brightness, $amount: $value);
+@function _fn-brightness(
+  $value
+) {
+  // CSS filter function
+  $css: brightness($value);
 
-  // IE
-  // Needs a behavior
-  // $ie-filter: "progid:DXImageTransform.Microsoft.Light().addAmbient(255, 255, 255, #{$value})";
-  // @include ie-filter(Light);
+  // SVG filter equivalent
+  $svg: _svg-filter(brightness, $amount: $value);
+
+  // IE static filter
+  // @todo: needs a behavior
+  // progid:DXImageTransform.Microsoft.Light().addAmbient(255, 255, 255, $value)
+  // $ie: _ie-filter(light);
+
+  @return (
+    css: $css,
+    svg: $svg
+  );
+}
+
+
+
+// @public `brightness` filter mixin
+// -----------------------------------------------------------------------------
+// @spec brightness() = brightness( [ <number> | <percentage> ] )
+// -----------------------------------------------------------------------------
+// @param [number]: $value
+// -----------------------------------------------------------------------------
+// @print [css]
+
+@mixin brightness(
+  $value: 1
+) {
+  @include check-in-range(brightness, 0 10, $value);
+
+  @include filters((brightness: (value: $value)));
 }
 
 
 //
 // filter: contrast
 //
-@mixin contrast($value: 1) {
 
-  $in-range: check-in-range(contrast, 0 10, $value);
 
-  // Webkit, Blink
-  -webkit-filter: contrast($value);
+// @private contrast filter function
+// -----------------------------------------------------------------------------
+// @param [number]: $value
+// -----------------------------------------------------------------------------
+// @dependencies `_svg-filter`, `_ie-filter`
+// -----------------------------------------------------------------------------
+// @return [map]
 
-  // Gecko
-  filter: svg-filter(contrast, $slope: $value, $intercept: (-(0.5 * $value) + 0.5));
+@function _fn-contrast(
+  $value
+) {
+  // CSS filter function
+  $css: contrast($value);
 
-  // IE
-  // Needs a behavior
-  // @include ie-filter(Light);
+  // SVG filter equivalent
+  $svg: _svg-filter(contrast, $slope: $value, $intercept: (-(0.5 * $value) + 0.5));
+
+  // IE static filter
+  // @todo: needs a behavior
+  // $ie: _ie-filter(light);
+
+  @return (
+    css: $css,
+    svg: $svg
+  );
 }
 
 
-//
-// filter: custom
-//
-@mixin custom() {
-  //
-  // http://docs.webplatform.org/wiki/css/functions/custom
-  //
+
+// @public `contrast` filter mixin
+// -----------------------------------------------------------------------------
+// @spec contrast() = contrast( [ <number> | <percentage> ] )
+// -----------------------------------------------------------------------------
+// @param [number]: $value
+// -----------------------------------------------------------------------------
+// @print [css]
+
+@mixin contrast(
+  $value: 1
+) {
+  @include check-in-range(contrast, 0 10, $value);
+
+  @include filters((contrast: (value: $value)));
 }
 
 
 //
 // Filter: drop-shadow.
 //
-@mixin drop-shadow($offset-x: 0px, $offset-y: $offset-x, $blur-radius: 0px, $color: #000, $spread-radius: 0px) {
 
-  // Webkit, Blink
-  -webkit-filter: drop-shadow($offset-x $offset-y $blur-radius $color);
 
-  // Gecko
-  filter: svg-filter(drop-shadow,
-                     $offset-x: _strip-unit($offset-x),
-                     $offset-y: _strip-unit($offset-y),
-                     $blur-radius: _strip-unit($blur-radius),
-                     $color: $color);
+// @private `drop-shadow` filter function
+// -----------------------------------------------------------------------------
+// @param [number]: $offset-x
+// @param [number]: $offset-y
+// @param [number]: $blur-radius
+// @param [color]: $color
+// @param [number]: $spread-radius (not implemented yet)
+// -----------------------------------------------------------------------------
+// @dependencies `_svg-filter`, `_ie-filter`
+// -----------------------------------------------------------------------------
+// @return [map]
 
-  // IE
-  // progid:DXImageTransform.Microsoft.Dropshadow(OffX=#{$offset-x}, OffY=#{$offset-y}, Color='#{ie-hex-str($color)}')
-  // progid:DXImageTransform.Microsoft.Glow(Color='#{ie-hex-str($color)}', Strength=#{$blur-radius})
-  // pprogid:DXImageTransform.Microsoft.Shadow(color='#{ie-hex-str($color)}', Direction=#{$offset-x * 100}, Strength=#{$blur-radius * 10})
-  @include ie-filter(Dropshadow, $OffX: $offset-x, $OffY: $offset-y, $Color: $color);
+@function _fn-drop-shadow(
+  $offset-x,
+  $offset-y,
+  $blur-radius,
+  $color,
+  $spread-radius: null
+) {
+  // CSS filter function
+  $css: drop-shadow($offset-x $offset-y $blur-radius $color);
+
+  // SVG filter equivalent
+  $svg: _svg-filter(
+            drop-shadow,
+            $offset-x: ($offset-x / 1px),
+            $offset-y: ($offset-y / 1px),
+            $blur-radius: ($blur-radius / 1px),
+            $color: $color
+          );
+
+  // IE static filter
+  // Glow(Color, Strength)
+  // Shadow(color, Direction, Strength)
+  $ie: _ie-filter(dropshadow, $OffX: $offset-x, $OffY: $offset-y, $Color: $color);
+
+  @return (
+    css: $css,
+    svg: $svg,
+     ie: $ie
+  );
+}
+
+
+
+// @public `drop-shadow` filter mixin
+// -----------------------------------------------------------------------------
+// @spec drop-shadow() = drop-shadow( <length>{2,3} <color>? )
+// -----------------------------------------------------------------------------
+// @param [number]: $offset-x
+// @param [number]: $offset-y
+// @param [number]: $blur-radius
+// @param [color]: $color
+// -----------------------------------------------------------------------------
+// @print [css]
+
+@mixin drop-shadow(
+  $offset-x: 0px,
+  $offset-y: $offset-x,
+  $blur-radius: 0px,
+  $color: rgba(0, 0, 0, .5)
+) {
+  @include filters((
+            drop-shadow: (
+              offset-x: $offset-x,
+              offset-y: $offset-y,
+              blur-radius: $blur-radius,
+              color: $color
+            )
+          ));
 }
 
 
 //
-// multiple filters.
+// filter: grayscale
 //
-@mixin filters() {
-  //
-  // Helper mixin to add multiple filters.
-  //
+
+
+// @private `grayscale` filter function
+// -----------------------------------------------------------------------------
+// @param [number]: $value
+// -----------------------------------------------------------------------------
+// @dependencies `_svg-filter`, `_ie-filter`
+// -----------------------------------------------------------------------------
+// @return [map]
+
+@function _fn-grayscale(
+  $value
+) {
+  // CSS filter function
+  $css: grayscale($value);
+
+  // SVG filter equivalent
+  $matrix:
+    (0.2126 + 0.7874 * (1 - $value)), (0.7152 - 0.7152 * (1 - $value)), (0.0722 - 0.0722 * (1 - $value)), 0 0,
+    (0.2126 - 0.2126 * (1 - $value)), (0.7152 + 0.2848 * (1 - $value)), (0.0722 - 0.0722 * (1 - $value)), 0 0,
+    (0.2126 - 0.2126 * (1 - $value)), (0.7152 - 0.7152 * (1 - $value)), (0.0722 + 0.9278 * (1 - $value)), 0 0,
+     0 0 0 1 0;
+
+  $svg: _svg-filter(grayscale, $matrix: _join($matrix, " "));
+
+  // IE static filter
+  $ie: _ie-filter(basicImage, $grayscale: 1);
+
+  @return (
+    css: $css,
+    svg: $svg,
+     ie: $ie
+  );
 }
 
 
-//
-// filter: greyscale
-//
-@mixin grayscale($value: 0) {
 
-  $in-range: check-in-range(grayscale, 0 1, $value);
+// @public `grayscale` filter mixin
+// -----------------------------------------------------------------------------
+// @spec grayscale() = grayscale( [ <number> | <percentage> ] )
+// -----------------------------------------------------------------------------
+// @param [number]: $value
+// -----------------------------------------------------------------------------
+// @print [css]
 
-  // Webkit, Blink
-  -webkit-filter: grayscale($value);
+@mixin grayscale(
+  $value: 0
+) {
+  @include check-in-range(grayscale, 0 1, $value);
 
-  // Gecko
-  $matrix: (0.2126 + 0.7874 * (1 - $value)), (0.7152 - 0.7152 * (1 - $value)), (0.0722 - 0.0722 * (1 - $value)), 0 0,
-           (0.2126 - 0.2126 * (1 - $value)), (0.7152 + 0.2848 * (1 - $value)), (0.0722 - 0.0722 * (1 - $value)), 0 0,
-           (0.2126 - 0.2126 * (1 - $value)), (0.7152 - 0.7152 * (1 - $value)), (0.0722 + 0.9278 * (1 - $value)), 0 0,
-            0 0 0 1 0;
-
-  filter: svg-filter(grayscale, $matrix: _join($matrix, " "));
-
-  // IE
-  @include ie-filter(BasicImage, $grayscale: 1);
+  @include filters((grayscale: (value: $value)));
 }
 
 
 //
 // filter: hue-rotate
 //
-@mixin hue-rotate($angle: 0deg) {
 
-  $in-range: check-in-range(hue-rotate, 0 360, $angle);
 
-  // Webkit, Blink
-  -webkit-filter: hue-rotate($angle);
+// @private `hue-rotate` filter function
+// -----------------------------------------------------------------------------
+// @param [number]: $angle
+// -----------------------------------------------------------------------------
+// @dependencies `_svg-filter`, `_ie-filter`
+// -----------------------------------------------------------------------------
+// @return [map]
 
-  // Gecko
-  filter: svg-filter(hue-rotate, $angle: _strip-unit($angle));
+@function _fn-hue-rotate(
+  $angle
+) {
+  // CSS filter function
+  $css: hue-rotate($angle);
 
-  // IE
-  // Needs a behavior
-  // @include ie-filter(Light);
+  // SVG filter equivalent
+  $svg: _svg-filter(hue-rotate, $angle: ($angle / 1deg));
+
+  // IE static filter
+  // @todo: needs a behavior
+  // $ie: _ie-filter(light);
+
+  @return (
+    css: $css,
+    svg: $svg
+  );
+}
+
+
+
+// @public `hue-rotate` filter mixin
+// -----------------------------------------------------------------------------
+// @spec hue-rotate() = hue-rotate( <angle> )
+// -----------------------------------------------------------------------------
+// @param [number]: $angle
+// -----------------------------------------------------------------------------
+// @print [css]
+
+@mixin hue-rotate(
+  $angle: 0deg
+) {
+  @include check-in-range(hue-rotate, 0 360, $angle);
+
+  @include filters((hue-rotate: (angle: $angle)));
 }
 
 
 //
 // filter: invert
 //
-@mixin invert($value: 0) {
 
-  $in-range: check-in-range(invert, 0 1, $value);
 
-  // Webkit, Blink
-  -webkit-filter: invert($value);
+// @private `invert` filter function
+// -----------------------------------------------------------------------------
+// @param [number]: $value
+// -----------------------------------------------------------------------------
+// @dependencies `_svg-filter`, `_ie-filter`
+// -----------------------------------------------------------------------------
+// @return [map]
 
-  // Gecko
-  filter: svg-filter(invert, $values: ($value (1 - $value)));
+@function _fn-invert(
+  $value
+) {
+  // CSS filter function
+  $css: invert($value);
 
-  // IE
-  @include ie-filter(BasicImage, $invert: 1);
+  // SVG filter equivalent
+  $svg: _svg-filter(invert, $values: ($value (1 - $value)));
+
+  // IE static filter
+  $ie: _ie-filter(invert, $invert: 1);
+
+  @return (
+    css: $css,
+    svg: $svg,
+     ie: $ie
+  );
+}
+
+
+
+// @public `invert` filter mixin
+// -----------------------------------------------------------------------------
+// @spec invert() = invert( [ <number> | <percentage> ] )
+// -----------------------------------------------------------------------------
+// @param [number]: $value
+// -----------------------------------------------------------------------------
+// @print [css]
+
+@mixin invert(
+  $value: 0
+) {
+  @include check-in-range(invert, 0 1, $value);
+
+  @include filters((invert: (value: $value)));
 }
 
 
 //
 // filter: opacity
 //
-@mixin opacity($value: 1) {
 
-  $in-range: check-in-range(opacity, 0 1, $value);
 
-  // Webkit, Blink
-  -webkit-filter: opacity($value);
 
-  // Gecko
-  filter: svg-filter(opacity, $amount: $value);
+// @private `opacity` filter function
+// -----------------------------------------------------------------------------
+// @param [number]: $value
+// -----------------------------------------------------------------------------
+// @dependencies `_svg-filter`, `_ie-filter`
+// -----------------------------------------------------------------------------
+// @return [map]
 
-  // IE
-  @include ie-filter(BasicImage, $opacity: $value);
+@function _fn-opacity(
+  $value
+) {
+  // CSS filter function
+  $css: opacity($value);
+
+  // SVG filter equivalent
+  $svg: _svg-filter(opacity, $amount: $value);
+
+  // IE static filter
+  $ie: _ie-filter(BasicImage, $opacity: $value);
+
+  @return (
+    css: $css,
+    svg: $svg,
+     ie: $ie
+  );
+}
+
+
+
+// @public `opacity` filter mixin
+// -----------------------------------------------------------------------------
+// @spec opacity() = opacity( [ <number> | <percentage> ] )
+// -----------------------------------------------------------------------------
+// @param [number]: $value
+// -----------------------------------------------------------------------------
+// @print [css]
+
+@mixin opacity(
+  $value: 1
+) {
+  @include check-in-range(opacity, 0 1, $value);
+
+  @include filters((opacity: (value: $value)));
 }
 
 
 //
 // filter: saturate
 //
-@mixin saturate($value: 1) {
 
-  $in-range: check-in-range(saturate, 0 10, $value);
 
-  // Webkit, Blink
-  -webkit-filter: saturate($value);
+// @private `saturate` filter function
+// -----------------------------------------------------------------------------
+// @param [number]: $value
+// -----------------------------------------------------------------------------
+// @dependencies `_svg-filter`, `_ie-filter`
+// -----------------------------------------------------------------------------
+// @return [map]
 
-  // Gecko
-  filter: svg-filter(saturate, $values: $value);
+@function _fn-saturate(
+  $value
+) {
+  // CSS filter function
+  $css: saturate($value);
 
-  // IE
-  // Needs a behavior
-  // @include ie-filter(Light);
+  // SVG filter equivalent
+  $svg: _svg-filter(saturate, $values: $value);
+
+  // IE static filter
+  // @todo: needs a behavior
+  // $ie: _ie-filter(light);
+
+  @return (
+    css: $css,
+    svg: $svg
+  );
+}
+
+
+
+// @public `saturate` filter mixin
+// -----------------------------------------------------------------------------
+// @spec saturate() = saturate( [ <number> | <percentage> ] )
+// -----------------------------------------------------------------------------
+// @param [number]: $value
+// -----------------------------------------------------------------------------
+// @print [css]
+
+@mixin saturate(
+  $value: 1
+) {
+  @include check-in-range(saturate, 0 10, $value);
+
+  @include filters((saturate: (value: $value)));
 }
 
 
 //
 // filter: sepia
 //
-@mixin sepia($value: 1) {
 
-  $in-range: check-in-range(sepia, 0 1, $value);
 
-  // Webkit, Blink
-  -webkit-filter: sepia($value);
+// @private `sepia` filter function
+// -----------------------------------------------------------------------------
+// @param [number]: $value
+// -----------------------------------------------------------------------------
+// @dependencies `_svg-filter`, `_ie-filter`
+// -----------------------------------------------------------------------------
+// @return [map]
 
-  // Gecko
-  $matrix: (0.393 + 0.607 * (1 - $value)), (0.769 - 0.769 * (1 - $value)), (0.189 - 0.189 * (1 - $value)), 0 0,
-           (0.349 - 0.349 * (1 - $value)), (0.686 + 0.314 * (1 - $value)), (0.168 - 0.168 * (1 - $value)), 0 0,
-           (0.272 - 0.272 * (1 - $value)), (0.534 - 0.534 * (1 - $value)), (0.131 + 0.869 * (1 - $value)), 0 0,
-            0 0 0 1 0;
+@function _fn-sepia(
+  $value
+) {
+  // CSS filter function
+  $css: sepia($value);
 
-  filter: svg-filter(sepia, $matrix: _join($matrix, " "));
+  // SVG filter equivalent
+  $matrix:
+    (0.393 + 0.607 * (1 - $value)), (0.769 - 0.769 * (1 - $value)), (0.189 - 0.189 * (1 - $value)), 0 0,
+    (0.349 - 0.349 * (1 - $value)), (0.686 + 0.314 * (1 - $value)), (0.168 - 0.168 * (1 - $value)), 0 0,
+    (0.272 - 0.272 * (1 - $value)), (0.534 - 0.534 * (1 - $value)), (0.131 + 0.869 * (1 - $value)), 0 0,
+     0 0 0 1 0;
 
-  // IE
-  // Needs a behavior
-  // @include ie-filter(Light);
+  $svg: _svg-filter(sepia, $matrix: _join($matrix, " "));
+
+  // IE static filter
+  // @todo: needs a behavior
+  // $ie: _ie-filter(light);
+
+  @return (
+    css: $css,
+    svg: $svg
+  );
+}
+
+
+
+// @public `sepia` filter mixin
+// -----------------------------------------------------------------------------
+// @spec sepia() = sepia( [ <number> | <percentage> ] )
+// -----------------------------------------------------------------------------
+// @param [number]: $value
+// -----------------------------------------------------------------------------
+// @print [css]
+
+@mixin sepia(
+  $value: 0
+) {
+  @include check-in-range(sepia, 0 1, $value);
+
+  @include filters((sepia: (value: $value)));
 }

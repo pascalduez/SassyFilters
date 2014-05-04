@@ -4,16 +4,43 @@
 /*
  * Global test styles.
  */
-$box-width: 20%;
-$box-height: 8em;
+
+$breakpoints: (
+  "small": (min-width: 450px),
+  "medium": (min-width: 750px),
+  "large": (min-width: 950px)
+);
+
+@mixin breakpoint($name) {
+  @if map-has-key($breakpoints, $name) {
+    @media #{inspect(map-get($breakpoints, $name))} {
+      @content;
+    }
+  }
+}
+
+%clearfix {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+$box-max-width: 400px;
+$box-height: 4em;
 
 body {
   font-family: sans-serif;
-  background: lightGrey;
+  background: PaleTurquoise;
+  margin: 0;
 }
 
 main {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -26,32 +53,58 @@ h3 {
 }
 
 .test--helpers {
-  overflow: hidden;
+  @extend %clearfix;
 
   .test {
     line-height: $box-height;
     text-align: center;
-    float: left;
-    margin: 0 3em 3em 0;
+    margin: 0 0 1em;
+
+    @include breakpoint("small") {
+      width: 30%;
+      width: calc((100% - 2em) / 3);
+      float: left;
+      margin-right: 1em;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
   }
 }
 
 .test--box {
-  width: $box-width;
+  max-width: $box-max-width;
   height: $box-height;
   background: white;
 }
 
 .test--img {
-  .original {
-    margin: 0 1rem 0 0;
+  @extend %clearfix;
+
+  img {
+    width: 100%;
+    max-width: $box-max-width;
+    height: auto;
+    margin: 0 0 1em;
+
+    @include breakpoint("small") {
+      width: 48%;
+      width: calc((100% - 1em) / 2);
+      float: left;
+      margin-right: 1em;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
   }
 }
 
 
 
 /*
- * Test helpers
+ * Test SVG helpers
  */
 .test--helpers {
   $svgStr: '<svg xmlns="http://www.w3.org/2000/svg">
@@ -63,14 +116,12 @@ h3 {
     </filter>
   </svg>';
 
-  .svg-filter--raw {
-    filter: _svg-filter-data(custom, $svgStr);
-  }
-  .svg-filter--escape {
-    filter: _svg-filter-data(custom, $svgStr, $type: "escape");
-  }
-  .svg-filter--base64 {
-    filter: _svg-filter-data(custom, $svgStr, $type: "base64");
+  .svg-filter {
+    @each $encoding in "raw", "escaped", "base64" {
+      &--#{$encoding} {
+        filter: inline-svg($svgStr, $encoding, "custom");
+      }
+    }
   }
 }
 
@@ -84,7 +135,6 @@ h3 {
 }
 
 
-
 /*
  * Test brightness.
  */
@@ -93,7 +143,6 @@ h3 {
     @include brightness(3);
   }
 }
-
 
 
 /*
@@ -106,14 +155,17 @@ h3 {
 }
 
 
-
 /*
  * Test drop-shadow.
  */
 .test--drop-shadow {
-  @include drop-shadow($offset-x: 3px, $offset-y: 3px, $blur-radius: 4px, $color: rgba(0, 0, 0, .5));
+  @include drop-shadow(
+            $offset-x: 3px,
+            $offset-y: 3px,
+            $blur-radius: 4px,
+            $color: rgba(0, 0, 0, .5)
+          );
 }
-
 
 
 /*
@@ -126,7 +178,6 @@ h3 {
 }
 
 
-
 /*
  * Test hue-rotate.
  */
@@ -135,7 +186,6 @@ h3 {
     @include hue-rotate(180deg);
   }
 }
-
 
 
 /*
@@ -148,7 +198,6 @@ h3 {
 }
 
 
-
 /*
  * Test opacity.
  */
@@ -157,7 +206,6 @@ h3 {
     @include opacity(.4);
   }
 }
-
 
 
 /*
@@ -170,12 +218,33 @@ h3 {
 }
 
 
-
 /*
  * Test sepia.
  */
 .test--sepia {
   .target {
-    @include sepia;
+    @include sepia(1);
   }
+}
+
+
+/*
+ * Test multi filters.
+ */
+.test--multi {
+  .target {
+    @include filters((
+      brightness: (value: 3),
+      invert: (value: 1),
+      blur: (radius: 5px)
+    ));
+  }
+}
+
+
+/*
+ * Test disable.
+ */
+.test--disable {
+  @include disable-filter(blur);
 }

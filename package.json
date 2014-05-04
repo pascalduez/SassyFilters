@@ -1,6 +1,7 @@
 {
   "name": "sassyfilters",
-  "version": "0.0.3",
+  "title": "SassyFilters",
+  "version": "0.1.0",
   "keywords": [
     "sass",
     "scss",
@@ -20,8 +21,8 @@
   },
   "devDependencies": {
     "grunt": "^0.4.4",
-    "grunt-autoprefixer": "^0.7.2",
-    "grunt-browser-sync": "^0.7.4",
+    "grunt-autoprefixer": "^0.7.3",
+    "grunt-browser-sync": "^0.8.2",
     "grunt-contrib-concat": "^0.4.0",
     "grunt-contrib-sass": "^0.7.3",
     "grunt-contrib-watch": "^0.6.1",

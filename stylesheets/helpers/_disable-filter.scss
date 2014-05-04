@@ -2,8 +2,17 @@
 //
 // Disable filter
 //
-@mixin disable-filter() {
+
+@mixin disable-filter(
+  $function: null
+) {
   -webkit-filter: none;
-  -ms-filter: none;
-  filter: none;
+      -ms-filter: none;
+          filter: none;
+
+  @if conf(ie-support) and $function {
+    $ie-filter: _ie-filter($function, $enabled: false);
+    -ms-filter: quote($ie-filter);
+    filter: unquote($ie-filter);
+  }
 }

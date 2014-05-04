@@ -1,0 +1,196 @@
+
+//
+// SassyFilters: filters helpers
+//
+
+
+
+// Get and format a single SVG filter.
+// -----------------------------------------------------------------------------
+// @param [string] $function: filter function
+// @param [arglist] $args: arguments to be passed to the SVG filter
+// -----------------------------------------------------------------------------
+// @dependencies `template()`
+// -----------------------------------------------------------------------------
+// @return [string]
+
+@function _svg-filter(
+  $function,
+  $args...
+) {
+  @if not map-has-key($svg-filters, $function) {
+    @warn "`_svg-filter-get`, no filter found for function: #{$function}.";
+    @return false;
+  }
+
+  @return template(map-get($svg-filters, $function), $args...);
+}
+
+
+
+// IE filter formatting helper
+// -----------------------------------------------------------------------------
+// @param [filter] $string: filter name
+// @param [arglist] $args: filter properties
+// -----------------------------------------------------------------------------
+// @dependencies `_join()`, `capitalize()`
+// -----------------------------------------------------------------------------
+// @return [string]
+
+@function _ie-filter(
+  $filter,
+  $args...
+) {
+  $properties: ();
+  $parts: (
+    "progid:DXImageTransform.Microsoft.",
+    "#{capitalize($filter)}",
+    "(",
+    "properties",
+    ")"
+  );
+
+  @each $key, $value in keywords($args) {
+    @if type-of($value) == color {
+      $value: "'#{ie-hex-str($value)}'";
+    }
+    $properties: append($properties, "#{$key}=#{$value}");
+  }
+
+  $parts: set-nth(
+            $parts,
+            index($parts, "properties"),
+            _join($properties, ", ")
+          );
+
+  @return _join($parts);
+}
+
+
+
+// Main filters mixin, used internaly or for combining several filters
+// -----------------------------------------------------------------------------
+// @param [map] $filters: a map of filters `(function: (params))`
+// @param [string] $id: filter name, default to function name or "custom"
+// -----------------------------------------------------------------------------
+// @print [css] final filters output
+
+@mixin filters(
+  $filters,
+  $id: null
+) {
+  @if type-of($filters) != map {
+    @warn "`filters` mixin, filters argument must be a map. #{type-of($value)} given.";
+  }
+
+  $id: if(length($filters) == 1, map-keys($filters), $id or "custom");
+
+  $output: (
+     id: $id,
+    css: (),
+    svg: (),
+     ie: ()
+  );
+
+  @each $function, $args in $filters {
+    @if function-exist($function) {
+      $filter: call("_fn-#{$function}", $args...);
+
+      @each $key in map-keys($filter) {
+        $output: map-merge($output,
+                  ($key: append(map-get($output, $key), map-get($filter, $key)))
+                );
+      }
+    }
+  }
+
+  @include output($output);
+}
+
+
+
+// Preprocessor: wrap a list of filters into the final SVG string.
+// -----------------------------------------------------------------------------
+// @param [map]: $output
+// -----------------------------------------------------------------------------
+// @dependencies `template()`, `_join()`
+// -----------------------------------------------------------------------------
+// @return [map]
+
+@function _preprocess-svg-filters(
+  $output
+) {
+  $filters: map-get($output, svg);
+  $id: map-get($output, id);
+  $wrapper: map-get($svg-wrappers, filter);
+
+  $svg: template(
+          $wrapper,
+          $filter: _join($filters),
+          $id: $id
+        );
+
+  @return map-merge($output, (svg: $svg));
+}
+
+
+
+// Preprocessor: apply last IE versions formating before printing.
+// -----------------------------------------------------------------------------
+// @param [map]: $output
+// -----------------------------------------------------------------------------
+// @dependencies `_join()`
+// -----------------------------------------------------------------------------
+// @return [map]
+
+@function _preprocess-ie-filters(
+  $output
+) {
+  @return map-merge($output, (
+      gte-ie8: quote(_join(map-get($output, ie), ", ")),
+      lt-ie8: unquote(_join(map-get($output, ie), " "))
+    ));
+}
+
+
+
+// Helper mixin, print final cross-browser filters declarations
+// -----------------------------------------------------------------------------
+// @param [map] $output: a map of browser specific filters
+// -----------------------------------------------------------------------------
+// @print [css] final filters output
+
+@mixin output(
+  $output
+) {
+  //
+  // Webkit, Blink
+  //
+  -webkit-filter: map-get($output, css);
+
+  //
+  // Gecko
+  //
+  $output: _preprocess-svg-filters($output);
+
+  filter: inline-svg(
+            $svgStr: map-get($output, svg),
+            $fragment: map-get($output, id)
+          );
+
+  //
+  // IE
+  //
+  $ie-support: conf(ie-support)
+               and map-has-key($output, ie)
+               and not empty(map-get($output, ie));
+
+  @if $ie-support {
+    $output: _preprocess-ie-filters($output);
+
+    // IE 8+
+    -ms-filter: map-get($output, gte-ie8);
+    // IE < 8
+    filter: map-get($output, lt-ie8);
+  }
+}
