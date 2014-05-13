@@ -20,6 +20,16 @@ main {
   margin: 0 auto;
 }
 
+h1 {
+  padding: 0 0 .6em;
+  margin: 1em 0 2em;
+  border-bottom: 2px solid white;
+}
+h1 a {
+  color: white;
+  text-decoration: none;
+}
+
 h3 {
   color: white;
 }
