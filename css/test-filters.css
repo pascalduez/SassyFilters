@@ -1,0 +1,204 @@
+/*
+ * Global test styles.
+ */
+.test--helpers:before, .test--img:before, .test--helpers:after, .test--img:after {
+  content: " ";
+  display: table;
+}
+.test--helpers:after, .test--img:after {
+  clear: both;
+}
+
+body {
+  font-family: sans-serif;
+  background: PaleTurquoise;
+  margin: 0;
+}
+
+main {
+  width: 90%;
+  margin: 0 auto;
+}
+
+h1 {
+  padding: 0 0 .6em;
+  margin: 1em 0 2em;
+  border-bottom: 2px solid white;
+}
+h1 a {
+  color: white;
+  text-decoration: none;
+}
+
+h3 {
+  color: white;
+}
+
+.test {
+  margin: 0 0 3em;
+}
+
+.test--helpers .test {
+  line-height: 4em;
+  text-align: center;
+  margin: 0 0 1em;
+}
+@media (min-width: 450px) {
+  .test--helpers .test {
+    width: 30%;
+    width: calc((100% - 2em) / 3);
+    float: left;
+    margin-right: 1em;
+  }
+  .test--helpers .test:last-child {
+    margin-right: 0;
+  }
+}
+
+.test--box {
+  max-width: 400px;
+  height: 4em;
+  background: white;
+}
+
+.test--img img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin: 0 0 1em;
+}
+@media (min-width: 450px) {
+  .test--img img {
+    width: 48%;
+    width: calc((100% - 1em) / 2);
+    float: left;
+    margin-right: 1em;
+  }
+  .test--img img:last-child {
+    margin-right: 0;
+  }
+}
+
+/*
+ * Test SVG helpers
+ */
+.test--helpers .svg-filter--raw {
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="custom"><feGaussianBlur in="SourceGraphic" stdDeviation="1"/><feComponentTransfer><feFuncA tableValues="0 .7" type="table"></feFuncA></feComponentTransfer></filter></svg>#custom');
+}
+.test--helpers .svg-filter--escaped {
+  filter: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cfilter%20id%3D%22custom%22%3E%3CfeGaussianBlur%20in%3D%22SourceGraphic%22%20stdDeviation%3D%221%22%2F%3E%3CfeComponentTransfer%3E%3CfeFuncA%20tableValues%3D%220%20.7%22%20type%3D%22table%22%3E%3C%2FfeFuncA%3E%3C%2FfeComponentTransfer%3E%3C%2Ffilter%3E%3C%2Fsvg%3E#custom");
+}
+.test--helpers .svg-filter--base64 {
+  filter: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxmaWx0ZXIgaWQ9ImN1c3RvbSI+PGZlR2F1c3NpYW5CbHVyIGluPSJTb3VyY2VHcmFwaGljIiBzdGREZXZpYXRpb249IjEiLz48ZmVDb21wb25lbnRUcmFuc2Zlcj48ZmVGdW5jQSB0YWJsZVZhbHVlcz0iMCAuNyIgdHlwZT0idGFibGUiPjwvZmVGdW5jQT48L2ZlQ29tcG9uZW50VHJhbnNmZXI+PC9maWx0ZXI+PC9zdmc+#custom");
+}
+
+/*
+ * Test blur.
+ */
+.test--blur {
+  -webkit-filter: blur(8px);
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="blur"><feGaussianBlur stdDeviation="8" edgeMode="none"/></filter></svg>#blur');
+  -ms-filter: "progid:DXImageTransform.Microsoft.Blur(pixelRadius=8)";
+  filter: progid:DXImageTransform.Microsoft.Blur(pixelRadius=8);
+}
+
+/*
+ * Test brightness.
+ */
+.test--brightness .target {
+  -webkit-filter: brightness(3);
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="brightness"><feComponentTransfer><feFuncR type="linear" slope="3"/><feFuncG type="linear" slope="3"/><feFuncB type="linear" slope="3"/></feComponentTransfer></filter></svg>#brightness');
+}
+
+/*
+ * Test contrast.
+ */
+.test--contrast .target {
+  -webkit-filter: contrast(4);
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="contrast"><feComponentTransfer><feFuncR type="linear" slope="4" intercept="-1.5"/><feFuncG type="linear" slope="4" intercept="-1.5"/><feFuncB type="linear" slope="4" intercept="-1.5"/></feComponentTransfer></filter></svg>#contrast');
+}
+
+/*
+ * Test drop-shadow.
+ */
+.test--drop-shadow {
+  -webkit-filter: drop-shadow(3px 3px 4px rgba(0, 0, 0, 0.5));
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="drop-shadow"><feGaussianBlur in="SourceAlpha" stdDeviation="4"/><feOffset dx="3" dy="3" result="offsetblur"/><feFlood flood-color="rgba(0, 0, 0, 0.5)"/><feComposite in2="offsetblur" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter></svg>#drop-shadow');
+  -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=3px, OffY=3px, Color='#80000000')";
+  filter: progid:DXImageTransform.Microsoft.Dropshadow(OffX=3px, OffY=3px, Color='#80000000');
+}
+
+/*
+ * Test grayscale.
+ */
+.test--grayscale .target {
+  -webkit-filter: grayscale(1);
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="grayscale"><feColorMatrix type="matrix" values="0.2126 0.7152 0.0722 0 0 0.2126 0.7152 0.0722 0 0 0.2126 0.7152 0.0722 0 0 0 0 0 1 0"/></filter></svg>#grayscale');
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(grayscale=1)";
+  filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+}
+
+/*
+ * Test hue-rotate.
+ */
+.test--hue-rotate .target {
+  -webkit-filter: hue-rotate(180deg);
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="hue-rotate"><feColorMatrix type="hueRotate" values="180"/></filter></svg>#hue-rotate');
+}
+
+/*
+ * Test invert.
+ */
+.test--invert .target {
+  -webkit-filter: invert(1);
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="invert"><feComponentTransfer><feFuncR type="table" tableValues="1 0"/><feFuncG type="table" tableValues="1 0"/><feFuncB type="table" tableValues="1 0"/></feComponentTransfer></filter></svg>#invert');
+  -ms-filter: "progid:DXImageTransform.Microsoft.Invert(invert=1)";
+  filter: progid:DXImageTransform.Microsoft.Invert(invert=1);
+}
+
+/*
+ * Test opacity.
+ */
+.test--opacity .target {
+  -webkit-filter: opacity(0.4);
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="opacity"><feComponentTransfer><feFuncA type="table" tableValues="0 0.4"/></feComponentTransfer></filter></svg>#opacity');
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(opacity=0.4)";
+  filter: progid:DXImageTransform.Microsoft.BasicImage(opacity=0.4);
+}
+
+/*
+ * Test saturate.
+ */
+.test--saturate .target {
+  -webkit-filter: saturate(7);
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="saturate"><feColorMatrix type="saturate" values="7"/></filter></svg>#saturate');
+}
+
+/*
+ * Test sepia.
+ */
+.test--sepia .target {
+  -webkit-filter: sepia(1);
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="sepia"><feColorMatrix type="matrix" values="0.393 0.769 0.189 0 0 0.349 0.686 0.168 0 0 0.272 0.534 0.131 0 0 0 0 0 1 0"/></filter></svg>#sepia');
+}
+
+/*
+ * Test multi filters.
+ */
+.test--multi .target {
+  -webkit-filter: brightness(3) invert(1) blur(5px);
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="custom"><feComponentTransfer><feFuncR type="linear" slope="3"/><feFuncG type="linear" slope="3"/><feFuncB type="linear" slope="3"/></feComponentTransfer><feComponentTransfer><feFuncR type="table" tableValues="1 0"/><feFuncG type="table" tableValues="1 0"/><feFuncB type="table" tableValues="1 0"/></feComponentTransfer><feGaussianBlur stdDeviation="5" edgeMode="none"/></filter></svg>#custom');
+  -ms-filter: "progid:DXImageTransform.Microsoft.Invert(invert=1), progid:DXImageTransform.Microsoft.Blur(pixelRadius=5)";
+  filter: progid:DXImageTransform.Microsoft.Invert(invert=1) progid:DXImageTransform.Microsoft.Blur(pixelRadius=5);
+}
+
+/*
+ * Test disable.
+ */
+.test--disable {
+  -webkit-filter: none;
+  -ms-filter: none;
+  filter: none;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Blur(enabled=false)";
+  filter: progid:DXImageTransform.Microsoft.Blur(enabled=false);
+}
