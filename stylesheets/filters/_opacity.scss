@@ -47,5 +47,5 @@
 ) {
   @include check-in-range(opacity, 0 1, $value);
 
-  @include filters((opacity: (value: $value)));
+  @include filters((opacity: $value));
 }

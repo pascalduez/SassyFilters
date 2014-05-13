@@ -66,12 +66,7 @@
   $blur-radius: 0px,
   $color: rgba(0, 0, 0, .5)
 ) {
-  @include filters((
-            drop-shadow: (
-              offset-x: $offset-x,
-              offset-y: $offset-y,
-              blur-radius: $blur-radius,
-              color: $color
-            )
-          ));
+  @include filters((drop-shadow:
+                      ($offset-x, $offset-y, $blur-radius, $color)
+                  ));
 }

@@ -46,5 +46,5 @@
 ) {
   @include check-in-range(hue-rotate, 0 360, $angle);
 
-  @include filters((hue-rotate: (angle: $angle)));
+  @include filters((hue-rotate: $angle));
 }

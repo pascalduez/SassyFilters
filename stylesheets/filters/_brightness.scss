@@ -47,5 +47,5 @@
 ) {
   @include check-in-range(brightness, 0 10, $value);
 
-  @include filters((brightness: (value: $value)));
+  @include filters((brightness: $value));
 }

@@ -1,6 +1,7 @@
 **/.*
 .sass-cache
 .bundle
+.grunt
 node_modules
 test
 ruby

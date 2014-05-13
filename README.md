@@ -13,7 +13,10 @@ Cross-Browser configurable CSS-SVG filters.
 `invert($value)`  
 `opacity($value)`  
 `saturate($value)`  
-`sepia($value)`
+`sepia($value)`  
+`filters($filters)`
+
+*Online preview (test folder) available at: http://pascalduez.github.io/SassyFilters*
 
 ## Browser support
 

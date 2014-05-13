@@ -170,12 +170,7 @@ h3 {
  * Test drop-shadow.
  */
 .test--drop-shadow {
-  @include drop-shadow(
-            $offset-x: 3px,
-            $offset-y: 3px,
-            $blur-radius: 4px,
-            $color: rgba(0, 0, 0, .5)
-          );
+  @include drop-shadow(3px, 3px, 4px, rgba(0, 0, 0, .5));
 }
 
 
@@ -245,9 +240,9 @@ h3 {
 .test--multi {
   .target {
     @include filters((
-      brightness: (value: 3),
-      invert: (value: 1),
-      blur: (radius: 5px)
+      brightness: 3,
+      invert: 1,
+      blur: 5px
     ));
   }
 }

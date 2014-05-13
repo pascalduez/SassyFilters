@@ -52,5 +52,5 @@
 ) {
   @include check-in-range(sepia, 0 1, $value);
 
-  @include filters((sepia: (value: $value)));
+  @include filters((sepia: $value));
 }

@@ -46,5 +46,5 @@
 ) {
   @include check-in-range(saturate, 0 10, $value);
 
-  @include filters((saturate: (value: $value)));
+  @include filters((saturate: $value));
 }

@@ -46,5 +46,5 @@
 ) {
   @include check-in-range(invert, 0 1, $value);
 
-  @include filters((invert: (value: $value)));
+  @include filters((invert: $value));
 }

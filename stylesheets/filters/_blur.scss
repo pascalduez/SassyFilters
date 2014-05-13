@@ -46,5 +46,5 @@
 ) {
   @include check-in-range(blur, 0 10, $radius);
 
-  @include filters((blur: (radius: $radius)));
+  @include filters((blur: $radius));
 }

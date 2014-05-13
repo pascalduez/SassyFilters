@@ -52,5 +52,5 @@
 ) {
   @include check-in-range(grayscale, 0 1, $value);
 
-  @include filters((grayscale: (value: $value)));
+  @include filters((grayscale: $value));
 }

@@ -46,5 +46,5 @@
 ) {
   @include check-in-range(contrast, 0 10, $value);
 
-  @include filters((contrast: (value: $value)));
+  @include filters((contrast: $value));
 }
