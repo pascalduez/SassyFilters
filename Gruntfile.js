@@ -113,10 +113,10 @@ module.exports = function(grunt) {
           '<%= conf.src %>/helpers/_svg.scss',
           '<%= conf.src %>/helpers/_filters.scss',
           // output
-          '<%= conf.src %>/output/output.scss',
-          '<%= conf.src %>/output/filters.scss',
-          '<%= conf.src %>/output/svg-filter.scss',
-          '<%= conf.src %>/output/disable-filter.scss',
+          '<%= conf.src %>/output/_output.scss',
+          '<%= conf.src %>/output/_filters.scss',
+          '<%= conf.src %>/output/_svg-filter.scss',
+          '<%= conf.src %>/output/_disable-filter.scss',
           // filters
           '<%= conf.src %>/filters/_blur.scss',
           '<%= conf.src %>/filters/_brightness.scss',
@@ -144,7 +144,7 @@ module.exports = function(grunt) {
         createTag: true,
         tagName: '%VERSION%',
         tagMessage: 'Version %VERSION%',
-        push: true,
+        push: false,
         pushTo: 'master'
       }
     },

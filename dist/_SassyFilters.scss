@@ -1,15 +1,21 @@
-// SassyFilters – v0.1.0 – 2014-05-13
+// SassyFilters – v0.1.1 – 2014-05-16
 // https://github.com/pascalduez/SassyFilters
 // License: unlicence
 
-//
-// SassyFilters: Configuration
-//
+
+// SassyFilters: configuration
+// ---------------------------
+
 
 // Default settings.
 $filters-defaults: (
+
+  // Encoding of the SVG filters as data URI: raw | escaped | base64.
   data-type: "raw",
+
+  // Whether to add IE proprietary filters or not.
   ie-support: true
+
 );
 
 // User settings.
@@ -26,9 +32,8 @@ $filters-settings: () !default;
 }
 
 
-//
 // SassyFilters: SVG filters
-//
+// -------------------------
 
 
 $svg-wrappers: (
@@ -43,8 +48,8 @@ $svg-wrappers: (
 
 );
 
-// https://dvcs.w3.org/hg/FXTF/raw-file/tip/filters/Overview.html#ShorthandEquivalents
 
+// Filters shorthand equivalents
 $svg-filters: (
 
   // Spec: blur
@@ -159,10 +164,9 @@ $svg-filters: (
 
 );
 
-//
-// SassyFilters: helpers
-//
 
+// SassyFilters: helpers
+// ---------------------
 
 
 // Returns a list of all keys in a map.
@@ -177,7 +181,6 @@ $svg-filters: (
 }
 
 
-
 // Returns a list of all values in a map.
 // -----------------------------------------------------------------------------
 // @param [map] $map
@@ -188,7 +191,6 @@ $svg-filters: (
 @function _map-values($map, $separator: space) {
   @return join((), map-values($map), $separator);
 }
-
 
 
 // Test whether `$value` is empty.
@@ -209,8 +211,7 @@ $svg-filters: (
 }
 
 
-
-// Join `$list` into a string
+// Join `$list` into a string.
 // -----------------------------------------------------------------------------
 // @param [list] $list
 // @param [string] $glue
@@ -233,7 +234,6 @@ $svg-filters: (
 
   @return $result;
 }
-
 
 
 // A Sass micro-templating function.
@@ -266,8 +266,7 @@ $svg-filters: (
 }
 
 
-
-// Test whether `$value` is containedd between `$min` and `$max`
+// Test whether `$value` is containedd between `$min` and `$max`.
 // -----------------------------------------------------------------------------
 // @param [number] $min: minimum range value
 // @param [number] $max: maximum range value
@@ -280,8 +279,7 @@ $svg-filters: (
 }
 
 
-
-// Logs an error at `$pointer` if `$value` is not in `$range`
+// Logs an error at `$pointer` if `$value` is not in `$range`.
 // -----------------------------------------------------------------------------
 // @param [string] $pointer: caller function/mixin name
 // @param [list] $range: range the value must be contained in
@@ -306,8 +304,7 @@ $svg-filters: (
 }
 
 
-
-// Capitalize string
+// Capitalize string.
 // -----------------------------------------------------------------------------
 // @param [string] $string
 // -----------------------------------------------------------------------------
@@ -317,10 +314,9 @@ $svg-filters: (
   @return to-upper-case(str-slice($string, 1, 1)) + str-slice($string, 2);
 }
 
-//
-// SassyFilters: SVG helpers
-//
 
+// SassyFilters: SVG helpers
+// -------------------------
 
 
 // Format a proper SVG data URI.
@@ -363,7 +359,6 @@ $svg-filters: (
 }
 
 
-
 // Format and encode an inline SVG.
 // -----------------------------------------------------------------------------
 // @param [string] $svgStr: stringified SVG
@@ -385,7 +380,7 @@ $svg-filters: (
     data: svg-data($svgStr, $encoding),
     fragment: $fragment
   );
-  @if ($encoding == "base64") {
+  @if $encoding == "base64" {
     $args: map-merge($args, (encoding: "base64"));
   }
 
@@ -395,10 +390,8 @@ $svg-filters: (
 }
 
 
-//
 // SassyFilters: filters helpers
-//
-
+// -----------------------------
 
 
 // Get and format a single SVG filter.
@@ -421,7 +414,6 @@ $svg-filters: (
 
   @return template(map-get($svg-filters, $function), $args...);
 }
-
 
 
 // IE filter formatting helper
@@ -463,24 +455,17 @@ $svg-filters: (
 }
 
 
-
-// Main filters mixin, used internaly or for combining several filters
+// Main filters function, used internaly for combining several filters
 // -----------------------------------------------------------------------------
 // @param [map] $filters: a map of filters `(function: (params))`
 // @param [string] $id: filter name, default to function name or "custom"
 // -----------------------------------------------------------------------------
 // @print [css] final filters output
 
-@mixin filters(
+@function _filters(
   $filters,
-  $id: null
+  $id
 ) {
-  @if type-of($filters) != map {
-    @warn "`filters` mixin, filters argument must be a map. #{type-of($value)} given.";
-  }
-
-  $id: if(length($filters) == 1, map-keys($filters), $id or "custom");
-
   $output: (
      id: $id,
     css: (),
@@ -500,9 +485,8 @@ $svg-filters: (
     }
   }
 
-  @include output($output);
+  @return $output;
 }
-
 
 
 // Preprocessor: wrap a list of filters into the final SVG string.
@@ -530,7 +514,6 @@ $svg-filters: (
 }
 
 
-
 // Preprocessor: apply last IE versions formating before printing.
 // -----------------------------------------------------------------------------
 // @param [map]: $output
@@ -549,8 +532,11 @@ $svg-filters: (
 }
 
 
+// SassyFilters: filters output
+// ----------------------------
 
-// Helper mixin, print final cross-browser filters declarations
+
+// Ouput mixin, print final cross-browser filters declarations.
 // -----------------------------------------------------------------------------
 // @param [map] $output: a map of browser specific filters
 // -----------------------------------------------------------------------------
@@ -592,9 +578,60 @@ $svg-filters: (
 }
 
 
-//
-// Disable filter
-//
+// SassyFilters: filters output
+// ----------------------------
+
+
+// Main filters mixin, used internaly or for combining several filters
+// -----------------------------------------------------------------------------
+// @param [map] $filters: a map of filters `(function: (params,))`
+// @param [string] $id: filter name, default to function name or "custom"
+// -----------------------------------------------------------------------------
+// @print [css] final filters output
+
+@mixin filters(
+  $filters,
+  $id: null
+) {
+  @if type-of($filters) != map {
+    @warn "`filters` mixin, `filters` argument must be a map.
+            #{type-of($value)} given.";
+  }
+
+  $id: if(length($filters) == 1, map-keys($filters), $id or "custom");
+
+  $output: _filters($filters, $id);
+
+  @include output($output);
+}
+
+
+// SassyFilters: SVG filter helper
+// -------------------------------
+
+
+// Helper mixin to embed a cutom SVG filter.
+// -----------------------------------------------------------------------------
+// @param [string] $svgStr: stringified SVG
+// @param [string] $fragment: fragment identifier
+// @param [string] $encoding: data type "raw" | "base64" | "escaped"
+// -----------------------------------------------------------------------------
+// @dependencies `inline-svg`
+// -----------------------------------------------------------------------------
+// @print [css] filter declaration
+
+@mixin svg-filter(
+  $svgStr,
+  $fragment,
+  $encoding: conf(data-type)
+) {
+  filter: inline-svg($svgStr, $encoding, $fragment);
+}
+
+
+// SassyFilters: disable filter
+// ----------------------------
+
 
 @mixin disable-filter(
   $function: null
@@ -611,9 +648,8 @@ $svg-filters: (
 }
 
 
-//
 // filter: blur
-//
+// ------------
 
 
 // @private blur `filter` function
@@ -644,7 +680,6 @@ $svg-filters: (
 }
 
 
-
 // @public `blur` filter mixin
 // -----------------------------------------------------------------------------
 // @spec blur() = blur( <length> )
@@ -658,13 +693,13 @@ $svg-filters: (
 ) {
   @include check-in-range(blur, 0 10, $radius);
 
-  @include filters((blur: (radius: $radius)));
+  @include filters((blur: $radius));
 }
 
 
 //
 // filter: brightness
-//
+// ------------------
 
 
 // @private `brightness` filter function
@@ -696,7 +731,6 @@ $svg-filters: (
 }
 
 
-
 // @public `brightness` filter mixin
 // -----------------------------------------------------------------------------
 // @spec brightness() = brightness( [ <number> | <percentage> ] )
@@ -710,13 +744,12 @@ $svg-filters: (
 ) {
   @include check-in-range(brightness, 0 10, $value);
 
-  @include filters((brightness: (value: $value)));
+  @include filters((brightness: $value));
 }
 
 
-//
 // filter: contrast
-//
+// ----------------
 
 
 // @private contrast filter function
@@ -747,7 +780,6 @@ $svg-filters: (
 }
 
 
-
 // @public `contrast` filter mixin
 // -----------------------------------------------------------------------------
 // @spec contrast() = contrast( [ <number> | <percentage> ] )
@@ -761,13 +793,12 @@ $svg-filters: (
 ) {
   @include check-in-range(contrast, 0 10, $value);
 
-  @include filters((contrast: (value: $value)));
+  @include filters((contrast: $value));
 }
 
 
-//
-// Filter: drop-shadow.
-//
+// Filter: drop-shadow
+// -------------------
 
 
 // @private `drop-shadow` filter function
@@ -814,7 +845,6 @@ $svg-filters: (
 }
 
 
-
 // @public `drop-shadow` filter mixin
 // -----------------------------------------------------------------------------
 // @spec drop-shadow() = drop-shadow( <length>{2,3} <color>? )
@@ -832,20 +862,14 @@ $svg-filters: (
   $blur-radius: 0px,
   $color: rgba(0, 0, 0, .5)
 ) {
-  @include filters((
-            drop-shadow: (
-              offset-x: $offset-x,
-              offset-y: $offset-y,
-              blur-radius: $blur-radius,
-              color: $color
-            )
-          ));
+  @include filters((drop-shadow:
+                      ($offset-x, $offset-y, $blur-radius, $color)
+                  ));
 }
 
 
-//
 // filter: grayscale
-//
+// -----------------
 
 
 // @private `grayscale` filter function
@@ -882,7 +906,6 @@ $svg-filters: (
 }
 
 
-
 // @public `grayscale` filter mixin
 // -----------------------------------------------------------------------------
 // @spec grayscale() = grayscale( [ <number> | <percentage> ] )
@@ -896,13 +919,12 @@ $svg-filters: (
 ) {
   @include check-in-range(grayscale, 0 1, $value);
 
-  @include filters((grayscale: (value: $value)));
+  @include filters((grayscale: $value));
 }
 
 
-//
 // filter: hue-rotate
-//
+// ------------------
 
 
 // @private `hue-rotate` filter function
@@ -933,7 +955,6 @@ $svg-filters: (
 }
 
 
-
 // @public `hue-rotate` filter mixin
 // -----------------------------------------------------------------------------
 // @spec hue-rotate() = hue-rotate( <angle> )
@@ -947,13 +968,12 @@ $svg-filters: (
 ) {
   @include check-in-range(hue-rotate, 0 360, $angle);
 
-  @include filters((hue-rotate: (angle: $angle)));
+  @include filters((hue-rotate: $angle));
 }
 
 
-//
 // filter: invert
-//
+// --------------
 
 
 // @private `invert` filter function
@@ -984,7 +1004,6 @@ $svg-filters: (
 }
 
 
-
 // @public `invert` filter mixin
 // -----------------------------------------------------------------------------
 // @spec invert() = invert( [ <number> | <percentage> ] )
@@ -998,14 +1017,12 @@ $svg-filters: (
 ) {
   @include check-in-range(invert, 0 1, $value);
 
-  @include filters((invert: (value: $value)));
+  @include filters((invert: $value));
 }
 
 
-//
 // filter: opacity
-//
-
+// ---------------
 
 
 // @private `opacity` filter function
@@ -1036,7 +1053,6 @@ $svg-filters: (
 }
 
 
-
 // @public `opacity` filter mixin
 // -----------------------------------------------------------------------------
 // @spec opacity() = opacity( [ <number> | <percentage> ] )
@@ -1050,13 +1066,12 @@ $svg-filters: (
 ) {
   @include check-in-range(opacity, 0 1, $value);
 
-  @include filters((opacity: (value: $value)));
+  @include filters((opacity: $value));
 }
 
 
-//
 // filter: saturate
-//
+// ----------------
 
 
 // @private `saturate` filter function
@@ -1087,7 +1102,6 @@ $svg-filters: (
 }
 
 
-
 // @public `saturate` filter mixin
 // -----------------------------------------------------------------------------
 // @spec saturate() = saturate( [ <number> | <percentage> ] )
@@ -1101,13 +1115,12 @@ $svg-filters: (
 ) {
   @include check-in-range(saturate, 0 10, $value);
 
-  @include filters((saturate: (value: $value)));
+  @include filters((saturate: $value));
 }
 
 
-//
 // filter: sepia
-//
+// -------------
 
 
 // @private `sepia` filter function
@@ -1144,7 +1157,6 @@ $svg-filters: (
 }
 
 
-
 // @public `sepia` filter mixin
 // -----------------------------------------------------------------------------
 // @spec sepia() = sepia( [ <number> | <percentage> ] )
@@ -1158,5 +1170,5 @@ $svg-filters: (
 ) {
   @include check-in-range(sepia, 0 1, $value);
 
-  @include filters((sepia: (value: $value)));
+  @include filters((sepia: $value));
 }
