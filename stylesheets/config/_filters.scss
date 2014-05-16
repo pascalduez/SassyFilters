@@ -1,7 +1,6 @@
 
-//
 // SassyFilters: SVG filters
-//
+// -------------------------
 
 
 $svg-wrappers: (
@@ -16,8 +15,8 @@ $svg-wrappers: (
 
 );
 
-// https://dvcs.w3.org/hg/FXTF/raw-file/tip/filters/Overview.html#ShorthandEquivalents
 
+// Filters shorthand equivalents
 $svg-filters: (
 
   // Spec: blur

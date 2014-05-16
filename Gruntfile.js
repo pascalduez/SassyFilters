@@ -32,12 +32,14 @@ module.exports = function(grunt) {
     conf: config,
 
     sass: {
+      options: {
+        // trace: true,
+        bundleExec: true,
+        style: 'expanded',
+        require: ['./lib/helpers.rb']
+      },
       test: {
         options: {
-          //trace: true,
-          bundleExec: true,
-          style: 'expanded',
-          require: ['./lib/helpers.rb'],
           loadPath: ['<%= conf.src %>']
         },
         files: [{
@@ -50,10 +52,6 @@ module.exports = function(grunt) {
       },
       dist: {
         options: {
-          //trace: true,
-          bundleExec: true,
-          style: 'expanded',
-          require: ['./lib/helpers.rb'],
           loadPath: ['<%= conf.dist %>']
         },
         files: [{
@@ -95,7 +93,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: '<%= conf.css %>',
-        src: '{,*/}*.css',
+          src: '{,*/}*.css',
           dest: '<%= conf.css %>'
         }]
       }
@@ -114,7 +112,11 @@ module.exports = function(grunt) {
           '<%= conf.src %>/helpers/_helpers.scss',
           '<%= conf.src %>/helpers/_svg.scss',
           '<%= conf.src %>/helpers/_filters.scss',
-          '<%= conf.src %>/helpers/_disable-filter.scss',
+          // output
+          '<%= conf.src %>/output/output.scss',
+          '<%= conf.src %>/output/filters.scss',
+          '<%= conf.src %>/output/svg-filter.scss',
+          '<%= conf.src %>/output/disable-filter.scss',
           // filters
           '<%= conf.src %>/filters/_blur.scss',
           '<%= conf.src %>/filters/_brightness.scss',

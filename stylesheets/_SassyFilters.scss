@@ -16,7 +16,14 @@
 @import "helpers/helpers";
 @import "helpers/svg";
 @import "helpers/filters";
-@import "helpers/disable-filter";
+
+//
+// Import output
+//
+@import "output/output";
+@import "output/filters";
+@import "output/svg-filter";
+@import "output/disable-filter";
 
 //
 // Import filters

@@ -1,0 +1,27 @@
+
+// SassyFilters: filters output
+// ----------------------------
+
+
+// Main filters mixin, used internaly or for combining several filters
+// -----------------------------------------------------------------------------
+// @param [map] $filters: a map of filters `(function: (params,))`
+// @param [string] $id: filter name, default to function name or "custom"
+// -----------------------------------------------------------------------------
+// @print [css] final filters output
+
+@mixin filters(
+  $filters,
+  $id: null
+) {
+  @if type-of($filters) != map {
+    @warn "`filters` mixin, `filters` argument must be a map.
+            #{type-of($value)} given.";
+  }
+
+  $id: if(length($filters) == 1, map-keys($filters), $id or "custom");
+
+  $output: _filters($filters, $id);
+
+  @include output($output);
+}

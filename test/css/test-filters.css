@@ -193,6 +193,13 @@ h3 {
 }
 
 /*
+ * Test svg-filter.
+ */
+.test--svg-filter {
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="custom"><feGaussianBlur in="SourceGraphic" stdDeviation="1"/><feComponentTransfer><feFuncA tableValues="0 .7" type="table"></feFuncA></feComponentTransfer></filter></svg>#custom');
+}
+
+/*
  * Test disable.
  */
 .test--disable {

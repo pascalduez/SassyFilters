@@ -1,8 +1,6 @@
 
-//
 // SassyFilters: filters helpers
-//
-
+// -----------------------------
 
 
 // Get and format a single SVG filter.
@@ -25,7 +23,6 @@
 
   @return template(map-get($svg-filters, $function), $args...);
 }
-
 
 
 // IE filter formatting helper
@@ -67,24 +64,17 @@
 }
 
 
-
-// Main filters mixin, used internaly or for combining several filters
+// Main filters function, used internaly for combining several filters
 // -----------------------------------------------------------------------------
 // @param [map] $filters: a map of filters `(function: (params))`
 // @param [string] $id: filter name, default to function name or "custom"
 // -----------------------------------------------------------------------------
 // @print [css] final filters output
 
-@mixin filters(
+@function _filters(
   $filters,
-  $id: null
+  $id
 ) {
-  @if type-of($filters) != map {
-    @warn "`filters` mixin, filters argument must be a map. #{type-of($value)} given.";
-  }
-
-  $id: if(length($filters) == 1, map-keys($filters), $id or "custom");
-
   $output: (
      id: $id,
     css: (),
@@ -104,9 +94,8 @@
     }
   }
 
-  @include output($output);
+  @return $output;
 }
-
 
 
 // Preprocessor: wrap a list of filters into the final SVG string.
@@ -134,7 +123,6 @@
 }
 
 
-
 // Preprocessor: apply last IE versions formating before printing.
 // -----------------------------------------------------------------------------
 // @param [map]: $output
@@ -150,47 +138,4 @@
       gte-ie8: quote(_join(map-get($output, ie), ", ")),
       lt-ie8: unquote(_join(map-get($output, ie), " "))
     ));
-}
-
-
-
-// Helper mixin, print final cross-browser filters declarations
-// -----------------------------------------------------------------------------
-// @param [map] $output: a map of browser specific filters
-// -----------------------------------------------------------------------------
-// @print [css] final filters output
-
-@mixin output(
-  $output
-) {
-  //
-  // Webkit, Blink
-  //
-  -webkit-filter: map-get($output, css);
-
-  //
-  // Gecko
-  //
-  $output: _preprocess-svg-filters($output);
-
-  filter: inline-svg(
-            $svgStr: map-get($output, svg),
-            $fragment: map-get($output, id)
-          );
-
-  //
-  // IE
-  //
-  $ie-support: conf(ie-support)
-               and map-has-key($output, ie)
-               and not empty(map-get($output, ie));
-
-  @if $ie-support {
-    $output: _preprocess-ie-filters($output);
-
-    // IE 8+
-    -ms-filter: map-get($output, gte-ie8);
-    // IE < 8
-    filter: map-get($output, lt-ie8);
-  }
 }

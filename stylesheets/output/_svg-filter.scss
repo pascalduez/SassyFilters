@@ -1,0 +1,22 @@
+
+// SassyFilters: SVG filter helper
+// -------------------------------
+
+
+// Helper mixin to embed a cutom SVG filter.
+// -----------------------------------------------------------------------------
+// @param [string] $svgStr: stringified SVG
+// @param [string] $fragment: fragment identifier
+// @param [string] $encoding: data type "raw" | "base64" | "escaped"
+// -----------------------------------------------------------------------------
+// @dependencies `inline-svg`
+// -----------------------------------------------------------------------------
+// @print [css] filter declaration
+
+@mixin svg-filter(
+  $svgStr,
+  $fragment,
+  $encoding: conf(data-type)
+) {
+  filter: inline-svg($svgStr, $encoding, $fragment);
+}

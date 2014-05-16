@@ -1,7 +1,6 @@
-//
-// SassyFilters: SVG helpers
-//
 
+// SassyFilters: SVG helpers
+// -------------------------
 
 
 // Format a proper SVG data URI.
@@ -44,7 +43,6 @@
 }
 
 
-
 // Format and encode an inline SVG.
 // -----------------------------------------------------------------------------
 // @param [string] $svgStr: stringified SVG
@@ -66,7 +64,7 @@
     data: svg-data($svgStr, $encoding),
     fragment: $fragment
   );
-  @if ($encoding == "base64") {
+  @if $encoding == "base64" {
     $args: map-merge($args, (encoding: "base64"));
   }
 

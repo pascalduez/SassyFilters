@@ -1,0 +1,45 @@
+
+// SassyFilters: filters output
+// ----------------------------
+
+
+// Ouput mixin, print final cross-browser filters declarations.
+// -----------------------------------------------------------------------------
+// @param [map] $output: a map of browser specific filters
+// -----------------------------------------------------------------------------
+// @print [css] final filters output
+
+@mixin output(
+  $output
+) {
+  //
+  // Webkit, Blink
+  //
+  -webkit-filter: map-get($output, css);
+
+  //
+  // Gecko
+  //
+  $output: _preprocess-svg-filters($output);
+
+  filter: inline-svg(
+            $svgStr: map-get($output, svg),
+            $fragment: map-get($output, id)
+          );
+
+  //
+  // IE
+  //
+  $ie-support: conf(ie-support)
+               and map-has-key($output, ie)
+               and not empty(map-get($output, ie));
+
+  @if $ie-support {
+    $output: _preprocess-ie-filters($output);
+
+    // IE 8+
+    -ms-filter: map-get($output, gte-ie8);
+    // IE < 8
+    filter: map-get($output, lt-ie8);
+  }
+}

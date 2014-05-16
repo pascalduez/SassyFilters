@@ -1,7 +1,6 @@
-//
-// SassyFilters: helpers
-//
 
+// SassyFilters: helpers
+// ---------------------
 
 
 // Returns a list of all keys in a map.
@@ -16,7 +15,6 @@
 }
 
 
-
 // Returns a list of all values in a map.
 // -----------------------------------------------------------------------------
 // @param [map] $map
@@ -27,7 +25,6 @@
 @function _map-values($map, $separator: space) {
   @return join((), map-values($map), $separator);
 }
-
 
 
 // Test whether `$value` is empty.
@@ -48,8 +45,7 @@
 }
 
 
-
-// Join `$list` into a string
+// Join `$list` into a string.
 // -----------------------------------------------------------------------------
 // @param [list] $list
 // @param [string] $glue
@@ -72,7 +68,6 @@
 
   @return $result;
 }
-
 
 
 // A Sass micro-templating function.
@@ -105,8 +100,7 @@
 }
 
 
-
-// Test whether `$value` is containedd between `$min` and `$max`
+// Test whether `$value` is containedd between `$min` and `$max`.
 // -----------------------------------------------------------------------------
 // @param [number] $min: minimum range value
 // @param [number] $max: maximum range value
@@ -119,8 +113,7 @@
 }
 
 
-
-// Logs an error at `$pointer` if `$value` is not in `$range`
+// Logs an error at `$pointer` if `$value` is not in `$range`.
 // -----------------------------------------------------------------------------
 // @param [string] $pointer: caller function/mixin name
 // @param [list] $range: range the value must be contained in
@@ -145,8 +138,7 @@
 }
 
 
-
-// Capitalize string
+// Capitalize string.
 // -----------------------------------------------------------------------------
 // @param [string] $string
 // -----------------------------------------------------------------------------

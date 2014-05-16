@@ -1,11 +1,17 @@
-//
-// SassyFilters: Configuration
-//
+
+// SassyFilters: configuration
+// ---------------------------
+
 
 // Default settings.
 $filters-defaults: (
+
+  // Encoding of the SVG filters as data URI: raw | escaped | base64.
   data-type: "raw",
+
+  // Whether to add IE proprietary filters or not.
   ie-support: true
+
 );
 
 // User settings.
