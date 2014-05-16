@@ -1,11 +1,4 @@
-**/.*
-.sass-cache
-.bundle
-.grunt
-node_modules
 test
-ruby
 Gemfile
-Gemfile.lock
 sache.json
 Gruntfile.js
