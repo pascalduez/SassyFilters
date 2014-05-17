@@ -175,4 +175,4 @@ sass: {
 
 ## Licence
 
-[unlicence](http://unlicense.org)
+SassyFilters is available under the [MIT](http://opensource.org/licenses/MIT) license.

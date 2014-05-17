@@ -1,7 +1,7 @@
 {
   "name": "sassyfilters",
   "title": "SassyFilters",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "keywords": [
     "sass",
     "scss",
@@ -35,8 +35,8 @@
     "node": ">=0.10.0"
   },
   "license": {
-    "type": "unlicence",
-    "url": "http://unlicense.org"
+    "type": "MIT",
+    "url": "http://opensource.org/licenses/MIT"
   },
   "scripts": {
     "install": "bundle install --path .",
