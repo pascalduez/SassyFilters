@@ -115,6 +115,12 @@ git clone git@github.com:pascalduez/SassyFilters.git
 npm install sassyfilters --save
 ```
 
+#### Bower
+
+```
+bower install SassyFilters --save
+```
+
 
 ## Usage
 

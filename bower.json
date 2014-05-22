@@ -1,0 +1,27 @@
+{
+  "name": "SassyFilters",
+  "version": "0.1.4",
+  "homepage": "https://github.com/pascalduez/SassyFilters",
+  "authors": [
+    "Pascal Duez"
+  ],
+  "description": "Cross-Browser configurable CSS-SVG filters.",
+  "main": "dist/_SassyFilters.scss",
+  "keywords": [
+    "sass",
+    "scss",
+    "css",
+    "filters",
+    "svg"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "Gemfile",
+    "sache.json",
+    "Gruntfile.js"
+  ]
+}
