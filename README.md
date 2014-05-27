@@ -148,6 +148,13 @@ sass: {
 
 
 
+## Caveats
+
+* CSS and SVG filters can have significant impact on [performances](http://www.html5rocks.com/en/tutorials/filters/understanding-css/#toc-performance).
+Use them wisely.
+
+
+
 ## Roadmap
 
 * More IE support trough behaviors
