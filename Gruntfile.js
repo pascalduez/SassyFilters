@@ -10,12 +10,13 @@ module.exports = function(grunt) {
   require('time-grunt')(grunt);
 
   var config = {
-    base: './test',
-    scss: './test/sass',
-    css: './test/css',
-    img: './test/img',
-    src: './stylesheets',
-    dist: './dist'
+    root: '.',
+    base: 'test',
+    scss: 'test/sass',
+    css: 'test/css',
+    img: 'test/img',
+    src: 'stylesheets',
+    dist: 'dist'
   }
 
   var banner = [
@@ -31,43 +32,28 @@ module.exports = function(grunt) {
 
     conf: config,
 
-    sass: {
-      options: {
-        // trace: true,
-        bundleExec: true,
-        style: 'expanded',
-        require: ['./lib/helpers.rb']
-      },
-      test: {
-        options: {
-          loadPath: ['<%= conf.src %>']
-        },
-        files: [{
-          expand: true,
-          cwd: '<%= conf.scss %>',
-          src: ['*.scss'],
-          dest: '<%= conf.css %>',
-          ext: '.css'
-        }]
-      },
-      dist: {
-        options: {
-          loadPath: ['<%= conf.dist %>']
-        },
-        files: [{
-          expand: true,
-          cwd: '<%= conf.scss %>',
-          src: ['*.scss'],
-          dest: '<%= conf.css %>',
-          ext: '.css'
-        }]
+    shell: {
+      sass: {
+        command: function (target) {
+          var command = [
+            'bundle exec sass',
+            '--load-path',
+            config[target],
+            '--require',
+            '<%= conf.root %>/lib/helpers.rb',
+            '<%= conf.scss %>/test-filters.scss',
+            '<%= conf.css %>/test-filters.css'
+          ].join(' ');
+
+          return grunt.template.process(command);
+        }
       }
     },
 
     watch: {
       test: {
         files: ['<%= conf.scss %>/*.scss'],
-        tasks: ['sass:test']
+        tasks: ['shell:sass:src']
       }
     },
 
@@ -140,7 +126,7 @@ module.exports = function(grunt) {
         updateConfigs: ['pkg'],
         commit: true,
         commitMessage: 'Release %VERSION%',
-        commitFiles: ['package.json'], // '-a' for all files
+        commitFiles: ['-a'], // '-a' for all files
         createTag: true,
         tagName: '%VERSION%',
         tagMessage: 'Version %VERSION%',
@@ -168,7 +154,13 @@ module.exports = function(grunt) {
 
   grunt.registerTask('dist', [
     'concat:dist',
-    'sass:dist'
+    'shell:sass:dist'
+  ]);
+
+  grunt.registerTask('release', [
+    "bump-only",
+    "dist",
+    "bump-commit"
   ]);
 
   grunt.registerTask('prefix', [
