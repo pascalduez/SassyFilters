@@ -37,6 +37,7 @@ module.exports = function(grunt) {
         command: function (target) {
           var command = [
             'bundle exec sass',
+            '--style expanded',
             '--load-path',
             config[target],
             '--require',

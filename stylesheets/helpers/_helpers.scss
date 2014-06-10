@@ -108,8 +108,21 @@
 // -----------------------------------------------------------------------------
 // @return [boolean]
 
-@function _in-range($min, $max, $value) {
+@function is-in-range($min, $max, $value) {
   @return ($value >= $min) and ($value <= $max);
+}
+
+
+// Clamp `$value` between `$min` and `$max`.
+// -----------------------------------------------------------------------------
+// @param [number] $min: minimum range value
+// @param [number] $max: maximum range value
+// @param [number] $value: the value to be clamped
+// -----------------------------------------------------------------------------
+// @return [number]
+
+@function clamp($min, $max, $value) {
+  @return if($value > $max, $max, if($value < $min, $min, $value));
 }
 
 
@@ -125,7 +138,7 @@
   $min: nth($range, 1);
   $max: nth($range, 2);
 
-  @if not _in-range($min, $max, $value) {
+  @if not is-in-range($min, $max, $value) {
     @warn "ERROR::#{$pointer}::$value must be in range [#{$min}, #{$max}]; #{$value} given.";
     @return false;
   }
