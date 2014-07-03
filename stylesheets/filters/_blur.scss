@@ -3,13 +3,16 @@
 // ------------
 
 
-// @private blur `filter` function
-// -----------------------------------------------------------------------------
-// @param [number]: $radius
-// -----------------------------------------------------------------------------
-// @dependencies `_svg-filter`, `_ie-filter`
-// -----------------------------------------------------------------------------
-// @return [map]
+// `blur` filter function
+// ---
+// @access private
+// ---
+// @requires _svg-filter
+// @requires _ie-filter
+// ---
+// @param {Number} $radius
+// ---
+// @return {Map}
 
 @function _fn-blur(
   $radius
@@ -31,13 +34,11 @@
 }
 
 
-// @public `blur` filter mixin
-// -----------------------------------------------------------------------------
-// @spec blur() = blur( <length> )
-// -----------------------------------------------------------------------------
-// @param [number]: $radius
-// -----------------------------------------------------------------------------
-// @print [css]
+// `blur` filter mixin
+// ---
+// @ignore spec blur() = blur( <length> )
+// ---
+// @param {Number} $radius
 
 @mixin blur(
   $radius: 0px

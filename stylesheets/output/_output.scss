@@ -4,10 +4,9 @@
 
 
 // Ouput mixin, print final cross-browser filters declarations.
-// -----------------------------------------------------------------------------
-// @param [map] $output: a map of browser specific filters
-// -----------------------------------------------------------------------------
-// @print [css] final filters output
+// Print final filters output.
+// ---
+// @param {Map} $output - a map of browser specific filters
 
 @mixin output(
   $output

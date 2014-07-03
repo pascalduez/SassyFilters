@@ -3,6 +3,12 @@
 // ----------------------------
 
 
+// Helper mixin, disable previously enabled filters
+// ---
+// @requires _ie-filter
+// ---
+// @param {String} $function (null) - filter function name
+
 @mixin disable-filter(
   $function: null
 ) {

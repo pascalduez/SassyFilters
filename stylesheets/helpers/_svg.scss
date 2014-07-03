@@ -4,33 +4,34 @@
 
 
 // Format a proper SVG data URI.
-// -----------------------------------------------------------------------------
-// @param [string] $data: SVG data
-// @param [string] $mime-type
-// @param [string] $encoding
-// @param [string] $fragment: fragment identifier
-// -----------------------------------------------------------------------------
-// @see https://tools.ietf.org/html/rfc2397
-// @see http://www.w3.org/TR/SVG11/linking.html
-// data:[<MIME-type>][;charset=<encoding>][;base64],<data>[#fragment]
-// -----------------------------------------------------------------------------
-// @dependencies `empty()`
-// -----------------------------------------------------------------------------
-// @return [string]
+// ---
+// @requires empty
+// ---
+// @param {String} $data - SVG data
+// @param {String} $mime-type ('image/svg+xml')
+// @param {String} $encoding ('charset=utf-8')
+// @param {String} $fragment ('') - fragment identifier
+// ---
+// @link https://tools.ietf.org/html/rfc2397
+// @link http://www.w3.org/TR/SVG11/linking.html
+// ---
+// @ignore data:[<MIME-type>][;charset=<encoding>][;base64],<data>[#fragment]
+// ---
+// @return {String}
 
 @function svg-data-uri(
   $data,
-  $mime-type: "image/svg+xml",
-  $encoding: "charset=utf-8",
-  $fragment: ""
+  $mime-type: 'image/svg+xml',
+  $encoding: 'charset=utf-8',
+  $fragment: ''
 ) {
-  $result: "";
+  $result: '';
   $parts: (
-    "data:",
+    'data:',
     $mime-type,
-    ";#{$encoding}",
-    ",#{$data}",
-    "##{$fragment}"
+    ';#{$encoding}',
+    ',#{$data}',
+    '##{$fragment}'
   );
 
   @each $part in $parts {
@@ -44,28 +45,29 @@
 
 
 // Format and encode an inline SVG.
-// -----------------------------------------------------------------------------
-// @param [string] $svgStr: stringified SVG
-// @param [string] $encoding: data type "raw" | "base64" | "escaped"
-// @param [string] $fragment: fragment identifier
-// -----------------------------------------------------------------------------
-// @dependencies `svg-data()`, `svg-data-uri()`
-// -----------------------------------------------------------------------------
-// @return [string]
+// ---
+// @requires svg-data
+// @requires svg-data-uri
+// ---
+// @param {String} $svgStr - stringified SVG
+// @param {String} $encoding (conf.data-type) - data type 'raw' | 'base64' | 'escaped'
+// @param {String} $fragment ('') - fragment identifier
+// ---
+// @return {String}
 
 @function inline-svg(
   $svgStr,
   $encoding: conf(data-type),
-  $fragment: ""
+  $fragment: ''
 ) {
-  $return: "";
+  $return: '';
 
   $args: (
     data: svg-data($svgStr, $encoding),
     fragment: $fragment
   );
-  @if $encoding == "base64" {
-    $args: map-merge($args, (encoding: "base64"));
+  @if $encoding == 'base64' {
+    $args: map-merge($args, (encoding: 'base64'));
   }
 
   $data-uri: svg-data-uri($args...);

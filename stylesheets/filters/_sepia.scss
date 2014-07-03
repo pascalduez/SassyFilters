@@ -3,13 +3,16 @@
 // -------------
 
 
-// @private `sepia` filter function
-// -----------------------------------------------------------------------------
-// @param [number]: $value
-// -----------------------------------------------------------------------------
-// @dependencies `_svg-filter`, `_ie-filter`
-// -----------------------------------------------------------------------------
-// @return [map]
+// `sepia` filter function
+// ---
+// @access private
+// ---
+// @requires _svg-filter
+// @requires _ie-filter
+// ---
+// @param {Number} $value
+// ---
+// @return {Map}
 
 @function _fn-sepia(
   $value
@@ -37,13 +40,11 @@
 }
 
 
-// @public `sepia` filter mixin
-// -----------------------------------------------------------------------------
-// @spec sepia() = sepia( [ <number> | <percentage> ] )
-// -----------------------------------------------------------------------------
-// @param [number]: $value
-// -----------------------------------------------------------------------------
-// @print [css]
+// `sepia` filter mixin
+// ---
+// @ignore spec sepia() = sepia( [ <number> | <percentage> ] )
+// ---
+// @param {Number} $value
 
 @mixin sepia(
   $value: 0

@@ -3,13 +3,16 @@
 // -----------------
 
 
-// @private `grayscale` filter function
-// -----------------------------------------------------------------------------
-// @param [number]: $value
-// -----------------------------------------------------------------------------
-// @dependencies `_svg-filter`, `_ie-filter`
-// -----------------------------------------------------------------------------
-// @return [map]
+// `grayscale` filter function
+// ---
+// @access private
+// ---
+// @requires _svg-filter
+// @requires _ie-filter
+// ---
+// @param {Number} $value
+// ---
+// @return {Map}
 
 @function _fn-grayscale(
   $value
@@ -37,13 +40,11 @@
 }
 
 
-// @public `grayscale` filter mixin
-// -----------------------------------------------------------------------------
-// @spec grayscale() = grayscale( [ <number> | <percentage> ] )
-// -----------------------------------------------------------------------------
-// @param [number]: $value
-// -----------------------------------------------------------------------------
-// @print [css]
+// `grayscale` filter mixin
+// ---
+// @ignore spec grayscale() = grayscale( [ <number> | <percentage> ] )
+// ---
+// @param {Number} $value
 
 @mixin grayscale(
   $value: 0

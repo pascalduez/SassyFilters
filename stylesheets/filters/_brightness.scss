@@ -1,16 +1,18 @@
 
-//
 // filter: brightness
 // ------------------
 
 
-// @private `brightness` filter function
-// -----------------------------------------------------------------------------
-// @param [number]: $value
-// -----------------------------------------------------------------------------
-// @dependencies `_svg-filter`, `_ie-filter`
-// -----------------------------------------------------------------------------
-// @return [map]
+// `brightness` filter function
+// ---
+// @access private
+// ---
+// @requires _svg-filter
+// @requires _ie-filter
+// ---
+// @param {Number} $value
+// ---
+// @return {Map}
 
 @function _fn-brightness(
   $value
@@ -33,13 +35,11 @@
 }
 
 
-// @public `brightness` filter mixin
-// -----------------------------------------------------------------------------
-// @spec brightness() = brightness( [ <number> | <percentage> ] )
-// -----------------------------------------------------------------------------
-// @param [number]: $value
-// -----------------------------------------------------------------------------
-// @print [css]
+// `brightness` filter mixin
+// ---
+// @ignore spec brightness() = brightness( [ <number> | <percentage> ] )
+// ---
+// @param {Number} $value
 
 @mixin brightness(
   $value: 1

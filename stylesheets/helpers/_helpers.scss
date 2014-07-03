@@ -4,34 +4,46 @@
 
 
 // Returns a list of all keys in a map.
-// -----------------------------------------------------------------------------
-// @param [map] $map
-// @param [string] $separator: space | comma | auto
-// -----------------------------------------------------------------------------
-// @return [list]
+// ---
+// @access private
+// ---
+// @param {Map} $map
+// @param {String} $separator (space) - space | comma | auto
+// ---
+// @return {List}
 
-@function _map-keys($map, $separator: space) {
+@function _map-keys(
+  $map,
+  $separator: space
+) {
   @return join((), map-keys($map), $separator);
 }
 
 
 // Returns a list of all values in a map.
-// -----------------------------------------------------------------------------
-// @param [map] $map
-// @param [string] $separator: space | comma | auto
-// -----------------------------------------------------------------------------
-// @return [list]
+// ---
+// @access private
+// ---
+// @param {Map} $map
+// @param {String} $separator: space | comma | auto
+// ---
+// @return {List}
 
-@function _map-values($map, $separator: space) {
+@function _map-values(
+  $map,
+  $separator: space
+) {
   @return join((), map-values($map), $separator);
 }
 
 
 // Test whether `$value` is empty.
-// -----------------------------------------------------------------------------
-// @param [literal] $value
-// -----------------------------------------------------------------------------
-// @return [boolean]
+// ---
+// @access private
+// ---
+// @param {*} $value
+// ---
+// @return {Bool}
 
 @function empty($value) {
   @if not $value
@@ -46,15 +58,20 @@
 
 
 // Join `$list` into a string.
-// -----------------------------------------------------------------------------
-// @param [list] $list
-// @param [string] $glue
-// -----------------------------------------------------------------------------
-// @return [string]
+// ---
+// @access private
+// ---
+// @param {List} $list - the list to convert
+// @param {String} $glue ('') - a string to separate each element of the list
+// ---
+// @return {String}
 
-@function _join($list, $glue: "") {
-  $result: "";
+@function _join(
+  $list,
+  $glue: ''
+) {
   $length: length($list);
+  $result: '';
 
   @if $length < 1 {
     @return $result;
@@ -63,7 +80,7 @@
   @for $i from 1 through $length {
     $result: $result
              + nth($list, $i)
-             + if($i != $length, $glue, "");
+             + if($i != $length, $glue, '');
   }
 
   @return $result;
@@ -71,13 +88,18 @@
 
 
 // A Sass micro-templating function.
-// -----------------------------------------------------------------------------
-// @param [string] $format
-// @param [arglist | map] $args
-// -----------------------------------------------------------------------------
-// @return [string]
+// ---
+// @access private
+// ---
+// @param {String} $format
+// @param {Arglist | Map} $args
+// ---
+// @return {String}
 
-@function template($format, $args...) {
+@function template(
+  $format,
+  $args...
+) {
   $result: $format;
 
   @each $key, $value in keywords($args) {
@@ -101,40 +123,58 @@
 
 
 // Test whether `$value` is containedd between `$min` and `$max`.
-// -----------------------------------------------------------------------------
-// @param [number] $min: minimum range value
-// @param [number] $max: maximum range value
-// @param [number] $value: the value to be tested
-// -----------------------------------------------------------------------------
-// @return [boolean]
+// ---
+// @access private
+// ---
+// @param {Number} $min - minimum range value
+// @param {Number} $max - maximum range value
+// @param {Number} $value - the value to be tested
+// ---
+// @return {Bool}
 
-@function is-in-range($min, $max, $value) {
+@function is-in-range(
+  $min,
+  $max,
+  $value
+) {
   @return ($value >= $min) and ($value <= $max);
 }
 
 
 // Clamp `$value` between `$min` and `$max`.
-// -----------------------------------------------------------------------------
-// @param [number] $min: minimum range value
-// @param [number] $max: maximum range value
-// @param [number] $value: the value to be clamped
-// -----------------------------------------------------------------------------
-// @return [number]
+// ---
+// @access private
+// ---
+// @param {Number} $min - minimum range value
+// @param {Number} $max - maximum range value
+// @param {Number} $value - the value to be clamped
+// ---
+// @return {Number}
 
-@function clamp($min, $max, $value) {
+@function clamp(
+  $min,
+  $max,
+  $value
+) {
   @return if($value > $max, $max, if($value < $min, $min, $value));
 }
 
 
 // Logs an error at `$pointer` if `$value` is not in `$range`.
-// -----------------------------------------------------------------------------
-// @param [string] $pointer: caller function/mixin name
-// @param [list] $range: range the value must be contained in
-// @param [number] $value: the value to be tested
-// -----------------------------------------------------------------------------
-// @return [boolean]
+// ---
+// @access private
+// ---
+// @param {String} $pointer - caller function/mixin name
+// @param {List} $range - range the value must be contained in
+// @param {Number} $value - the value to be tested
+// ---
+// @return {Bool}
 
-@function check-in-range($pointer, $range, $value) {
+@function check-in-range(
+  $pointer,
+  $range,
+  $value
+) {
   $min: nth($range, 1);
   $max: nth($range, 2);
 
@@ -146,17 +186,23 @@
   @return true;
 }
 
+// @access private
+
 @mixin check-in-range($pointer, $range, $value) {
   $in-range: check-in-range($pointer, $range, $value);
 }
 
 
 // Capitalize string.
-// -----------------------------------------------------------------------------
-// @param [string] $string
-// -----------------------------------------------------------------------------
-// @return [string]
+// ---
+// @access private
+// ---
+// @param {String} $string
+// ---
+// @return {String}
 
-@function capitalize($string) {
+@function capitalize(
+  $string
+) {
   @return to-upper-case(str-slice($string, 1, 1)) + str-slice($string, 2);
 }

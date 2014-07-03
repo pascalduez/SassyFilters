@@ -3,13 +3,16 @@
 // ---------------
 
 
-// @private `opacity` filter function
-// -----------------------------------------------------------------------------
-// @param [number]: $value
-// -----------------------------------------------------------------------------
-// @dependencies `_svg-filter`, `_ie-filter`
-// -----------------------------------------------------------------------------
-// @return [map]
+// `opacity` filter function
+// ---
+// @access private
+// ---
+// @requires _svg-filter
+// @requires _ie-filter
+// ---
+// @param {Number} $value
+// ---
+// @return {Map}
 
 @function _fn-opacity(
   $value
@@ -31,13 +34,11 @@
 }
 
 
-// @public `opacity` filter mixin
-// -----------------------------------------------------------------------------
-// @spec opacity() = opacity( [ <number> | <percentage> ] )
-// -----------------------------------------------------------------------------
-// @param [number]: $value
-// -----------------------------------------------------------------------------
-// @print [css]
+// `opacity` filter mixin
+// ---
+// @ignore spec opacity() = opacity( [ <number> | <percentage> ] )
+// ---
+// @param {Number} $value
 
 @mixin opacity(
   $value: 1

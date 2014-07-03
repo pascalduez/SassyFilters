@@ -121,6 +121,48 @@ module.exports = function(grunt) {
       },
     },
 
+    clean: {
+      rebuild: {
+        src: [
+          'node_modules',
+          'ruby',
+          'Gemfile.lock',
+          '.sass-cache',
+          '.bundle'
+        ]
+      },
+      www: {
+        src: ['www']
+      }
+    },
+
+    copy: {
+      www: {
+        files: [
+          {
+            expand: true,
+            src: ['docs/**'],
+            dest: 'www/'
+          },
+          {
+            expand: true,
+            cwd: 'test/',
+            src: ['index.html', 'img/**/*', 'css/*'],
+            dest: 'www/test'
+          }
+        ]
+      }
+    },
+
+    'gh-pages': {
+      options: {
+        base: 'www',
+        message: 'Update gh-pages',
+        push: true
+      },
+      src: ['**']
+    },
+
     bump: {
       options: {
         files: ['package.json', 'bower.json'],
@@ -134,19 +176,15 @@ module.exports = function(grunt) {
         push: false,
         pushTo: 'master'
       }
-    },
-
-    'gh-pages': {
-      options: {
-        base: 'test',
-        message: 'Update gh-pages',
-        push: true
-      },
-      src: ['index.html', 'img/*', 'css/*']
     }
 
   });
 
+  grunt.registerTask("www", [
+    "copy:www",
+    "gh-pages",
+    "clean:www"
+  ]);
 
   grunt.registerTask('test', [
     'browserSync:test',

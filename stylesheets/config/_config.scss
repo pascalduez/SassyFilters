@@ -3,7 +3,8 @@
 // ---------------------------
 
 
-// Default settings.
+// @var {Map} - Default settings.
+
 $filters-defaults: (
 
   // Encoding of the SVG filters as data URI: raw | escaped | base64.
@@ -14,10 +15,20 @@ $filters-defaults: (
 
 );
 
-// User settings.
+
+// @var {Map} - User settings.
+
 $filters-settings: () !default;
 
-// Retreive a configuration item.
+
+// Retrieve a configuration item.
+// ---
+// @access private
+// ---
+// @param {String} $name - configuration item key
+// ---
+// @return {*}
+
 @function conf($key) {
   @if not map-has-key($filters-defaults, $key) {
     @warn "No item `#{$key}` found in configuration.";

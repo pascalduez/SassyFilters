@@ -3,17 +3,17 @@
 // -------------------
 
 
-// @private `drop-shadow` filter function
-// -----------------------------------------------------------------------------
-// @param [number]: $offset-x
-// @param [number]: $offset-y
-// @param [number]: $blur-radius
-// @param [color]: $color
-// @param [number]: $spread-radius (not implemented yet)
-// -----------------------------------------------------------------------------
-// @dependencies `_svg-filter`, `_ie-filter`
-// -----------------------------------------------------------------------------
-// @return [map]
+// `drop-shadow` filter function
+// ---
+// @access private
+// ---
+// @param {Number} $offset-x
+// @param {Number} $offset-y
+// @param {Number} $blur-radius
+// @param {Color} $color
+// @param {Number} $spread-radius - (not implemented yet)
+// ---
+// @return {Map}
 
 @function _fn-drop-shadow(
   $offset-x,
@@ -47,16 +47,14 @@
 }
 
 
-// @public `drop-shadow` filter mixin
-// -----------------------------------------------------------------------------
-// @spec drop-shadow() = drop-shadow( <length>{2,3} <color>? )
-// -----------------------------------------------------------------------------
-// @param [number]: $offset-x
-// @param [number]: $offset-y
-// @param [number]: $blur-radius
-// @param [color]: $color
-// -----------------------------------------------------------------------------
-// @print [css]
+// `drop-shadow` filter mixin
+// ---
+// @ignore spec drop-shadow() = drop-shadow( <length>{2,3} <color>? )
+// ---
+// @param {Number} $offset-x
+// @param {Number} $offset-y
+// @param {Number} $blur-radius
+// @param {Color} $color
 
 @mixin drop-shadow(
   $offset-x: 0px,
