@@ -2,8 +2,8 @@
 
 Cross-Browser configurable CSS-SVG filters.  
 
-*Online [preview](http://pascalduez.github.io/SassyFilters) (test folder).*  
-
+*Online [preview](http://pascalduez.github.io/SassyFilters/test) (test folder).*  
+*Online [Documentation](http://pascalduez.github.io/SassyFilters/docs) (generated with SassDoc).*
 
 
 ## API
