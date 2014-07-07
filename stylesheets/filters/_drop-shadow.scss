@@ -3,18 +3,19 @@
 // -------------------
 
 
-// `drop-shadow` filter function
-// ---
-// @access private
-// ---
-// @param {Number} $offset-x
-// @param {Number} $offset-y
-// @param {Number} $blur-radius
-// @param {Color} $color
-// @param {Number} $spread-radius - (not implemented yet)
-// ---
-// @return {Map}
-
+/**
+ * `drop-shadow` filter function
+ * ---
+ * @access private
+ * ---
+ * @param {Number} $offset-x
+ * @param {Number} $offset-y
+ * @param {Number} $blur-radius
+ * @param {Color} $color
+ * @param {Number} $spread-radius (null) - (not implemented yet)
+ * ---
+ * @return {Map}
+ */
 @function _fn-drop-shadow(
   $offset-x,
   $offset-y,
@@ -47,15 +48,19 @@
 }
 
 
-// `drop-shadow` filter mixin
-// ---
-// @ignore spec drop-shadow() = drop-shadow( <length>{2,3} <color>? )
-// ---
-// @param {Number} $offset-x
-// @param {Number} $offset-y
-// @param {Number} $blur-radius
-// @param {Color} $color
-
+/**
+ * `drop-shadow` filter mixin
+ * ---
+ * @requires {mixin} check-in-range
+ * @requires {mixin} filters
+ * ---
+ * @ignore spec drop-shadow() = drop-shadow( <length>{2,3} <color>? )
+ * ---
+ * @param {Number} $offset-x (0px)
+ * @param {Number} $offset-y ($offset-x)
+ * @param {Number} $blur-radius (Opx)
+ * @param {Color} $color (rgba(0 ,0 , 0, .5))
+ */
 @mixin drop-shadow(
   $offset-x: 0px,
   $offset-y: $offset-x,

@@ -3,10 +3,13 @@
 // -------------------------
 
 
-// @var {Map} - SVG wrappers.
-// ---
-// @access private
-
+/**
+ * SVG wrappers.
+ * ---
+ * @access private
+ * ---
+ * @type Map
+ */
 $svg-wrappers: (
 
   svg:
@@ -20,10 +23,13 @@ $svg-wrappers: (
 );
 
 
-// @var {Map} - Filters shorthand equivalents.
-// ---
-// @access private
-
+/**
+ * Filters shorthand equivalents.
+ * ---
+ * @access private
+ * ---
+ * @type Map
+ */
 $svg-filters: (
 
   // Spec: blur

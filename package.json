@@ -31,7 +31,7 @@
     "grunt-gh-pages": "^0.9.1",
     "grunt-shell": "^0.7.0",
     "load-grunt-tasks": "^0.6.0",
-    "sassdoc": "^0.3.9",
+    "sassdoc": "^1.0.0-rc.11",
     "time-grunt": "^0.3.2"
   },
   "engines": {

@@ -3,17 +3,18 @@
 // --------------
 
 
-// `invert` filter function
-// ---
-// @access private
-// ---
-// @requires _svg-filter
-// @requires _ie-filter
-// ---
-// @param {Number} $value
-// ---
-// @return {Map}
-
+/**
+ * `invert` filter function
+ * ---
+ * @access private
+ * ---
+ * @requires _svg-filter
+ * @requires _ie-filter
+ * ---
+ * @param {Number} $value
+ * ---
+ * @return {Map}
+ */
 @function _fn-invert(
   $value
 ) {
@@ -34,12 +35,16 @@
 }
 
 
-// `invert` filter mixin
-// ---
-// @ignore spec invert() = invert( [ <number> | <percentage> ] )
-// ---
-// @param {Number} $value
-
+/**
+ * `invert` filter mixin
+ * ---
+ * @requires {mixin} check-in-range
+ * @requires {mixin} filters
+ * ---
+ * @ignore spec invert() = invert( [ <number> | <percentage> ] )
+ * ---
+ * @param {Number} $value (0)
+ */
 @mixin invert(
   $value: 0
 ) {

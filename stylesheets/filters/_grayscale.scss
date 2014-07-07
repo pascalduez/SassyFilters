@@ -3,17 +3,18 @@
 // -----------------
 
 
-// `grayscale` filter function
-// ---
-// @access private
-// ---
-// @requires _svg-filter
-// @requires _ie-filter
-// ---
-// @param {Number} $value
-// ---
-// @return {Map}
-
+/**
+ * `grayscale` filter function
+ * ---
+ * @access private
+ * ---
+ * @requires _svg-filter
+ * @requires _ie-filter
+ * ---
+ * @param {Number} $value
+ * ---
+ * @return {Map}
+ */
 @function _fn-grayscale(
   $value
 ) {
@@ -40,12 +41,16 @@
 }
 
 
-// `grayscale` filter mixin
-// ---
-// @ignore spec grayscale() = grayscale( [ <number> | <percentage> ] )
-// ---
-// @param {Number} $value
-
+/**
+ * `grayscale` filter mixin
+ * ---
+ * @requires {mixin} check-in-range
+ * @requires {mixin} filters
+ * ---
+ * @ignore spec grayscale() = grayscale( [ <number> | <percentage> ] )
+ * ---
+ * @param {Number} $value (0)
+ */
 @mixin grayscale(
   $value: 0
 ) {

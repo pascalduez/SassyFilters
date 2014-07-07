@@ -3,11 +3,12 @@
 // ----------------------------
 
 
-// Ouput mixin, print final cross-browser filters declarations.
-// Print final filters output.
-// ---
-// @param {Map} $output - a map of browser specific filters
-
+/**
+ * Ouput mixin, print final cross-browser filters declarations.
+ * Print final filters output.
+ * ---
+ * @param {Map} $output - a map of browser specific filters
+ */
 @mixin output(
   $output
 ) {

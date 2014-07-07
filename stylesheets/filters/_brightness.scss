@@ -3,17 +3,18 @@
 // ------------------
 
 
-// `brightness` filter function
-// ---
-// @access private
-// ---
-// @requires _svg-filter
-// @requires _ie-filter
-// ---
-// @param {Number} $value
-// ---
-// @return {Map}
-
+/**
+ * `brightness` filter function
+ * ---
+ * @access private
+ * ---
+ * @requires _svg-filter
+ * @requires _ie-filter
+ * ---
+ * @param {Number} $value
+ * ---
+ * @return {Map}
+ */
 @function _fn-brightness(
   $value
 ) {
@@ -35,12 +36,16 @@
 }
 
 
-// `brightness` filter mixin
-// ---
-// @ignore spec brightness() = brightness( [ <number> | <percentage> ] )
-// ---
-// @param {Number} $value
-
+/**
+ * `brightness` filter mixin
+ * ---
+ * @requires {mixin} check-in-range
+ * @requires {mixin} filters
+ * ---
+ * @ignore spec brightness() = brightness( [ <number> | <percentage> ] )
+ * ---
+ * @param {Number} $value (1)
+ */
 @mixin brightness(
   $value: 1
 ) {

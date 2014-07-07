@@ -3,17 +3,18 @@
 // ------------------
 
 
-// `hue-rotate` filter function
-// ---
-// @access private
-// ---
-// @requires _svg-filter
-// @requires _ie-filter
-// ---
-// @param {Number} $angle
-// ---
-// @return {Map}
-
+/**
+ * `hue-rotate` filter function
+ * ---
+ * @access private
+ * ---
+ * @requires _svg-filter
+ * @requires _ie-filter
+ * ---
+ * @param {Number} $angle
+ * ---
+ * @return {Map}
+ */
 @function _fn-hue-rotate(
   $angle
 ) {
@@ -34,12 +35,16 @@
 }
 
 
-// `hue-rotate` filter mixin
-// ---
-// @ignore spec hue-rotate() = hue-rotate( <angle> )
-// ---
-// @param {Number} $angle
-
+/**
+ * `hue-rotate` filter mixin
+ * ---
+ * @requires {mixin} check-in-range
+ * @requires {mixin} filters
+ * ---
+ * @ignore spec hue-rotate() = hue-rotate( <angle> )
+ * ---
+ * @param {Number} $angle (0deg)
+ */
 @mixin hue-rotate(
   $angle: 0deg
 ) {

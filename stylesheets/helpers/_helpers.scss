@@ -3,15 +3,16 @@
 // ---------------------
 
 
-// Returns a list of all keys in a map.
-// ---
-// @access private
-// ---
-// @param {Map} $map
-// @param {String} $separator (space) - space | comma | auto
-// ---
-// @return {List}
-
+/**
+ * Returns a list of all keys in a map.
+ * ---
+ * @access private
+ * ---
+ * @param {Map} $map
+ * @param {String} $separator (space) - space | comma | auto
+ * ---
+ * @return {List}
+ */
 @function _map-keys(
   $map,
   $separator: space
@@ -20,15 +21,16 @@
 }
 
 
-// Returns a list of all values in a map.
-// ---
-// @access private
-// ---
-// @param {Map} $map
-// @param {String} $separator: space | comma | auto
-// ---
-// @return {List}
-
+/**
+ * Returns a list of all values in a map.
+ * ---
+ * @access private
+ * ---
+ * @param {Map} $map
+ * @param {String} $separator - space | comma | auto
+ * ---
+ * @return {List}
+ */
 @function _map-values(
   $map,
   $separator: space
@@ -37,14 +39,15 @@
 }
 
 
-// Test whether `$value` is empty.
-// ---
-// @access private
-// ---
-// @param {*} $value
-// ---
-// @return {Bool}
-
+/**
+ * Test whether `$value` is empty.
+ * ---
+ * @access private
+ * ---
+ * @param {*} $value
+ * ---
+ * @return {Bool}
+ */
 @function empty($value) {
   @if not $value
        or $value == ""
@@ -57,15 +60,16 @@
 }
 
 
-// Join `$list` into a string.
-// ---
-// @access private
-// ---
-// @param {List} $list - the list to convert
-// @param {String} $glue ('') - a string to separate each element of the list
-// ---
-// @return {String}
-
+/**
+ * Join `$list` into a string.
+ * ---
+ * @access private
+ * ---
+ * @param {List} $list - the list to convert
+ * @param {String} $glue ('') - a string to separate each element of the list
+ * ---
+ * @return {String}
+ */
 @function _join(
   $list,
   $glue: ''
@@ -87,15 +91,16 @@
 }
 
 
-// A Sass micro-templating function.
-// ---
-// @access private
-// ---
-// @param {String} $format
-// @param {Arglist | Map} $args
-// ---
-// @return {String}
-
+/**
+ * A Sass micro-templating function.
+ * ---
+ * @access private
+ * ---
+ * @param {String} $format
+ * @param {Arglist | Map} $args
+ * ---
+ * @return {String}
+ */
 @function template(
   $format,
   $args...
@@ -122,16 +127,17 @@
 }
 
 
-// Test whether `$value` is containedd between `$min` and `$max`.
-// ---
-// @access private
-// ---
-// @param {Number} $min - minimum range value
-// @param {Number} $max - maximum range value
-// @param {Number} $value - the value to be tested
-// ---
-// @return {Bool}
-
+/**
+ * Test whether `$value` is containedd between `$min` and `$max`.
+ * ---
+ * @access private
+ * ---
+ * @param {Number} $min - minimum range value
+ * @param {Number} $max - maximum range value
+ * @param {Number} $value - the value to be tested
+ * ---
+ * @return {Bool}
+ */
 @function is-in-range(
   $min,
   $max,
@@ -141,16 +147,17 @@
 }
 
 
-// Clamp `$value` between `$min` and `$max`.
-// ---
-// @access private
-// ---
-// @param {Number} $min - minimum range value
-// @param {Number} $max - maximum range value
-// @param {Number} $value - the value to be clamped
-// ---
-// @return {Number}
-
+/**
+ * Clamp `$value` between `$min` and `$max`.
+ * ---
+ * @access private
+ * ---
+ * @param {Number} $min - minimum range value
+ * @param {Number} $max - maximum range value
+ * @param {Number} $value - the value to be clamped
+ * ---
+ * @return {Number}
+ */
 @function clamp(
   $min,
   $max,
@@ -160,16 +167,17 @@
 }
 
 
-// Logs an error at `$pointer` if `$value` is not in `$range`.
-// ---
-// @access private
-// ---
-// @param {String} $pointer - caller function/mixin name
-// @param {List} $range - range the value must be contained in
-// @param {Number} $value - the value to be tested
-// ---
-// @return {Bool}
-
+/**
+ * Logs an error at `$pointer` if `$value` is not in `$range`.
+ * ---
+ * @access private
+ * ---
+ * @param {String} $pointer - caller function/mixin name
+ * @param {List} $range - range the value must be contained in
+ * @param {Number} $value - the value to be tested
+ * ---
+ * @return {Bool}
+ */
 @function check-in-range(
   $pointer,
   $range,
@@ -186,21 +194,26 @@
   @return true;
 }
 
-// @access private
 
+/**
+ * @alias check-in-range
+ * ---
+ * @access private
+ */
 @mixin check-in-range($pointer, $range, $value) {
   $in-range: check-in-range($pointer, $range, $value);
 }
 
 
-// Capitalize string.
-// ---
-// @access private
-// ---
-// @param {String} $string
-// ---
-// @return {String}
-
+/**
+ * Capitalize string.
+ * ---
+ * @access private
+ * ---
+ * @param {String} $string
+ * ---
+ * @return {String}
+ */
 @function capitalize(
   $string
 ) {

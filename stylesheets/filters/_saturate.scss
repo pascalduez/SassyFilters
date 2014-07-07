@@ -3,17 +3,18 @@
 // ----------------
 
 
-// `saturate` filter function
-// ---
-// @access private
-// ---
-// @requires _svg-filter
-// @requires _ie-filter
-// ---
-// @param {Number} $value
-// ---
-// @return {Map}
-
+/**
+ * `saturate` filter function
+ * ---
+ * @access private
+ * ---
+ * @requires _svg-filter
+ * @requires _ie-filter
+ * ---
+ * @param {Number} $value
+ * ---
+ * @return {Map}
+ */
 @function _fn-saturate(
   $value
 ) {
@@ -34,12 +35,16 @@
 }
 
 
-// `saturate` filter mixin
-// ---
-// @ignore spec saturate() = saturate( [ <number> | <percentage> ] )
-// ---
-// @param {Number} $value
-
+/**
+ * `saturate` filter mixin
+ * ---
+ * @requires {mixin} check-in-range
+ * @requires {mixin} filters
+ * ---
+ * @ignore spec saturate() = saturate( [ <number> | <percentage> ] )
+ * ---
+ * @param {Number} $value (1)
+ */
 @mixin saturate(
   $value: 1
 ) {
