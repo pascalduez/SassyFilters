@@ -26,9 +26,11 @@ module.exports = function(grunt) {
     '// License: <%= pkg.license.type %>\n\n'
   ].join('');
 
+  var pkg = grunt.file.readJSON('package.json');
+
   grunt.initConfig({
 
-    pkg: grunt.file.readJSON('package.json'),
+    pkg: pkg,
 
     conf: config,
 
@@ -176,14 +178,31 @@ module.exports = function(grunt) {
         push: false,
         pushTo: 'master'
       }
+    },
+
+    sassdoc: {
+      default: {
+        src: 'stylesheets',
+        dest: 'docs',
+        options: {
+          verbose: true,
+          display: {
+            access: ['public'],
+            alias: false,
+            watermark: true
+          },
+          package: pkg
+        }
+      }
     }
 
   });
 
-  grunt.registerTask("www", [
-    "copy:www",
-    "gh-pages",
-    "clean:www"
+  grunt.registerTask('www', [
+    'sassdoc',
+    'copy:www',
+    'gh-pages',
+    'clean:www'
   ]);
 
   grunt.registerTask('test', [
