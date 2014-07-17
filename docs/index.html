@@ -85,6 +85,16 @@
   
     
       
+      
+    
+  
+    
+      
+      
+    
+  
+    
+      
     
   
     
@@ -128,16 +138,6 @@
     
   
     
-      
-    
-  
-    
-      
-      
-    
-  
-    
-      
       
     
   
@@ -314,24 +314,6 @@
 
           
           <li>
-            <a href="#function-_svg-filter">_svg-filter</a> 
-            
-            
-          </li>
-
-        
-
-          
-          <li>
-            <a href="#function-_ie-filter">_ie-filter</a> 
-            
-            
-          </li>
-
-        
-
-          
-          <li>
             <a href="#function-svg-data-uri">svg-data-uri</a> 
             
             
@@ -342,6 +324,24 @@
           
           <li>
             <a href="#function-inline-svg">inline-svg</a> 
+            
+            
+          </li>
+
+        
+
+          
+          <li>
+            <a href="#function-_svg-filter">_svg-filter</a> 
+            
+            
+          </li>
+
+        
+
+          
+          <li>
+            <a href="#function-_ie-filter">_ie-filter</a> 
             
             
           </li>
@@ -361,15 +361,6 @@
         <li class="sidebar__sub-heading"><a href="#mixin">Mixins</a></li>
           
         
-        
-
-          
-          <li>
-            <a href="#mixin-blur">blur</a> 
-            
-            
-          </li>
-
         
 
           
@@ -429,6 +420,15 @@
           
           <li>
             <a href="#mixin-opacity">opacity</a> 
+            
+            
+          </li>
+
+        
+
+          
+          <li>
+            <a href="#mixin-blur">blur</a> 
             
             
           </li>
@@ -682,401 +682,6 @@
           <h1 class="main__heading" id="function">Functions</h1>
 
           
-          
-
-            
-            
-            
-            <section class="main__item  item" id="function-_svg-filter">
-              <h2 class="item__heading">
-  
-
-  <a class="item__name" href="#function-_svg-filter">_svg-filter</a>
-
-  
-
-  
-
-  
-</h2>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-    
-  
-
-  
-
-  
-
-  
-    
-  
-
-  
-    
-  
-
-<pre class="item__code"><code class="language-scss">@function _svg-filter($function, $args...) { ... }</code></pre>
-
-
-
-  
-  
-  
-  <h3 class="item__sub-heading">Description</h3>
-  
-  <div class="item__description"><p>Helper: Get and format a single SVG filter.</p></div>
-
-
-  <h3 class="item__sub-heading">Parameters</h3>
-
-
-
-  <table class="item__parameters">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Type</th>
-        <th>Default value</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-        <tr class="item__parameter">
-          <td data-label="name"><code>$function</code></td>
-          <td data-label="desc"><p>filter function</p></td>
-          <td data-label="type">
-          
-            String
-          
-          </td>
-          <td data-label="default">
-          
-            &mdash;
-          
-          </td>
-        </tr>
-      
-        <tr class="item__parameter">
-          <td data-label="name"><code>$args</code></td>
-          <td data-label="desc"><p>arguments to be passed to the SVG filter</p></td>
-          <td data-label="type">
-          
-            Arglist
-          
-          </td>
-          <td data-label="default">
-          
-            &mdash;
-          
-          </td>
-        </tr>
-      
-    </tbody>
-  </table>
-
-
-
-  
-  <h3 class="item__sub-heading">Returns</h3>
-  <p class="sassdoc__item-description">
-  
-    String
-  
-  </p>
-
-
-  
-
-  
-
-  
-
-
-  
-
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-  	
-
-  
-
-  
-
-  
-  <h3 class="item__sub-heading">Found at</h3>
-
-  <p><code>stylesheets/helpers/_filters.scss</code></p>
-
-
-
-
-            </section>
-
-          
-
-            
-            
-            
-            <section class="main__item  item" id="function-_ie-filter">
-              <h2 class="item__heading">
-  
-
-  <a class="item__name" href="#function-_ie-filter">_ie-filter</a>
-
-  
-
-  
-
-  
-</h2>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-    
-  
-
-  
-
-  
-
-  
-    
-  
-
-  
-    
-  
-
-<pre class="item__code"><code class="language-scss">@function _ie-filter($filter, $args...) { ... }</code></pre>
-
-
-
-  
-  
-  
-  <h3 class="item__sub-heading">Description</h3>
-  
-  <div class="item__description"><p>Helper: IE filter formatting helper</p></div>
-
-
-  <h3 class="item__sub-heading">Parameters</h3>
-
-
-
-  <table class="item__parameters">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Type</th>
-        <th>Default value</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-        <tr class="item__parameter">
-          <td data-label="name"><code>$filter</code></td>
-          <td data-label="desc"><p>filter name</p></td>
-          <td data-label="type">
-          
-            String
-          
-          </td>
-          <td data-label="default">
-          
-            &mdash;
-          
-          </td>
-        </tr>
-      
-        <tr class="item__parameter">
-          <td data-label="name"><code>$args</code></td>
-          <td data-label="desc"><p>filter properties</p></td>
-          <td data-label="type">
-          
-            Arglist
-          
-          </td>
-          <td data-label="default">
-          
-            &mdash;
-          
-          </td>
-        </tr>
-      
-    </tbody>
-  </table>
-
-
-
-  
-  <h3 class="item__sub-heading">Returns</h3>
-  <p class="sassdoc__item-description">
-  
-    String
-  
-  </p>
-
-
-  
-
-  
-
-  
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-  
-    
-      
-      <h3 class="item__sub-heading">Used by</h3>
-      <ul class="list-unstyled">
-    
-
-    <li><a href="#mixin-disable-filter"><code>disable-filter</code></a></li>
-  
-
-
-
-
-</ul>
-
-
-
-  	
-
-  
-
-  
-
-  
-  <h3 class="item__sub-heading">Found at</h3>
-
-  <p><code>stylesheets/helpers/_filters.scss</code></p>
-
-
-
-
-            </section>
-
           
 
             
@@ -1525,31 +1130,15 @@
             </section>
 
           
-        </section>
-
-      
-
-    
-
-      
-      
-
-      
-      
-        <section class="main__section">
-          <h1 class="main__heading" id="mixin">Mixins</h1>
-
-          
-          
 
             
             
             
-            <section class="main__item  item" id="mixin-blur">
+            <section class="main__item  item" id="function-_svg-filter">
               <h2 class="item__heading">
   
 
-  <a class="item__name" href="#mixin-blur">blur</a>
+  <a class="item__name" href="#function-_svg-filter">_svg-filter</a>
 
   
 
@@ -1565,8 +1154,6 @@
   
 
   
-    
-  
 
   
 
@@ -1574,7 +1161,19 @@
     
   
 
-<pre class="item__code"><code class="language-scss">@mixin blur($radius: 0px) { ... }</code></pre>
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+<pre class="item__code"><code class="language-scss">@function _svg-filter($function, $args...) { ... }</code></pre>
 
 
 
@@ -1583,7 +1182,7 @@
   
   <h3 class="item__sub-heading">Description</h3>
   
-  <div class="item__description"><p><code>blur</code> filter mixin</p></div>
+  <div class="item__description"><p>Helper: Get and format a single SVG filter.</p></div>
 
 
   <h3 class="item__sub-heading">Parameters</h3>
@@ -1602,16 +1201,31 @@
     <tbody>
       
         <tr class="item__parameter">
-          <td data-label="name"><code>$radius</code></td>
-          <td data-label="desc">&mdash;</td>
+          <td data-label="name"><code>$function</code></td>
+          <td data-label="desc"><p>filter function</p></td>
           <td data-label="type">
           
-            Number
+            String
           
           </td>
           <td data-label="default">
           
-            <code>0px</code>
+            &mdash;
+          
+          </td>
+        </tr>
+      
+        <tr class="item__parameter">
+          <td data-label="name"><code>$args</code></td>
+          <td data-label="desc"><p>arguments to be passed to the SVG filter</p></td>
+          <td data-label="type">
+          
+            Arglist
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;
           
           </td>
         </tr>
@@ -1622,6 +1236,13 @@
 
 
   
+  <h3 class="item__sub-heading">Returns</h3>
+  <p class="sassdoc__item-description">
+  
+    String
+  
+  </p>
+
 
   
 
@@ -1634,20 +1255,42 @@
 
 
 
-  
-    
-      
-      <h3 class="item__sub-heading">Requires</h3>
-      <ul class="list-unstyled">
-    
 
-    <li><a href="#mixin-filters"><code>filters</code></a></li>
+
+
   
 
 
 
+  
 
-</ul>
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
 
 
 
@@ -1667,13 +1310,236 @@
   
   <h3 class="item__sub-heading">Found at</h3>
 
-  <p><code>stylesheets/filters/_blur.scss</code></p>
+  <p><code>stylesheets/helpers/_filters.scss</code></p>
 
 
 
 
             </section>
 
+          
+
+            
+            
+            
+            <section class="main__item  item" id="function-_ie-filter">
+              <h2 class="item__heading">
+  
+
+  <a class="item__name" href="#function-_ie-filter">_ie-filter</a>
+
+  
+
+  
+
+  
+</h2>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+<pre class="item__code"><code class="language-scss">@function _ie-filter($filter, $args...) { ... }</code></pre>
+
+
+
+  
+  
+  
+  <h3 class="item__sub-heading">Description</h3>
+  
+  <div class="item__description"><p>Helper: IE filter formatting helper</p></div>
+
+
+  <h3 class="item__sub-heading">Parameters</h3>
+
+
+
+  <table class="item__parameters">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="item__parameter">
+          <td data-label="name"><code>$filter</code></td>
+          <td data-label="desc"><p>filter name</p></td>
+          <td data-label="type">
+          
+            String
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
+        </tr>
+      
+        <tr class="item__parameter">
+          <td data-label="name"><code>$args</code></td>
+          <td data-label="desc"><p>filter properties</p></td>
+          <td data-label="type">
+          
+            Arglist
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+
+  
+  <h3 class="item__sub-heading">Returns</h3>
+  <p class="sassdoc__item-description">
+  
+    String
+  
+  </p>
+
+
+  
+
+  
+
+  
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+    
+      
+      <h3 class="item__sub-heading">Used by</h3>
+      <ul class="list-unstyled">
+    
+
+    <li><a href="#mixin-disable-filter"><code>disable-filter</code></a></li>
+  
+
+
+
+
+</ul>
+
+
+
+  	
+
+  
+
+  
+
+  
+  <h3 class="item__sub-heading">Found at</h3>
+
+  <p><code>stylesheets/helpers/_filters.scss</code></p>
+
+
+
+
+            </section>
+
+          
+        </section>
+
+      
+
+    
+
+      
+      
+
+      
+      
+        <section class="main__section">
+          <h1 class="main__heading" id="mixin">Mixins</h1>
+
+          
           
 
             
@@ -2698,6 +2564,140 @@
             
             
             
+            <section class="main__item  item" id="mixin-blur">
+              <h2 class="item__heading">
+  
+
+  <a class="item__name" href="#mixin-blur">blur</a>
+
+  
+
+  
+
+  
+</h2>
+
+
+
+
+
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+<pre class="item__code"><code class="language-scss">@mixin blur($radius: 0px) { ... }</code></pre>
+
+
+
+  
+  
+  
+  <h3 class="item__sub-heading">Description</h3>
+  
+  <div class="item__description"><p><code>blur</code> filter mixin</p></div>
+
+
+  <h3 class="item__sub-heading">Parameters</h3>
+
+
+
+  <table class="item__parameters">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="item__parameter">
+          <td data-label="name"><code>$radius</code></td>
+          <td data-label="desc">&mdash;</td>
+          <td data-label="type">
+          
+            Number
+          
+          </td>
+          <td data-label="default">
+          
+            <code>0px</code>
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+
+  
+    
+      
+      <h3 class="item__sub-heading">Requires</h3>
+      <ul class="list-unstyled">
+    
+
+    <li><a href="#mixin-filters"><code>filters</code></a></li>
+  
+
+
+
+
+</ul>
+
+
+
+  
+
+
+
+
+
+
+  	
+
+  
+
+  
+
+  
+  <h3 class="item__sub-heading">Found at</h3>
+
+  <p><code>stylesheets/filters/_blur.scss</code></p>
+
+
+
+
+            </section>
+
+          
+
+            
+            
+            
             <section class="main__item  item" id="mixin-saturate">
               <h2 class="item__heading">
   
@@ -3221,15 +3221,6 @@
       <ul class="list-unstyled">
     
 
-    <li><a href="#mixin-blur"><code>blur</code></a></li>
-  
-
-
-
-  
-  
-    
-
     <li><a href="#mixin-brightness"><code>brightness</code></a></li>
   
 
@@ -3285,6 +3276,15 @@
     
 
     <li><a href="#mixin-opacity"><code>opacity</code></a></li>
+  
+
+
+
+  
+  
+    
+
+    <li><a href="#mixin-blur"><code>blur</code></a></li>
   
 
 
