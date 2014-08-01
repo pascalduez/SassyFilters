@@ -3,7 +3,10 @@
 Cross-Browser configurable CSS-SVG filters.  
 
 *Online [preview](http://pascalduez.github.io/SassyFilters/test) (test folder).*  
-*Online [Documentation](http://pascalduez.github.io/SassyFilters/docs) (generated with SassDoc).*
+*Online [Documentation](http://pascalduez.github.io/SassyFilters/docs) (generated with [SassDoc]).*
+
+[SassDoc]: https://github.com/SassDoc/sassdoc
+
 
 
 ## API
@@ -158,6 +161,14 @@ Use them wisely.
 ## Roadmap
 
 * More IE support trough behaviors
+
+
+## Similar projects
+
+There are different ways of dealing with cross browser filters that are worth checking out:
+
+* [Pleeease: filters](https://github.com/iamvdo/pleeease-filters)
+* [Polyfilter](https://github.com/Schepp/CSS-Filters-Polyfill)
 
 
 
