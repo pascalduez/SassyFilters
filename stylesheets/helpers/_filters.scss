@@ -6,6 +6,8 @@
 /**
  * Helper: Get and format a single SVG filter.
  * ---
+ * @group helpers
+ * ---
  * @requires template
  * ---
  * @param {String} $function - filter function
@@ -27,7 +29,9 @@
 
 
 /**
- * Helper: IE filter formatting helper
+ * Helper: IE filter formatting helper.
+ * ---
+ * @group helpers
  * ---
  * @requires _join
  * @requires capitalize
@@ -68,8 +72,9 @@
 
 
 /**
- * Main filters function, used internaly for combining several filters
+ * Main filters function, used internaly for combining several filters.
  * ---
+ * @group helpers
  * @access private
  * ---
  * @param {Map} $filters - a map of filters `(function: (params))`
@@ -107,6 +112,7 @@
 /**
  * Preprocessor: wrap a list of filters into the final SVG string.
  * ---
+ * @group helpers
  * @access private
  * ---
  * @requires template
@@ -136,6 +142,7 @@
 /**
  * Preprocessor: apply last IE versions formating before printing.
  * ---
+ * @group helpers
  * @access private
  * ---
  * @requires _join

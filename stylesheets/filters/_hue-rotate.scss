@@ -4,9 +4,10 @@
 
 
 /**
- * `hue-rotate` filter function
+ * `hue-rotate` filter function.
  * ---
  * @access private
+ * @group filters
  * ---
  * @requires _svg-filter
  * @requires _ie-filter
@@ -36,7 +37,9 @@
 
 
 /**
- * `hue-rotate` filter mixin
+ * `hue-rotate` filter mixin.
+ * ---
+ * @group filters
  * ---
  * @requires {mixin} check-in-range
  * @requires {mixin} filters
@@ -44,6 +47,8 @@
  * @ignore spec hue-rotate() = hue-rotate( <angle> )
  * ---
  * @param {Number} $angle (0deg)
+ * ---
+ * @output Cross-Browser `hue-rotate` filter declarations
  */
 @mixin hue-rotate(
   $angle: 0deg

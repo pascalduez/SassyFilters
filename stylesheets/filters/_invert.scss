@@ -4,9 +4,10 @@
 
 
 /**
- * `invert` filter function
+ * `invert` filter function.
  * ---
  * @access private
+ * @group filters
  * ---
  * @requires _svg-filter
  * @requires _ie-filter
@@ -36,7 +37,9 @@
 
 
 /**
- * `invert` filter mixin
+ * `invert` filter mixin.
+ * ---
+ * @group filters
  * ---
  * @requires {mixin} check-in-range
  * @requires {mixin} filters
@@ -44,6 +47,8 @@
  * @ignore spec invert() = invert( [ <number> | <percentage> ] )
  * ---
  * @param {Number} $value (0)
+ * ---
+ * @output Cross-Browser `invert` filter declarations
  */
 @mixin invert(
   $value: 0

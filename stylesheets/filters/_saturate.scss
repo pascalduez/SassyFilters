@@ -4,9 +4,10 @@
 
 
 /**
- * `saturate` filter function
+ * `saturate` filter function.
  * ---
  * @access private
+ * @group filters
  * ---
  * @requires _svg-filter
  * @requires _ie-filter
@@ -36,7 +37,9 @@
 
 
 /**
- * `saturate` filter mixin
+ * `saturate` filter mixin.
+ * ---
+ * @group filters
  * ---
  * @requires {mixin} check-in-range
  * @requires {mixin} filters
@@ -44,6 +47,8 @@
  * @ignore spec saturate() = saturate( [ <number> | <percentage> ] )
  * ---
  * @param {Number} $value (1)
+ * ---
+ * @output Cross-Browser `saturate` filter declarations
  */
 @mixin saturate(
   $value: 1

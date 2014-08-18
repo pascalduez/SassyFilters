@@ -7,6 +7,7 @@
  * Default settings.
  * ---
  * @type Map
+ * @group config
  */
 $filters-defaults: (
 
@@ -21,8 +22,15 @@ $filters-defaults: (
 
 /**
  * User settings.
+ * Instanciate the same object in your stylesheets to override defaults.
  * ---
  * @type Map
+ * @group config
+ * ---
+ * @example scss Override defaults
+ * $filters-settings: (
+ *   ie-support: false
+ * );
  */
 $filters-settings: () !default;
 
@@ -31,6 +39,7 @@ $filters-settings: () !default;
  * Retrieve a configuration item.
  * ---
  * @access private
+ * @group config
  * ---
  * @param {String} $key - configuration item key
  * ---

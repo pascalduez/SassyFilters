@@ -4,9 +4,10 @@
 
 
 /**
- * `sepia` filter function
+ * `sepia` filter function.
  * ---
  * @access private
+ * @group filters
  * ---
  * @requires _svg-filter
  * @requires _ie-filter
@@ -42,7 +43,9 @@
 
 
 /**
- * `sepia` filter mixin
+ * `sepia` filter mixin.
+ * ---
+ * @group filters
  * ---
  * @requires {mixin} check-in-range
  * @requires {mixin} filters
@@ -50,6 +53,8 @@
  * @ignore spec sepia() = sepia( [ <number> | <percentage> ] )
  * ---
  * @param {Number} $value (0)
+ * ---
+ * @output Cross-Browser `sepia` filter declarations
  */
 @mixin sepia(
   $value: 0

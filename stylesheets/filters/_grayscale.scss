@@ -4,9 +4,10 @@
 
 
 /**
- * `grayscale` filter function
+ * `grayscale` filter function.
  * ---
  * @access private
+ * @group filters
  * ---
  * @requires _svg-filter
  * @requires _ie-filter
@@ -42,7 +43,9 @@
 
 
 /**
- * `grayscale` filter mixin
+ * `grayscale` filter mixin.
+ * ---
+ * @group filters
  * ---
  * @requires {mixin} check-in-range
  * @requires {mixin} filters
@@ -50,6 +53,8 @@
  * @ignore spec grayscale() = grayscale( [ <number> | <percentage> ] )
  * ---
  * @param {Number} $value (0)
+ * ---
+ * @output Cross-Browser `grayscale` filter declarations
  */
 @mixin grayscale(
   $value: 0

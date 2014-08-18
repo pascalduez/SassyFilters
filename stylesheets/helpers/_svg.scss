@@ -6,6 +6,8 @@
 /**
  * Format a proper SVG data URI.
  * ---
+ * @group helpers
+ * ---
  * @requires empty
  * ---
  * @param {String} $data - SVG data
@@ -48,7 +50,9 @@
 /**
  * Format and encode an inline SVG.
  * ---
- * @requires svg-data
+ * @group helpers
+ * ---
+ * @requires SassyFilters::svg-data
  * @requires svg-data-uri
  * ---
  * @param {String} $svgStr - stringified SVG

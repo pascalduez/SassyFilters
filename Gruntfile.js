@@ -191,7 +191,15 @@ module.exports = function(grunt) {
             alias: false,
             watermark: true
           },
-          package: pkg
+          groups: {
+            'undefined': 'General',
+            config: 'Configuration',
+            helpers: 'Helpers',
+            output: 'Output',
+            filters: 'Filters API'
+          },
+          package: pkg,
+          theme: 'default'
         }
       }
     }

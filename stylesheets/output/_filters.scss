@@ -7,6 +7,8 @@
  * Main filters mixin, used internaly or for combining several filters.
  * Print final conbined filters output.
  * ---
+ * @group output
+ * ---
  * @param {Map} $filters - a map of filters `(function: (params,))`
  * @param {String} $id (null) - filter name, default to function name or "custom"
  */

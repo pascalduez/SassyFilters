@@ -4,9 +4,10 @@
 
 
 /**
- * `blur` filter function
+ * `blur` filter function.
  * ---
  * @access private
+ * @group filters
  * ---
  * @requires _svg-filter
  * @requires _ie-filter
@@ -36,7 +37,9 @@
 
 
 /**
- * `blur` filter mixin
+ * `blur` filter mixin.
+ * ---
+ * @group filters
  * ---
  * @requires {mixin} check-in-range
  * @requires {mixin} filters
@@ -44,6 +47,8 @@
  * @ignore spec blur() = blur( <length> )
  * ---
  * @param {Number} $radius (0px)
+ * ---
+ * @output Cross-Browser `blur` filter declarations
  */
 @mixin blur(
   $radius: 0px

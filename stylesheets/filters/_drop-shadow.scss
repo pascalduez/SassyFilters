@@ -4,9 +4,10 @@
 
 
 /**
- * `drop-shadow` filter function
+ * `drop-shadow` filter function.
  * ---
  * @access private
+ * @group filters
  * ---
  * @param {Number} $offset-x
  * @param {Number} $offset-y
@@ -49,7 +50,9 @@
 
 
 /**
- * `drop-shadow` filter mixin
+ * `drop-shadow` filter mixin.
+ * ---
+ * @group filters
  * ---
  * @requires {mixin} check-in-range
  * @requires {mixin} filters
@@ -60,6 +63,8 @@
  * @param {Number} $offset-y ($offset-x)
  * @param {Number} $blur-radius (Opx)
  * @param {Color} $color (rgba(0 ,0 , 0, .5))
+ * ---
+ * @output Cross-Browser `drop-shadow` filter declarations
  */
 @mixin drop-shadow(
   $offset-x: 0px,

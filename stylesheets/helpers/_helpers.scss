@@ -6,6 +6,7 @@
 /**
  * Returns a list of all keys in a map.
  * ---
+ * @group helpers
  * @access private
  * ---
  * @param {Map} $map
@@ -24,6 +25,7 @@
 /**
  * Returns a list of all values in a map.
  * ---
+ * @group helpers
  * @access private
  * ---
  * @param {Map} $map
@@ -42,6 +44,7 @@
 /**
  * Test whether `$value` is empty.
  * ---
+ * @group helpers
  * @access private
  * ---
  * @param {*} $value
@@ -63,6 +66,7 @@
 /**
  * Join `$list` into a string.
  * ---
+ * @group helpers
  * @access private
  * ---
  * @param {List} $list - the list to convert
@@ -94,6 +98,7 @@
 /**
  * A Sass micro-templating function.
  * ---
+ * @group helpers
  * @access private
  * ---
  * @param {String} $format
@@ -130,6 +135,7 @@
 /**
  * Test whether `$value` is containedd between `$min` and `$max`.
  * ---
+ * @group helpers
  * @access private
  * ---
  * @param {Number} $min - minimum range value
@@ -150,7 +156,11 @@
 /**
  * Clamp `$value` between `$min` and `$max`.
  * ---
+ * @group helpers
  * @access private
+ * ---
+ * @author Stan Angeloff
+ * @link https://github.com/sass/sass/pull/402
  * ---
  * @param {Number} $min - minimum range value
  * @param {Number} $max - maximum range value
@@ -170,6 +180,7 @@
 /**
  * Logs an error at `$pointer` if `$value` is not in `$range`.
  * ---
+ * @group helpers
  * @access private
  * ---
  * @param {String} $pointer - caller function/mixin name
@@ -198,6 +209,7 @@
 /**
  * @alias check-in-range
  * ---
+ * @group helpers
  * @access private
  */
 @mixin check-in-range($pointer, $range, $value) {
@@ -208,6 +220,7 @@
 /**
  * Capitalize string.
  * ---
+ * @group helpers
  * @access private
  * ---
  * @param {String} $string

@@ -4,9 +4,10 @@
 
 
 /**
- * `opacity` filter function
+ * `opacity` filter function.
  * ---
  * @access private
+ * @group filters
  * ---
  * @requires _svg-filter
  * @requires _ie-filter
@@ -36,7 +37,9 @@
 
 
 /**
- * `opacity` filter mixin
+ * `opacity` filter mixin.
+ * ---
+ * @group filters
  * ---
  * @requires {mixin} check-in-range
  * @requires {mixin} filters
@@ -44,6 +47,8 @@
  * @ignore spec opacity() = opacity( [ <number> | <percentage> ] )
  * ---
  * @param {Number} $value (1)
+ * ---
+ * @output Cross-Browser `opacity` filter declarations
  */
 @mixin opacity(
   $value: 1

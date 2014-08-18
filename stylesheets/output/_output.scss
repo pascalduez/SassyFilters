@@ -7,6 +7,8 @@
  * Ouput mixin, print final cross-browser filters declarations.
  * Print final filters output.
  * ---
+ * @group output
+ * ---
  * @param {Map} $output - a map of browser specific filters
  */
 @mixin output(
