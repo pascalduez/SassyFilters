@@ -199,6 +199,7 @@ module.exports = function(grunt) {
             filters: 'Filters API'
           },
           package: pkg,
+          basePath: 'https://github.com/pascalduez/SassyFilters/tree/master/stylesheets',
           theme: 'default'
         }
       }
