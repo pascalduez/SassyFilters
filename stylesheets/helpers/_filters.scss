@@ -9,6 +9,7 @@
  * @group helpers
  * ---
  * @requires template
+ * @requires {variable} svg-filters
  * ---
  * @param {String} $function - filter function
  * @param {Arglist} $args - arguments to be passed to the SVG filter
@@ -117,6 +118,7 @@
  * ---
  * @requires template
  * @requires _join
+ * @requires {variable} svg-wrappers
  * ---
  * @param {Map} - $output
  * ---
@@ -155,7 +157,7 @@
   $output
 ) {
   @return map-merge($output, (
-      gte-ie8: quote(_join(map-get($output, ie), ", ")),
-      lt-ie8: unquote(_join(map-get($output, ie), " "))
-    ));
+    gte-ie8: quote(_join(map-get($output, ie), ", ")),
+    lt-ie8: unquote(_join(map-get($output, ie), " "))
+  ));
 }

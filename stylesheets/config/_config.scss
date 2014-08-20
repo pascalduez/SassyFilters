@@ -41,6 +41,9 @@ $filters-settings: () !default;
  * @access private
  * @group config
  * ---
+ * @requires {variable} filters-defaults
+ * @requires {variable} filters-settings
+ * ---
  * @param {String} $key - configuration item key
  * ---
  * @return {*}

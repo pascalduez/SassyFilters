@@ -54,6 +54,7 @@
  * ---
  * @requires SassyFilters::svg-data
  * @requires svg-data-uri
+ * @requires conf
  * ---
  * @param {String} $svgStr - stringified SVG
  * @param {String} $encoding (conf.data-type) - data type 'raw' | 'base64' | 'escaped'
