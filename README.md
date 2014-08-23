@@ -187,8 +187,6 @@ There are different ways of dealing with cross browser filters that are worth ch
   2. Run `npm install`
   3. Make your changes + write tests
   4. `grunt test`
-  5. Commit + Pull request
-
 
 
 ## Authors
