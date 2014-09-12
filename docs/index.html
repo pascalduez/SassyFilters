@@ -15,11 +15,7 @@
 <meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible">
 
 <!-- Thanks to Sass-lang.com for the icons -->
-<link href="http://sass-lang.com/assets/img/ico/apple-touch-icon-144x144-precomposed-e674ce95.png" rel="apple-touch-icon-precomposed" sizes="144x144">
-<link href="http://sass-lang.com/assets/img/ico/apple-touch-icon-114x114-precomposed-19f81edf.png" rel="apple-touch-icon-precomposed" sizes="114x114">
-<link href="http://sass-lang.com/assets/img/ico/apple-touch-icon-72x72-precomposed-363e5ff9.png" rel="apple-touch-icon-precomposed" sizes="72x72">
-<link href="http://sass-lang.com/assets/img/ico/apple-touch-icon-57x57-precomposed-f3752e86.png" rel="apple-touch-icon-precomposed">
-<link href="http://sass-lang.com/assets/img/ico/favicon-0ccd2d9d.png" rel="shortcut icon">
+<link href="http://sass-lang.com/favicon.ico" rel="shortcut icon">
 
 </head>
 <body>
@@ -41,17 +37,18 @@
 
     
     
-      <p class="sidebar__item  sidebar__item--heading"><a href="#config">Configuration</a></p>
+      <p class="sidebar__item  sidebar__item--heading" data-slug="config"><a href="#config">Configuration</a></p>
 
       
       
+        <div>
 
         
         
 
         
         
-          <p class="sidebar__item  sidebar__item--sub-heading"><a href="#config-variable">variables</a></p>
+          <p class="sidebar__item  sidebar__item--sub-heading" data-slug="config-variable"><a href="#config-variable">variables</a></p>
 
           
           
@@ -74,33 +71,40 @@
             </ul>
           
         
+        
       
+        
 
         
         
 
         
         
+        </div>
       
+
     
-      <p class="sidebar__item  sidebar__item--heading"><a href="#filters">Filters API</a></p>
+      <p class="sidebar__item  sidebar__item--heading" data-slug="filters"><a href="#filters">Filters API</a></p>
 
       
       
+        <div>
 
         
         
 
+        
         
         
       
-
-        
         
 
         
         
-          <p class="sidebar__item  sidebar__item--sub-heading"><a href="#filters-mixin">mixins</a></p>
+
+        
+        
+          <p class="sidebar__item  sidebar__item--sub-heading" data-slug="filters-mixin"><a href="#filters-mixin">mixins</a></p>
 
           
           
@@ -195,19 +199,22 @@
             </ul>
           
         
+        </div>
       
+
     
-      <p class="sidebar__item  sidebar__item--heading"><a href="#helpers">Helpers</a></p>
+      <p class="sidebar__item  sidebar__item--heading" data-slug="helpers"><a href="#helpers">Helpers</a></p>
 
       
       
+        <div>
 
         
         
 
         
         
-          <p class="sidebar__item  sidebar__item--sub-heading"><a href="#helpers-function">functions</a></p>
+          <p class="sidebar__item  sidebar__item--sub-heading" data-slug="helpers-function"><a href="#helpers-function">functions</a></p>
 
           
           
@@ -248,26 +255,31 @@
             </ul>
           
         
+        
       
+        
 
         
         
 
         
         
+        </div>
       
+
     
-      <p class="sidebar__item  sidebar__item--heading"><a href="#output">Output</a></p>
+      <p class="sidebar__item  sidebar__item--heading" data-slug="output"><a href="#output">Output</a></p>
 
       
       
+        <div>
 
         
         
 
         
         
-          <p class="sidebar__item  sidebar__item--sub-heading"><a href="#output-mixin">mixins</a></p>
+          <p class="sidebar__item  sidebar__item--sub-heading" data-slug="output-mixin"><a href="#output-mixin">mixins</a></p>
 
           
           
@@ -290,8 +302,8 @@
             
           
             
-            <li class="sidebar__item  sassdoc__item" data-name="output" data-type="mixin">
-              <a href="#mixin-output">output
+            <li class="sidebar__item  sassdoc__item" data-name="svg-filter" data-type="mixin">
+              <a href="#mixin-svg-filter">svg-filter
               
               
               </a>
@@ -299,8 +311,8 @@
             
           
             
-            <li class="sidebar__item  sassdoc__item" data-name="svg-filter" data-type="mixin">
-              <a href="#mixin-svg-filter">svg-filter
+            <li class="sidebar__item  sassdoc__item" data-name="output" data-type="mixin">
+              <a href="#mixin-output">output
               
               
               </a>
@@ -308,7 +320,9 @@
             </ul>
           
         
+        </div>
       
+
     
   
 </div>
@@ -359,7 +373,6 @@
 
               
               
-                
                 <section class="main__item  item" id="variable-filters-defaults">
 
 <h3 class="item__heading">
@@ -371,6 +384,9 @@
 
   
 </h3>
+
+
+
 
 
 
@@ -393,17 +409,33 @@
   
 </div>
 
+
+
+
+
+
+
   
 
   
+  
+    
+
+  
+  
+
+  
+    
+    
   <h3 class="item__sub-heading">Description</h3>
 
   <div class="item__description"><p>Default settings.</p>
 </div>
 
 
-
   
+    
+    
   <h3 class="item__sub-heading">Type</h3>
 
   <p>
@@ -412,6 +444,26 @@
   
   </p>
 
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+
 
   
 
@@ -420,40 +472,33 @@
 
 
   
+    
+    
 
   
-
-
-
-  
-
-
+    
+    
 
 
 
 
   
-
-
-  
-
-
-
-
+    
+    
 
   
-
+    
+    
+  
+    
+    
 
   
-
-  
-
 
 
 
 </section>
               
-                
                 <section class="main__item  item" id="variable-filters-settings">
 
 <h3 class="item__heading">
@@ -471,6 +516,9 @@
 
 
 
+
+
+
 <div class="relative  clear">
   <pre class="item__code  language-scss"><code>$filters-settings: () !default;</code></pre>
 
@@ -479,9 +527,24 @@
   
 </div>
 
+
+
+
+
+
+
   
 
   
+  
+    
+
+  
+  
+
+  
+    
+    
   <h3 class="item__sub-heading">Description</h3>
 
   <div class="item__description"><p>User settings.
@@ -489,8 +552,9 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 </div>
 
 
-
   
+    
+    
   <h3 class="item__sub-heading">Type</h3>
 
   <p>
@@ -499,18 +563,27 @@ Instanciate the same object in your stylesheets to override defaults.</p>
   
   </p>
 
+  
+    
+    
 
   
-
+    
+    
 
 
 
 
   
+    
+    
   <h3 class="item__sub-heading">Example</h3>
 
   
   <div class="item__example  example">
+    
+    <div class="example__description"><p>Override defaults</p>
+</div>
     
     <pre class="example__code"><code class="language-scss">$filters-settings: (
   ie-support: false
@@ -520,6 +593,8 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
   
+    
+    
 
 
 
@@ -529,23 +604,29 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+  
+    
+    
 
   
+    
+    
 
 
-  
-
-
-
-
-
-  
 
 
   
+    
+    
 
   
+    
+    
+  
+    
+    
 
+  
 
 
 
@@ -587,7 +668,6 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
               
               
-                
                 <section class="main__item  item" id="mixin-blur">
 
 <h3 class="item__heading">
@@ -599,6 +679,9 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
   
 </h3>
+
+
+
 
 
 
@@ -621,13 +704,14 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 <div class="relative  clear  code--collapsed">
-  <pre class="item__code  item__code--expanded  language-scss"><code>@mixin blur($radius: 0px) { 
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@mixin blur($radius: 0px) { 
   @include check-in-range(blur, 0 10, $radius);
 
   @include filters((blur: $radius));
- }</code></pre>
-
-  <pre class="item__code  item__code--collapsed  language-scss"><code>@mixin blur($radius: 0px) { ... }</code></pre>
+ }"
+    data-collapsed="@mixin blur($radius: 0px) { ... }"><code>@mixin blur($radius: 0px) { ... }</code></pre>
 
   
     <a href="https://github.com/pascalduez/SassyFilters/tree/master/stylesheets/filters/_blur.scss" class="item__source-link" target="_blank">View source</a>
@@ -636,15 +720,28 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+
+
+
   
+
+  
+  
+    
+  
+
+  
+    
+    
   <h3 class="item__sub-heading">Description</h3>
 
   <div class="item__description"><p><code>blur</code> filter mixin.</p>
 </div>
 
 
-
-  <h3 class="item__sub-heading">Parameters</h3>
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
 
 
 
@@ -679,23 +776,21 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+  
+    
+    
 
   
-
-
-  
-  <h3 class="item__sub-heading">Output</h3>
-  <p class="sassdoc__item-description"><p>Cross-Browser <code>blur</code> filter declarations</p>
-</p>
-
-
+    
+    
 
   
+    
+    
 
   
-
-
-  
+    
+    
 
 
   
@@ -723,36 +818,42 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 </ul>
 
 
-
   
-
-
-
-
-
-
-  
-
-
-  
+    
+    
 
 
 
 
 
   
+    
+    
+
+  
+    
+    
+
+
 
 
   
+    
+    
 
   
+    
+    
+  
+    
+    
 
+  
 
 
 
 </section>
               
-                
                 <section class="main__item  item" id="mixin-brightness">
 
 <h3 class="item__heading">
@@ -772,6 +873,9 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+
+
+
   
 
   
@@ -786,13 +890,14 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 <div class="relative  clear  code--collapsed">
-  <pre class="item__code  item__code--expanded  language-scss"><code>@mixin brightness($value: 1) { 
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@mixin brightness($value: 1) { 
   @include check-in-range(brightness, 0 10, $value);
 
   @include filters((brightness: $value));
- }</code></pre>
-
-  <pre class="item__code  item__code--collapsed  language-scss"><code>@mixin brightness($value: 1) { ... }</code></pre>
+ }"
+    data-collapsed="@mixin brightness($value: 1) { ... }"><code>@mixin brightness($value: 1) { ... }</code></pre>
 
   
     <a href="https://github.com/pascalduez/SassyFilters/tree/master/stylesheets/filters/_brightness.scss" class="item__source-link" target="_blank">View source</a>
@@ -801,15 +906,28 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+
+
+
   
+
+  
+  
+    
+  
+
+  
+    
+    
   <h3 class="item__sub-heading">Description</h3>
 
   <div class="item__description"><p><code>brightness</code> filter mixin.</p>
 </div>
 
 
-
-  <h3 class="item__sub-heading">Parameters</h3>
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
 
 
 
@@ -844,23 +962,21 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+  
+    
+    
 
   
-
-
-  
-  <h3 class="item__sub-heading">Output</h3>
-  <p class="sassdoc__item-description"><p>Cross-Browser <code>brightness</code> filter declarations</p>
-</p>
-
-
+    
+    
 
   
+    
+    
 
   
-
-
-  
+    
+    
 
 
   
@@ -888,36 +1004,42 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 </ul>
 
 
-
   
-
-
-
-
-
-
-  
-
-
-  
+    
+    
 
 
 
 
 
   
+    
+    
+
+  
+    
+    
+
+
 
 
   
+    
+    
 
   
+    
+    
+  
+    
+    
 
+  
 
 
 
 </section>
               
-                
                 <section class="main__item  item" id="mixin-contrast">
 
 <h3 class="item__heading">
@@ -937,6 +1059,9 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+
+
+
   
 
   
@@ -951,13 +1076,14 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 <div class="relative  clear  code--collapsed">
-  <pre class="item__code  item__code--expanded  language-scss"><code>@mixin contrast($value: 1) { 
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@mixin contrast($value: 1) { 
   @include check-in-range(contrast, 0 10, $value);
 
   @include filters((contrast: $value));
- }</code></pre>
-
-  <pre class="item__code  item__code--collapsed  language-scss"><code>@mixin contrast($value: 1) { ... }</code></pre>
+ }"
+    data-collapsed="@mixin contrast($value: 1) { ... }"><code>@mixin contrast($value: 1) { ... }</code></pre>
 
   
     <a href="https://github.com/pascalduez/SassyFilters/tree/master/stylesheets/filters/_contrast.scss" class="item__source-link" target="_blank">View source</a>
@@ -966,15 +1092,28 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+
+
+
   
+
+  
+  
+    
+  
+
+  
+    
+    
   <h3 class="item__sub-heading">Description</h3>
 
   <div class="item__description"><p><code>contrast</code> filter mixin.</p>
 </div>
 
 
-
-  <h3 class="item__sub-heading">Parameters</h3>
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
 
 
 
@@ -1009,23 +1148,21 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+  
+    
+    
 
   
-
-
-  
-  <h3 class="item__sub-heading">Output</h3>
-  <p class="sassdoc__item-description"><p>Cross-Browser <code>contrast</code> filter declarations</p>
-</p>
-
-
+    
+    
 
   
+    
+    
 
   
-
-
-  
+    
+    
 
 
   
@@ -1053,36 +1190,42 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 </ul>
 
 
-
   
-
-
-
-
-
-
-  
-
-
-  
+    
+    
 
 
 
 
 
   
+    
+    
+
+  
+    
+    
+
+
 
 
   
+    
+    
 
   
+    
+    
+  
+    
+    
 
+  
 
 
 
 </section>
               
-                
                 <section class="main__item  item" id="mixin-drop-shadow">
 
 <h3 class="item__heading">
@@ -1094,6 +1237,9 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
   
 </h3>
+
+
+
 
 
 
@@ -1152,13 +1298,14 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 <div class="relative  clear  code--collapsed">
-  <pre class="item__code  item__code--expanded  language-scss"><code>@mixin drop-shadow($offset-x: 0px, $offset-y: $offset-x, $blur-radius: Opx, $color: rgba(0 ,0 , 0, .5)) { 
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@mixin drop-shadow($offset-x: 0px, $offset-y: $offset-x, $blur-radius: Opx, $color: rgba(0 ,0 , 0, .5)) { 
   @include filters((drop-shadow:
                       ($offset-x, $offset-y, $blur-radius, $color)
                   ));
- }</code></pre>
-
-  <pre class="item__code  item__code--collapsed  language-scss"><code>@mixin drop-shadow($offset-x: 0px, $offset-y: $offset-x, $blur-radius: Opx, $color: rgba(0 ,0 , 0, .5)) { ... }</code></pre>
+ }"
+    data-collapsed="@mixin drop-shadow($offset-x: 0px, $offset-y: $offset-x, $blur-radius: Opx, $color: rgba(0 ,0 , 0, .5)) { ... }"><code>@mixin drop-shadow($offset-x: 0px, $offset-y: $offset-x, $blur-radius: Opx, $color: rgba(0 ,0 , 0, .5)) { ... }</code></pre>
 
   
     <a href="https://github.com/pascalduez/SassyFilters/tree/master/stylesheets/filters/_drop-shadow.scss" class="item__source-link" target="_blank">View source</a>
@@ -1167,15 +1314,28 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+
+
+
   
+
+  
+  
+    
+  
+
+  
+    
+    
   <h3 class="item__sub-heading">Description</h3>
 
   <div class="item__description"><p><code>drop-shadow</code> filter mixin.</p>
 </div>
 
 
-
-  <h3 class="item__sub-heading">Parameters</h3>
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
 
 
 
@@ -1255,23 +1415,21 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+  
+    
+    
 
   
-
-
-  
-  <h3 class="item__sub-heading">Output</h3>
-  <p class="sassdoc__item-description"><p>Cross-Browser <code>drop-shadow</code> filter declarations</p>
-</p>
-
-
+    
+    
 
   
+    
+    
 
   
-
-
-  
+    
+    
 
 
   
@@ -1299,36 +1457,42 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 </ul>
 
 
-
   
-
-
-
-
-
-
-  
-
-
-  
+    
+    
 
 
 
 
 
   
+    
+    
+
+  
+    
+    
+
+
 
 
   
+    
+    
 
   
+    
+    
+  
+    
+    
 
+  
 
 
 
 </section>
               
-                
                 <section class="main__item  item" id="mixin-grayscale">
 
 <h3 class="item__heading">
@@ -1340,6 +1504,9 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
   
 </h3>
+
+
+
 
 
 
@@ -1362,13 +1529,14 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 <div class="relative  clear  code--collapsed">
-  <pre class="item__code  item__code--expanded  language-scss"><code>@mixin grayscale($value: 0) { 
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@mixin grayscale($value: 0) { 
   @include check-in-range(grayscale, 0 1, $value);
 
   @include filters((grayscale: $value));
- }</code></pre>
-
-  <pre class="item__code  item__code--collapsed  language-scss"><code>@mixin grayscale($value: 0) { ... }</code></pre>
+ }"
+    data-collapsed="@mixin grayscale($value: 0) { ... }"><code>@mixin grayscale($value: 0) { ... }</code></pre>
 
   
     <a href="https://github.com/pascalduez/SassyFilters/tree/master/stylesheets/filters/_grayscale.scss" class="item__source-link" target="_blank">View source</a>
@@ -1377,15 +1545,28 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+
+
+
   
+
+  
+  
+    
+  
+
+  
+    
+    
   <h3 class="item__sub-heading">Description</h3>
 
   <div class="item__description"><p><code>grayscale</code> filter mixin.</p>
 </div>
 
 
-
-  <h3 class="item__sub-heading">Parameters</h3>
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
 
 
 
@@ -1420,23 +1601,21 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+  
+    
+    
 
   
-
-
-  
-  <h3 class="item__sub-heading">Output</h3>
-  <p class="sassdoc__item-description"><p>Cross-Browser <code>grayscale</code> filter declarations</p>
-</p>
-
-
+    
+    
 
   
+    
+    
 
   
-
-
-  
+    
+    
 
 
   
@@ -1464,36 +1643,42 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 </ul>
 
 
-
   
-
-
-
-
-
-
-  
-
-
-  
+    
+    
 
 
 
 
 
   
+    
+    
+
+  
+    
+    
+
+
 
 
   
+    
+    
 
   
+    
+    
+  
+    
+    
 
+  
 
 
 
 </section>
               
-                
                 <section class="main__item  item" id="mixin-hue-rotate">
 
 <h3 class="item__heading">
@@ -1505,6 +1690,9 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
   
 </h3>
+
+
+
 
 
 
@@ -1527,13 +1715,14 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 <div class="relative  clear  code--collapsed">
-  <pre class="item__code  item__code--expanded  language-scss"><code>@mixin hue-rotate($angle: 0deg) { 
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@mixin hue-rotate($angle: 0deg) { 
   @include check-in-range(hue-rotate, 0 360, $angle);
 
   @include filters((hue-rotate: $angle));
- }</code></pre>
-
-  <pre class="item__code  item__code--collapsed  language-scss"><code>@mixin hue-rotate($angle: 0deg) { ... }</code></pre>
+ }"
+    data-collapsed="@mixin hue-rotate($angle: 0deg) { ... }"><code>@mixin hue-rotate($angle: 0deg) { ... }</code></pre>
 
   
     <a href="https://github.com/pascalduez/SassyFilters/tree/master/stylesheets/filters/_hue-rotate.scss" class="item__source-link" target="_blank">View source</a>
@@ -1542,15 +1731,28 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+
+
+
   
+
+  
+  
+    
+  
+
+  
+    
+    
   <h3 class="item__sub-heading">Description</h3>
 
   <div class="item__description"><p><code>hue-rotate</code> filter mixin.</p>
 </div>
 
 
-
-  <h3 class="item__sub-heading">Parameters</h3>
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
 
 
 
@@ -1585,23 +1787,21 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+  
+    
+    
 
   
-
-
-  
-  <h3 class="item__sub-heading">Output</h3>
-  <p class="sassdoc__item-description"><p>Cross-Browser <code>hue-rotate</code> filter declarations</p>
-</p>
-
-
+    
+    
 
   
+    
+    
 
   
-
-
-  
+    
+    
 
 
   
@@ -1629,36 +1829,42 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 </ul>
 
 
-
   
-
-
-
-
-
-
-  
-
-
-  
+    
+    
 
 
 
 
 
   
+    
+    
+
+  
+    
+    
+
+
 
 
   
+    
+    
 
   
+    
+    
+  
+    
+    
 
+  
 
 
 
 </section>
               
-                
                 <section class="main__item  item" id="mixin-invert">
 
 <h3 class="item__heading">
@@ -1678,6 +1884,9 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+
+
+
   
 
   
@@ -1692,13 +1901,14 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 <div class="relative  clear  code--collapsed">
-  <pre class="item__code  item__code--expanded  language-scss"><code>@mixin invert($value: 0) { 
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@mixin invert($value: 0) { 
   @include check-in-range(invert, 0 1, $value);
 
   @include filters((invert: $value));
- }</code></pre>
-
-  <pre class="item__code  item__code--collapsed  language-scss"><code>@mixin invert($value: 0) { ... }</code></pre>
+ }"
+    data-collapsed="@mixin invert($value: 0) { ... }"><code>@mixin invert($value: 0) { ... }</code></pre>
 
   
     <a href="https://github.com/pascalduez/SassyFilters/tree/master/stylesheets/filters/_invert.scss" class="item__source-link" target="_blank">View source</a>
@@ -1707,15 +1917,28 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+
+
+
   
+
+  
+  
+    
+  
+
+  
+    
+    
   <h3 class="item__sub-heading">Description</h3>
 
   <div class="item__description"><p><code>invert</code> filter mixin.</p>
 </div>
 
 
-
-  <h3 class="item__sub-heading">Parameters</h3>
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
 
 
 
@@ -1750,23 +1973,21 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+  
+    
+    
 
   
-
-
-  
-  <h3 class="item__sub-heading">Output</h3>
-  <p class="sassdoc__item-description"><p>Cross-Browser <code>invert</code> filter declarations</p>
-</p>
-
-
+    
+    
 
   
+    
+    
 
   
-
-
-  
+    
+    
 
 
   
@@ -1794,36 +2015,42 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 </ul>
 
 
-
   
-
-
-
-
-
-
-  
-
-
-  
+    
+    
 
 
 
 
 
   
+    
+    
+
+  
+    
+    
+
+
 
 
   
+    
+    
 
   
+    
+    
+  
+    
+    
 
+  
 
 
 
 </section>
               
-                
                 <section class="main__item  item" id="mixin-opacity">
 
 <h3 class="item__heading">
@@ -1843,6 +2070,9 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+
+
+
   
 
   
@@ -1857,13 +2087,14 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 <div class="relative  clear  code--collapsed">
-  <pre class="item__code  item__code--expanded  language-scss"><code>@mixin opacity($value: 1) { 
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@mixin opacity($value: 1) { 
   @include check-in-range(opacity, 0 1, $value);
 
   @include filters((opacity: $value));
- }</code></pre>
-
-  <pre class="item__code  item__code--collapsed  language-scss"><code>@mixin opacity($value: 1) { ... }</code></pre>
+ }"
+    data-collapsed="@mixin opacity($value: 1) { ... }"><code>@mixin opacity($value: 1) { ... }</code></pre>
 
   
     <a href="https://github.com/pascalduez/SassyFilters/tree/master/stylesheets/filters/_opacity.scss" class="item__source-link" target="_blank">View source</a>
@@ -1872,15 +2103,28 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+
+
+
   
+
+  
+  
+    
+  
+
+  
+    
+    
   <h3 class="item__sub-heading">Description</h3>
 
   <div class="item__description"><p><code>opacity</code> filter mixin.</p>
 </div>
 
 
-
-  <h3 class="item__sub-heading">Parameters</h3>
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
 
 
 
@@ -1915,23 +2159,21 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+  
+    
+    
 
   
-
-
-  
-  <h3 class="item__sub-heading">Output</h3>
-  <p class="sassdoc__item-description"><p>Cross-Browser <code>opacity</code> filter declarations</p>
-</p>
-
-
+    
+    
 
   
+    
+    
 
   
-
-
-  
+    
+    
 
 
   
@@ -1959,36 +2201,42 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 </ul>
 
 
-
   
-
-
-
-
-
-
-  
-
-
-  
+    
+    
 
 
 
 
 
   
+    
+    
+
+  
+    
+    
+
+
 
 
   
+    
+    
 
   
+    
+    
+  
+    
+    
 
+  
 
 
 
 </section>
               
-                
                 <section class="main__item  item" id="mixin-saturate">
 
 <h3 class="item__heading">
@@ -2008,6 +2256,9 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+
+
+
   
 
   
@@ -2022,13 +2273,14 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 <div class="relative  clear  code--collapsed">
-  <pre class="item__code  item__code--expanded  language-scss"><code>@mixin saturate($value: 1) { 
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@mixin saturate($value: 1) { 
   @include check-in-range(saturate, 0 10, $value);
 
   @include filters((saturate: $value));
- }</code></pre>
-
-  <pre class="item__code  item__code--collapsed  language-scss"><code>@mixin saturate($value: 1) { ... }</code></pre>
+ }"
+    data-collapsed="@mixin saturate($value: 1) { ... }"><code>@mixin saturate($value: 1) { ... }</code></pre>
 
   
     <a href="https://github.com/pascalduez/SassyFilters/tree/master/stylesheets/filters/_saturate.scss" class="item__source-link" target="_blank">View source</a>
@@ -2037,15 +2289,28 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+
+
+
   
+
+  
+  
+    
+  
+
+  
+    
+    
   <h3 class="item__sub-heading">Description</h3>
 
   <div class="item__description"><p><code>saturate</code> filter mixin.</p>
 </div>
 
 
-
-  <h3 class="item__sub-heading">Parameters</h3>
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
 
 
 
@@ -2080,23 +2345,21 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+  
+    
+    
 
   
-
-
-  
-  <h3 class="item__sub-heading">Output</h3>
-  <p class="sassdoc__item-description"><p>Cross-Browser <code>saturate</code> filter declarations</p>
-</p>
-
-
+    
+    
 
   
+    
+    
 
   
-
-
-  
+    
+    
 
 
   
@@ -2124,36 +2387,42 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 </ul>
 
 
-
   
-
-
-
-
-
-
-  
-
-
-  
+    
+    
 
 
 
 
 
   
+    
+    
+
+  
+    
+    
+
+
 
 
   
+    
+    
 
   
+    
+    
+  
+    
+    
 
+  
 
 
 
 </section>
               
-                
                 <section class="main__item  item" id="mixin-sepia">
 
 <h3 class="item__heading">
@@ -2165,6 +2434,9 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
   
 </h3>
+
+
+
 
 
 
@@ -2187,13 +2459,14 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 <div class="relative  clear  code--collapsed">
-  <pre class="item__code  item__code--expanded  language-scss"><code>@mixin sepia($value: 0) { 
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@mixin sepia($value: 0) { 
   @include check-in-range(sepia, 0 1, $value);
 
   @include filters((sepia: $value));
- }</code></pre>
-
-  <pre class="item__code  item__code--collapsed  language-scss"><code>@mixin sepia($value: 0) { ... }</code></pre>
+ }"
+    data-collapsed="@mixin sepia($value: 0) { ... }"><code>@mixin sepia($value: 0) { ... }</code></pre>
 
   
     <a href="https://github.com/pascalduez/SassyFilters/tree/master/stylesheets/filters/_sepia.scss" class="item__source-link" target="_blank">View source</a>
@@ -2202,15 +2475,28 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+
+
+
   
+
+  
+  
+    
+  
+
+  
+    
+    
   <h3 class="item__sub-heading">Description</h3>
 
   <div class="item__description"><p><code>sepia</code> filter mixin.</p>
 </div>
 
 
-
-  <h3 class="item__sub-heading">Parameters</h3>
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
 
 
 
@@ -2245,23 +2531,21 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+  
+    
+    
 
   
-
-
-  
-  <h3 class="item__sub-heading">Output</h3>
-  <p class="sassdoc__item-description"><p>Cross-Browser <code>sepia</code> filter declarations</p>
-</p>
-
-
+    
+    
 
   
+    
+    
 
   
-
-
-  
+    
+    
 
 
   
@@ -2289,30 +2573,37 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 </ul>
 
 
-
   
-
-
-
-
-
-
-  
-
-
-  
+    
+    
 
 
 
 
 
   
+    
+    
+
+  
+    
+    
+
+
 
 
   
+    
+    
 
   
+    
+    
+  
+    
+    
 
+  
 
 
 
@@ -2340,7 +2631,6 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
               
               
-                
                 <section class="main__item  item" id="function-_svg-filter">
 
 <h3 class="item__heading">
@@ -2352,6 +2642,9 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
   
 </h3>
+
+
+
 
 
 
@@ -2384,16 +2677,17 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 <div class="relative  clear  code--collapsed">
-  <pre class="item__code  item__code--expanded  language-scss"><code>@function _svg-filter($function, $args...) { 
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@function _svg-filter($function, $args...) { 
   @if not map-has-key($svg-filters, $function) {
     @warn &quot;`_svg-filter-get`, no filter found for function: #{$function}.&quot;;
     @return false;
   }
 
   @return template(map-get($svg-filters, $function), $args...);
- }</code></pre>
-
-  <pre class="item__code  item__code--collapsed  language-scss"><code>@function _svg-filter($function, $args...) { ... }</code></pre>
+ }"
+    data-collapsed="@function _svg-filter($function, $args...) { ... }"><code>@function _svg-filter($function, $args...) { ... }</code></pre>
 
   
     <a href="https://github.com/pascalduez/SassyFilters/tree/master/stylesheets/helpers/_filters.scss" class="item__source-link" target="_blank">View source</a>
@@ -2402,15 +2696,30 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+
+
+
   
+
+  
+  
+    
+
+  
+  
+
+  
+    
+    
   <h3 class="item__sub-heading">Description</h3>
 
   <div class="item__description"><p>Helper: Get and format a single SVG filter.</p>
 </div>
 
 
-
-  <h3 class="item__sub-heading">Parameters</h3>
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
 
 
 
@@ -2462,8 +2771,9 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
-
   
+    
+    
   <h3 class="item__sub-heading">Returns</h3>
 
   <p class="sassdoc__item-description">
@@ -2473,27 +2783,17 @@ Instanciate the same object in your stylesheets to override defaults.</p>
   </p>
 
 
+  
+    
+    
 
   
-
-
-  
-
-  
-
+    
+    
 
   
-
-
-  
-
-
-
-  
-
-
-
-
+    
+    
 
 
   
@@ -2504,7 +2804,11 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+
+
   
+    
+    
 
 
 
@@ -2536,10 +2840,8 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
-
-
-
   
+
 
 
   
@@ -2549,18 +2851,33 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
   
+    
+    
+
+  
+    
+    
+
+
 
 
   
+    
+    
 
   
+    
+    
+  
+    
+    
 
+  
 
 
 
 </section>
               
-                
                 <section class="main__item  item" id="function-_ie-filter">
 
 <h3 class="item__heading">
@@ -2572,6 +2889,9 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
   
 </h3>
+
+
+
 
 
 
@@ -2604,7 +2924,9 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 <div class="relative  clear  code--collapsed">
-  <pre class="item__code  item__code--expanded  language-scss"><code>@function _ie-filter($filter, $args...) { 
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@function _ie-filter($filter, $args...) { 
   $properties: ();
   $parts: (
     &quot;progid:DXImageTransform.Microsoft.&quot;,
@@ -2628,9 +2950,8 @@ Instanciate the same object in your stylesheets to override defaults.</p>
           );
 
   @return _join($parts);
- }</code></pre>
-
-  <pre class="item__code  item__code--collapsed  language-scss"><code>@function _ie-filter($filter, $args...) { ... }</code></pre>
+ }"
+    data-collapsed="@function _ie-filter($filter, $args...) { ... }"><code>@function _ie-filter($filter, $args...) { ... }</code></pre>
 
   
     <a href="https://github.com/pascalduez/SassyFilters/tree/master/stylesheets/helpers/_filters.scss" class="item__source-link" target="_blank">View source</a>
@@ -2639,15 +2960,30 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+
+
+
   
+
+  
+  
+    
+
+  
+  
+
+  
+    
+    
   <h3 class="item__sub-heading">Description</h3>
 
   <div class="item__description"><p>Helper: IE filter formatting helper.</p>
 </div>
 
 
-
-  <h3 class="item__sub-heading">Parameters</h3>
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
 
 
 
@@ -2699,8 +3035,9 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
-
   
+    
+    
   <h3 class="item__sub-heading">Returns</h3>
 
   <p class="sassdoc__item-description">
@@ -2710,21 +3047,22 @@ Instanciate the same object in your stylesheets to override defaults.</p>
   </p>
 
 
+  
+    
+    
+
+  
+    
+    
+
+  
+    
+    
+
 
   
 
 
-  
-
-  
-
-
-  
-
-
-  
-
-
 
   
 
@@ -2732,8 +3070,9 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
-
   
+    
+    
 
 
 
@@ -2790,29 +3129,34 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 </ul>
 
 
+  
+    
+    
 
   
+    
+    
 
 
-  
-
-
-
-
-
-  
 
 
   
+    
+    
 
   
+    
+    
+  
+    
+    
 
+  
 
 
 
 </section>
               
-                
                 <section class="main__item  item" id="function-svg-data-uri">
 
 <h3 class="item__heading">
@@ -2824,6 +3168,9 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
   
 </h3>
+
+
+
 
 
 
@@ -2880,7 +3227,9 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 <div class="relative  clear  code--collapsed">
-  <pre class="item__code  item__code--expanded  language-scss"><code>@function svg-data-uri($data, $mime-type: &#39;image/svg+xml&#39;, $encoding: &#39;charset=utf-8&#39;, $fragment: &#39;&#39;) { 
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@function svg-data-uri($data, $mime-type: &#39;image/svg+xml&#39;, $encoding: &#39;charset=utf-8&#39;, $fragment: &#39;&#39;) { 
   $result: &#39;&#39;;
   $parts: (
     &#39;data:&#39;,
@@ -2897,9 +3246,8 @@ Instanciate the same object in your stylesheets to override defaults.</p>
   }
 
   @return quote($result);
- }</code></pre>
-
-  <pre class="item__code  item__code--collapsed  language-scss"><code>@function svg-data-uri($data, $mime-type: &#39;image/svg+xml&#39;, $encoding: &#39;charset=utf-8&#39;, $fragment: &#39;&#39;) { ... }</code></pre>
+ }"
+    data-collapsed="@function svg-data-uri($data, $mime-type: &#39;image/svg+xml&#39;, $encoding: &#39;charset=utf-8&#39;, $fragment: &#39;&#39;) { ... }"><code>@function svg-data-uri($data, $mime-type: &#39;image/svg+xml&#39;, $encoding: &#39;charset=utf-8&#39;, $fragment: &#39;&#39;) { ... }</code></pre>
 
   
     <a href="https://github.com/pascalduez/SassyFilters/tree/master/stylesheets/helpers/_svg.scss" class="item__source-link" target="_blank">View source</a>
@@ -2908,15 +3256,30 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+
+
+
   
+
+  
+  
+    
+
+  
+  
+
+  
+    
+    
   <h3 class="item__sub-heading">Description</h3>
 
   <div class="item__description"><p>Format a proper SVG data URI.</p>
 </div>
 
 
-
-  <h3 class="item__sub-heading">Parameters</h3>
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
 
 
 
@@ -2998,8 +3361,9 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
-
   
+    
+    
   <h3 class="item__sub-heading">Returns</h3>
 
   <p class="sassdoc__item-description">
@@ -3009,26 +3373,28 @@ Instanciate the same object in your stylesheets to override defaults.</p>
   </p>
 
 
+  
+    
+    
+
+  
+    
+    
+
+  
+    
+    
+
 
   
 
 
-  
-
-  
-
-
-  
-
-
-  
-
-
-
 
 
 
   
+    
+    
 
 
 
@@ -3049,20 +3415,24 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 </ul>
 
 
+  
+    
+    
 
   
+    
+    
 
 
-  
-
-
-
-
-
-  
 
 
   
+    
+    
+
+  
+    
+    
   <h3 class="item__sub-heading">Links</h3>
 
   <ul class="list-unstyled">
@@ -3085,15 +3455,16 @@ Instanciate the same object in your stylesheets to override defaults.</p>
   
   </ul>
 
+  
+    
+    
 
   
 
 
 
-
 </section>
               
-                
                 <section class="main__item  item" id="function-inline-svg">
 
 <h3 class="item__heading">
@@ -3105,6 +3476,9 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
   
 </h3>
+
+
+
 
 
 
@@ -3149,7 +3523,9 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 <div class="relative  clear  code--collapsed">
-  <pre class="item__code  item__code--expanded  language-scss"><code>@function inline-svg($svgStr, $encoding: conf.data-type, $fragment: &#39;&#39;) { 
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@function inline-svg($svgStr, $encoding: conf.data-type, $fragment: &#39;&#39;) { 
   $return: &#39;&#39;;
 
   $args: (
@@ -3163,9 +3539,8 @@ Instanciate the same object in your stylesheets to override defaults.</p>
   $data-uri: svg-data-uri($args...);
 
   @return url($data-uri);
- }</code></pre>
-
-  <pre class="item__code  item__code--collapsed  language-scss"><code>@function inline-svg($svgStr, $encoding: conf.data-type, $fragment: &#39;&#39;) { ... }</code></pre>
+ }"
+    data-collapsed="@function inline-svg($svgStr, $encoding: conf.data-type, $fragment: &#39;&#39;) { ... }"><code>@function inline-svg($svgStr, $encoding: conf.data-type, $fragment: &#39;&#39;) { ... }</code></pre>
 
   
     <a href="https://github.com/pascalduez/SassyFilters/tree/master/stylesheets/helpers/_svg.scss" class="item__source-link" target="_blank">View source</a>
@@ -3174,15 +3549,30 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+
+
+
   
+
+  
+  
+    
+
+  
+  
+
+  
+    
+    
   <h3 class="item__sub-heading">Description</h3>
 
   <div class="item__description"><p>Format and encode an inline SVG.</p>
 </div>
 
 
-
-  <h3 class="item__sub-heading">Parameters</h3>
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
 
 
 
@@ -3250,8 +3640,9 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
-
   
+    
+    
   <h3 class="item__sub-heading">Returns</h3>
 
   <p class="sassdoc__item-description">
@@ -3261,16 +3652,17 @@ Instanciate the same object in your stylesheets to override defaults.</p>
   </p>
 
 
+  
+    
+    
 
   
-
-
-  
-
-  
-
+    
+    
 
   
+    
+    
 
 
   
@@ -3313,8 +3705,9 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 </ul>
 
 
-
   
+    
+    
 
 
 
@@ -3326,7 +3719,7 @@ Instanciate the same object in your stylesheets to override defaults.</p>
       <ul class="list-unstyled  list-inline">
     
 
-    <li><a href="#mixin-output"><code>output</code></a></li>
+    <li><a href="#mixin-svg-filter"><code>svg-filter</code></a></li>
   
 
 
@@ -3335,7 +3728,7 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
     
 
-    <li><a href="#mixin-svg-filter"><code>svg-filter</code></a></li>
+    <li><a href="#mixin-output"><code>output</code></a></li>
   
 
 
@@ -3344,23 +3737,29 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 </ul>
 
 
+  
+    
+    
 
   
+    
+    
 
 
-  
-
-
-
-
-
-  
 
 
   
+    
+    
 
   
+    
+    
+  
+    
+    
 
+  
 
 
 
@@ -3395,7 +3794,6 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
               
               
-                
                 <section class="main__item  item" id="mixin-disable-filter">
 
 <h3 class="item__heading">
@@ -3407,6 +3805,9 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
   
 </h3>
+
+
+
 
 
 
@@ -3429,7 +3830,9 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 <div class="relative  clear  code--collapsed">
-  <pre class="item__code  item__code--expanded  language-scss"><code>@mixin disable-filter($function: null) { 
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@mixin disable-filter($function: null) { 
   -webkit-filter: none;
       -ms-filter: none;
           filter: none;
@@ -3439,9 +3842,8 @@ Instanciate the same object in your stylesheets to override defaults.</p>
     -ms-filter: quote($ie-filter);
     filter: unquote($ie-filter);
   }
- }</code></pre>
-
-  <pre class="item__code  item__code--collapsed  language-scss"><code>@mixin disable-filter($function: null) { ... }</code></pre>
+ }"
+    data-collapsed="@mixin disable-filter($function: null) { ... }"><code>@mixin disable-filter($function: null) { ... }</code></pre>
 
   
     <a href="https://github.com/pascalduez/SassyFilters/tree/master/stylesheets/output/_disable-filter.scss" class="item__source-link" target="_blank">View source</a>
@@ -3450,15 +3852,28 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+
+
+
   
+
+  
+  
+    
+  
+
+  
+    
+    
   <h3 class="item__sub-heading">Description</h3>
 
   <div class="item__description"><p>Helper mixin, disable previously enabled filters.</p>
 </div>
 
 
-
-  <h3 class="item__sub-heading">Parameters</h3>
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
 
 
 
@@ -3494,19 +3909,21 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+  
+    
+    
 
   
-
-
-  
-
+    
+    
 
   
+    
+    
 
   
-
-
-  
+    
+    
 
 
   
@@ -3534,36 +3951,42 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 </ul>
 
 
-
   
-
-
-
-
-
-
-  
-
-
-  
+    
+    
 
 
 
 
 
   
+    
+    
+
+  
+    
+    
+
+
 
 
   
+    
+    
 
   
+    
+    
+  
+    
+    
 
+  
 
 
 
 </section>
               
-                
                 <section class="main__item  item" id="mixin-filters">
 
 <h3 class="item__heading">
@@ -3575,6 +3998,9 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
   
 </h3>
+
+
+
 
 
 
@@ -3607,7 +4033,9 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 <div class="relative  clear  code--collapsed">
-  <pre class="item__code  item__code--expanded  language-scss"><code>@mixin filters($filters, $id: null) { 
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@mixin filters($filters, $id: null) { 
   @if type-of($filters) != map {
     @warn &quot;`filters` mixin, `filters` argument must be a map.
             #{type-of($value)} given.&quot;;
@@ -3618,9 +4046,8 @@ Instanciate the same object in your stylesheets to override defaults.</p>
   $output: _filters($filters, $id);
 
   @include output($output);
- }</code></pre>
-
-  <pre class="item__code  item__code--collapsed  language-scss"><code>@mixin filters($filters, $id: null) { ... }</code></pre>
+ }"
+    data-collapsed="@mixin filters($filters, $id: null) { ... }"><code>@mixin filters($filters, $id: null) { ... }</code></pre>
 
   
     <a href="https://github.com/pascalduez/SassyFilters/tree/master/stylesheets/output/_filters.scss" class="item__source-link" target="_blank">View source</a>
@@ -3629,7 +4056,19 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
+
+
+
   
+
+  
+  
+    
+  
+
+  
+    
+    
   <h3 class="item__sub-heading">Description</h3>
 
   <div class="item__description"><p>Main filters mixin, used internaly or for combining several filters.
@@ -3637,8 +4076,9 @@ Print final conbined filters output.</p>
 </div>
 
 
-
-  <h3 class="item__sub-heading">Parameters</h3>
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
 
 
 
@@ -3690,19 +4130,21 @@ Print final conbined filters output.</p>
 
 
 
+  
+    
+    
 
   
-
-
-  
-
+    
+    
 
   
+    
+    
 
   
-
-
-  
+    
+    
 
 
   
@@ -3730,8 +4172,9 @@ Print final conbined filters output.</p>
 </ul>
 
 
-
   
+    
+    
 
 
 
@@ -3833,244 +4276,34 @@ Print final conbined filters output.</p>
 </ul>
 
 
+  
+    
+    
 
   
+    
+    
 
 
-  
-
-
-
-
-
-  
 
 
   
+    
+    
 
   
+    
+    
+  
+    
+    
 
+  
 
 
 
 </section>
               
-                
-                <section class="main__item  item" id="mixin-output">
-
-<h3 class="item__heading">
-  
-
-  <a class="item__name" href="#mixin-output">output</a>
-
-  
-
-  
-</h3>
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-    
-  
-
-
-<div class="relative  clear  code--collapsed">
-  <pre class="item__code  item__code--expanded  language-scss"><code>@mixin output($output) { 
-  //
-  // Webkit, Blink
-  //
-  -webkit-filter: map-get($output, css);
-
-  //
-  // Gecko
-  //
-  $output: _preprocess-svg-filters($output);
-
-  filter: inline-svg(
-            $svgStr: map-get($output, svg),
-            $fragment: map-get($output, id)
-          );
-
-  //
-  // IE
-  //
-  $ie-support: conf(ie-support)
-               and map-has-key($output, ie)
-               and not empty(map-get($output, ie));
-
-  @if $ie-support {
-    $output: _preprocess-ie-filters($output);
-
-    // IE 8+
-    -ms-filter: map-get($output, gte-ie8);
-    // IE &lt; 8
-    filter: map-get($output, lt-ie8);
-  }
- }</code></pre>
-
-  <pre class="item__code  item__code--collapsed  language-scss"><code>@mixin output($output) { ... }</code></pre>
-
-  
-    <a href="https://github.com/pascalduez/SassyFilters/tree/master/stylesheets/output/_output.scss" class="item__source-link" target="_blank">View source</a>
-  
-</div>
-
-
-
-  
-  <h3 class="item__sub-heading">Description</h3>
-
-  <div class="item__description"><p>Ouput mixin, print final cross-browser filters declarations.
-Print final filters output.</p>
-</div>
-
-
-
-  <h3 class="item__sub-heading">Parameters</h3>
-
-
-
-  <table class="item__parameters">
-    <thead>
-      <tr>
-        <th scope="col"><span class="visually-hidden"> parameter </span>Name</th>
-        <th scope="col"><span class="visually-hidden"> parameter </span>Description</th>
-        <th scope="col"><span class="visually-hidden"> parameter </span>Type</th>
-        <th scope="col"><span class="visually-hidden"> parameter </span>Default value</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-        <tr class="item__parameter">
-          <th scope="row" data-label="name"><code>$output</code></th>
-          <td data-label="desc"><p>a map of browser specific filters</p>
-</td>
-          <td data-label="type">
-          
-            Map
-          
-          </td>
-          <td data-label="default">
-          
-            &mdash;<span class="visually-hidden"> none</span>
-          
-          </td>
-        </tr>
-      
-    </tbody>
-  </table>
-
-
-
-
-  
-
-
-  
-
-
-  
-
-  
-
-
-  
-
-
-  
-
-
-
-  
-
-
-
-  
-    
-      
-      <h3 class="item__sub-heading">Requires</h3>
-      <ul class="list-unstyled">
-    
-
-    
-      <li>
-        <a href="#function-inline-svg"><code>inline-svg</code></a>
-        
-      </li>
-    
-  
-
-
-
-  
-
-
-
-  
-
-
-
-
-</ul>
-
-
-
-  
-
-
-
-  
-
-    
-      
-      <h3 class="item__sub-heading">Used by</h3>
-      <ul class="list-unstyled  list-inline">
-    
-
-    <li><a href="#mixin-filters"><code>filters</code></a></li>
-  
-
-
-
-
-</ul>
-
-
-
-  
-
-
-  
-
-
-
-
-
-  
-
-
-  
-
-  
-
-
-
-
-</section>
-              
-                
                 <section class="main__item  item" id="mixin-svg-filter">
 
 <h3 class="item__heading">
@@ -4090,6 +4323,9 @@ Print final filters output.</p>
 
 
 
+
+
+
   
 
   
@@ -4124,11 +4360,12 @@ Print final filters output.</p>
 
 
 <div class="relative  clear  code--collapsed">
-  <pre class="item__code  item__code--expanded  language-scss"><code>@mixin svg-filter($svgStr, $fragment, $encoding: conf.data-type) { 
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@mixin svg-filter($svgStr, $fragment, $encoding: conf.data-type) { 
   filter: inline-svg($svgStr, $encoding, $fragment);
- }</code></pre>
-
-  <pre class="item__code  item__code--collapsed  language-scss"><code>@mixin svg-filter($svgStr, $fragment, $encoding: conf.data-type) { ... }</code></pre>
+ }"
+    data-collapsed="@mixin svg-filter($svgStr, $fragment, $encoding: conf.data-type) { ... }"><code>@mixin svg-filter($svgStr, $fragment, $encoding: conf.data-type) { ... }</code></pre>
 
   
     <a href="https://github.com/pascalduez/SassyFilters/tree/master/stylesheets/output/_svg-filter.scss" class="item__source-link" target="_blank">View source</a>
@@ -4137,7 +4374,19 @@ Print final filters output.</p>
 
 
 
+
+
+
   
+
+  
+  
+    
+  
+
+  
+    
+    
   <h3 class="item__sub-heading">Description</h3>
 
   <div class="item__description"><p>Helper mixin to embed a cutom SVG filter.
@@ -4145,8 +4394,9 @@ Print final SVG filter declaration.</p>
 </div>
 
 
-
-  <h3 class="item__sub-heading">Parameters</h3>
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
 
 
 
@@ -4214,19 +4464,21 @@ Print final SVG filter declaration.</p>
 
 
 
+  
+    
+    
 
   
-
-
-  
-
+    
+    
 
   
+    
+    
 
   
-
-
-  
+    
+    
 
 
   
@@ -4254,30 +4506,277 @@ Print final SVG filter declaration.</p>
 </ul>
 
 
-
   
-
-
-
-
-
-
-  
-
-
-  
+    
+    
 
 
 
 
 
   
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+
+  
+
+
+
+</section>
+              
+                <section class="main__item  item" id="mixin-output">
+
+<h3 class="item__heading">
+  
+
+  <a class="item__name" href="#mixin-output">output</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
 
 
   
 
   
 
+  
+
+  
+    
+  
+
+
+<div class="relative  clear  code--collapsed">
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@mixin output($output) { 
+  //
+  // Webkit, Blink
+  //
+  -webkit-filter: map-get($output, css);
+
+  //
+  // Gecko
+  //
+  $output: _preprocess-svg-filters($output);
+
+  filter: inline-svg(
+            $svgStr: map-get($output, svg),
+            $fragment: map-get($output, id)
+          );
+
+  //
+  // IE
+  //
+  $ie-support: conf(ie-support)
+               and map-has-key($output, ie)
+               and not empty(map-get($output, ie));
+
+  @if $ie-support {
+    $output: _preprocess-ie-filters($output);
+
+    // IE 8+
+    -ms-filter: map-get($output, gte-ie8);
+    // IE &lt; 8
+    filter: map-get($output, lt-ie8);
+  }
+ }"
+    data-collapsed="@mixin output($output) { ... }"><code>@mixin output($output) { ... }</code></pre>
+
+  
+    <a href="https://github.com/pascalduez/SassyFilters/tree/master/stylesheets/output/_output.scss" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+  
+
+  
+  
+    
+  
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>Ouput mixin, print final cross-browser filters declarations.
+Print final filters output.</p>
+</div>
+
+
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
+
+
+
+  <table class="item__parameters">
+    <thead>
+      <tr>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Name</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Description</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Type</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$output</code></th>
+          <td data-label="desc"><p>a map of browser specific filters</p>
+</td>
+          <td data-label="type">
+          
+            Map
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;<span class="visually-hidden"> none</span>
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+  
+    
+    
+
+  
+    
+    
+
+
+  
+
+
+
+  
+
+
+
+  
+    
+      
+      <h3 class="item__sub-heading">Requires</h3>
+      <ul class="list-unstyled">
+    
+
+    
+      <li>
+        <a href="#function-inline-svg"><code>inline-svg</code></a>
+        
+      </li>
+    
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+</ul>
+
+
+  
+    
+    
+
+
+
+  
+
+    
+      
+      <h3 class="item__sub-heading">Used by</h3>
+      <ul class="list-unstyled  list-inline">
+    
+
+    <li><a href="#mixin-filters"><code>filters</code></a></li>
+  
+
+
+
+
+</ul>
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+
+  
 
 
 
@@ -4333,9 +4832,9 @@ Print final SVG filter declaration.</p>
 
 
   
-  <script src="assets/js/prism.min.js"></script>
-<script src="assets/js/fuse.min.js"></script>
-<script src="assets/js/main.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="assets/js/main.min.js"></script>
 
 </body>
 </html>
