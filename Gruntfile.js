@@ -127,7 +127,7 @@ module.exports = function(grunt) {
       rebuild: {
         src: [
           'node_modules',
-          'ruby',
+          'vendor/ruby',
           'Gemfile.lock',
           '.sass-cache',
           '.bundle'
