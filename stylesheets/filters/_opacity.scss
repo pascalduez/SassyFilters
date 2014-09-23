@@ -3,19 +3,22 @@
 // ---------------
 
 
-/**
- * `opacity` filter function.
- * ---
- * @access private
- * @group filters
- * ---
- * @requires _svg-filter
- * @requires _ie-filter
- * ---
- * @param {Number} $value
- * ---
- * @return {Map}
- */
+////
+//// @group filters
+////
+
+
+/// `opacity` filter function.
+///
+/// @access private
+///
+/// @requires _svg-filter
+/// @requires _ie-filter
+///
+/// @param {Number} $value
+///
+/// @return {Map}
+
 @function _fn-opacity(
   $value
 ) {
@@ -36,20 +39,17 @@
 }
 
 
-/**
- * `opacity` filter mixin.
- * ---
- * @group filters
- * ---
- * @requires {mixin} check-in-range
- * @requires {mixin} filters
- * ---
- * @ignore spec opacity() = opacity( [ <number> | <percentage> ] )
- * ---
- * @param {Number} $value (1)
- * ---
- * @output Cross-Browser `opacity` filter declarations
- */
+/// `opacity` filter mixin.
+///
+/// @requires {mixin} check-in-range
+/// @requires {mixin} filters
+///
+/// @ignore spec opacity() = opacity( [ <number> | <percentage> ] )
+///
+/// @param {Number} $value (1)
+///
+/// @output Cross-Browser `opacity` filter declarations
+
 @mixin opacity(
   $value: 1
 ) {

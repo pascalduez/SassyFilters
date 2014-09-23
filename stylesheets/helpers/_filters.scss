@@ -3,19 +3,21 @@
 // -----------------------------
 
 
-/**
- * Helper: Get and format a single SVG filter.
- * ---
- * @group helpers
- * ---
- * @requires template
- * @requires {variable} svg-filters
- * ---
- * @param {String} $function - filter function
- * @param {Arglist} $args - arguments to be passed to the SVG filter
- * ---
- * @return {String}
- */
+////
+//// @group helpers
+////
+
+
+/// Helper: Get and format a single SVG filter.
+///
+/// @requires template
+/// @requires {variable} svg-filters
+///
+/// @param {String} $function - filter function
+/// @param {Arglist} $args - arguments to be passed to the SVG filter
+///
+/// @return {String}
+
 @function _svg-filter(
   $function,
   $args...
@@ -29,19 +31,16 @@
 }
 
 
-/**
- * Helper: IE filter formatting helper.
- * ---
- * @group helpers
- * ---
- * @requires _join
- * @requires capitalize
- * ---
- * @param {String} $filter - filter name
- * @param {Arglist} $args - filter properties
- * ---
- * @return {String}
- */
+/// Helper: IE filter formatting helper.
+///
+/// @requires _join
+/// @requires capitalize
+///
+/// @param {String} $filter - filter name
+/// @param {Arglist} $args - filter properties
+///
+/// @return {String}
+
 @function _ie-filter(
   $filter,
   $args...
@@ -72,17 +71,15 @@
 }
 
 
-/**
- * Main filters function, used internaly for combining several filters.
- * ---
- * @group helpers
- * @access private
- * ---
- * @param {Map} $filters - a map of filters `(function: (params))`
- * @param {String} $id - filter name, default to function name or 'custom'
- * ---
- * @return {Map} filters output
- */
+/// Main filters function, used internaly for combining several filters.
+///
+/// @access private
+///
+/// @param {Map} $filters - a map of filters `(function: (params))`
+/// @param {String} $id - filter name, default to function name or 'custom'
+///
+/// @return {Map} filters output
+
 @function _filters(
   $filters,
   $id
@@ -110,20 +107,18 @@
 }
 
 
-/**
- * Preprocessor: wrap a list of filters into the final SVG string.
- * ---
- * @group helpers
- * @access private
- * ---
- * @requires template
- * @requires _join
- * @requires {variable} svg-wrappers
- * ---
- * @param {Map} - $output
- * ---
- * @return {Map}
- */
+/// Preprocessor: wrap a list of filters into the final SVG string.
+///
+/// @access private
+///
+/// @requires template
+/// @requires _join
+/// @requires {variable} svg-wrappers
+///
+/// @param {Map} - $output
+///
+/// @return {Map}
+
 @function _preprocess-svg-filters(
   $output
 ) {
@@ -141,18 +136,16 @@
 }
 
 
-/**
- * Preprocessor: apply last IE versions formating before printing.
- * ---
- * @group helpers
- * @access private
- * ---
- * @requires _join
- * ---
- * @param {Map} - $output
- * ---
- * @return {Map}
- */
+/// Preprocessor: apply last IE versions formating before printing.
+///
+/// @access private
+///
+/// @requires _join
+///
+/// @param {Map} - $output
+///
+/// @return {Map}
+
 @function _preprocess-ie-filters(
   $output
 ) {

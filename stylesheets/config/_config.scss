@@ -3,12 +3,15 @@
 // ---------------------------
 
 
-/**
- * Default settings.
- * ---
- * @type Map
- * @group config
- */
+////
+//// @group config
+////
+
+
+/// Default settings.
+///
+/// @type Map
+
 $filters-defaults: (
 
   // Encoding of the SVG filters as data URI: raw | escaped | base64.
@@ -20,34 +23,30 @@ $filters-defaults: (
 );
 
 
-/**
- * User settings.
- * Instanciate the same object in your stylesheets to override defaults.
- * ---
- * @type Map
- * @group config
- * ---
- * @example scss Override defaults
- * $filters-settings: (
- *   ie-support: false
- * );
- */
+/// User settings.
+/// Instanciate the same object in your stylesheets to override defaults.
+///
+/// @type Map
+///
+/// @example scss Override defaults
+/// $filters-settings: (
+///   ie-support: false
+/// );
+
 $filters-settings: () !default;
 
 
-/**
- * Retrieve a configuration item.
- * ---
- * @access private
- * @group config
- * ---
- * @requires {variable} filters-defaults
- * @requires {variable} filters-settings
- * ---
- * @param {String} $key - configuration item key
- * ---
- * @return {*}
- */
+/// Retrieve a configuration item.
+///
+/// @access private
+///
+/// @requires {variable} filters-defaults
+/// @requires {variable} filters-settings
+///
+/// @param {String} $key - configuration item key
+///
+/// @return {*}
+
 @function conf($key) {
   @if not map-has-key($filters-defaults, $key) {
     @warn "No item `#{$key}` found in configuration.";

@@ -3,20 +3,19 @@
 // ----------------------------
 
 
-/**
- * Ouput mixin, print final cross-browser filters declarations.
- * Print final filters output.
- * ---
- * @group output
- * ---
- * @requires _preprocess-svg-filters
- * @requires _preprocess-ie-filters
- * @requires inline-svg
- * @requires empty
- * @requires conf
- * ---
- * @param {Map} $output - a map of browser specific filters
- */
+/// Ouput mixin, print final cross-browser filters declarations.
+/// Print final filters output.
+///
+/// @group output
+///
+/// @requires _preprocess-svg-filters
+/// @requires _preprocess-ie-filters
+/// @requires inline-svg
+/// @requires empty
+/// @requires conf
+///
+/// @param {Map} $output - a map of browser specific filters
+
 @mixin output(
   $output
 ) {

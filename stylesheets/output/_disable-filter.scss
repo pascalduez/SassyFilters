@@ -3,16 +3,15 @@
 // ----------------------------
 
 
-/**
- * Helper mixin, disable previously enabled filters.
- * ---
- * @group output
- * ---
- * @requires _ie-filter
- * @requires conf
- * ---
- * @param {String} $function (null) - filter function name
- */
+/// Helper mixin, disable previously enabled filters.
+///
+/// @group output
+///
+/// @requires _ie-filter
+/// @requires conf
+///
+/// @param {String} $function (null) - filter function name
+
 @mixin disable-filter(
   $function: null
 ) {

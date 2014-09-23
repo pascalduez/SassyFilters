@@ -3,19 +3,22 @@
 // ----------------
 
 
-/**
- * `contrast` filter function.
- * ---
- * @access private
- * @group filters
- * ---
- * @requires _svg-filter
- * @requires _ie-filter
- * ---
- * @param {Number} $value
- * ---
- * @return {Map}
- */
+////
+//// @group filters
+////
+
+
+/// `contrast` filter function.
+///
+/// @access private
+///
+/// @requires _svg-filter
+/// @requires _ie-filter
+///
+/// @param {Number} $value
+///
+/// @return {Map}
+
 @function _fn-contrast(
   $value
 ) {
@@ -36,20 +39,17 @@
 }
 
 
-/**
- * `contrast` filter mixin.
- * ---
- * @group filters
- * ---
- * @requires {mixin} check-in-range
- * @requires {mixin} filters
- * ---
- * @ignore spec contrast() = contrast( [ <number> | <percentage> ] )
- * ---
- * @param {Number} $value (1)
- * ---
- * @output Cross-Browser `contrast` filter declarations
- */
+/// `contrast` filter mixin.
+///
+/// @requires {mixin} check-in-range
+/// @requires {mixin} filters
+///
+/// @ignore spec contrast() = contrast( [ <number> | <percentage> ] )
+///
+/// @param {Number} $value (1)
+///
+/// @output Cross-Browser `contrast` filter declarations
+
 @mixin contrast(
   $value: 1
 ) {

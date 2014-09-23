@@ -3,19 +3,18 @@
 // -------------------------------
 
 
-/**
- * Helper mixin to embed a cutom SVG filter.
- * Print final SVG filter declaration.
- * ---
- * @group output
- * ---
- * @requires conf
- * @requires inline-svg
- * ---
- * @param {String} $svgStr - stringified SVG
- * @param {String} $fragment - fragment identifier
- * @param {String} $encoding (conf.data-type) - data type raw | base64 | escaped
- */
+/// Helper mixin to embed a cutom SVG filter.
+/// Print final SVG filter declaration.
+///
+/// @group output
+///
+/// @requires conf
+/// @requires inline-svg
+///
+/// @param {String} $svgStr - stringified SVG
+/// @param {String} $fragment - fragment identifier
+/// @param {String} $encoding (conf.data-type) - data type raw | base64 | escaped
+
 @mixin svg-filter(
   $svgStr,
   $fragment,

@@ -3,25 +3,27 @@
 // -------------------------
 
 
-/**
- * Format a proper SVG data URI.
- * ---
- * @group helpers
- * ---
- * @requires empty
- * ---
- * @param {String} $data - SVG data
- * @param {String} $mime-type ('image/svg+xml')
- * @param {String} $encoding ('charset=utf-8')
- * @param {String} $fragment ('') - fragment identifier
- * ---
- * @link https://tools.ietf.org/html/rfc2397
- * @link http://www.w3.org/TR/SVG11/linking.html
- * ---
- * @ignore data:[<MIME-type>][;charset=<encoding>][;base64],<data>[#fragment]
- * ---
- * @return {String}
- */
+////
+//// @group helpers
+////
+
+
+/// Format a proper SVG data URI.
+///
+/// @requires empty
+///
+/// @param {String} $data - SVG data
+/// @param {String} $mime-type ('image/svg+xml')
+/// @param {String} $encoding ('charset=utf-8')
+/// @param {String} $fragment ('') - fragment identifier
+///
+/// @link https://tools.ietf.org/html/rfc2397
+/// @link http://www.w3.org/TR/SVG11/linking.html
+///
+/// @ignore data:[<MIME-type>][;charset=<encoding>][;base64],<data>[#fragment]
+///
+/// @return {String}
+
 @function svg-data-uri(
   $data,
   $mime-type: 'image/svg+xml',
@@ -47,21 +49,18 @@
 }
 
 
-/**
- * Format and encode an inline SVG.
- * ---
- * @group helpers
- * ---
- * @requires SassyFilters::svg-data
- * @requires svg-data-uri
- * @requires conf
- * ---
- * @param {String} $svgStr - stringified SVG
- * @param {String} $encoding (conf.data-type) - data type 'raw' | 'base64' | 'escaped'
- * @param {String} $fragment ('') - fragment identifier
- * ---
- * @return {String}
- */
+/// Format and encode an inline SVG.
+///
+/// @requires SassyFilters::svg-data
+/// @requires svg-data-uri
+/// @requires conf
+///
+/// @param {String} $svgStr - stringified SVG
+/// @param {String} $encoding (conf.data-type) - data type 'raw' | 'base64' | 'escaped'
+/// @param {String} $fragment ('') - fragment identifier
+///
+/// @return {String}
+
 @function inline-svg(
   $svgStr,
   $encoding: conf(data-type),
