@@ -11,6 +11,9 @@
 /// Default settings.
 ///
 /// @type Map
+///
+/// @prop {String} data-type ('raw') - Encoding of the SVG filters as data URI: raw | escaped | base64.
+/// @prop {Boolean} ie-support (true) - Whether to add IE proprietary filters or not.
 
 $filters-defaults: (
 
@@ -24,11 +27,11 @@ $filters-defaults: (
 
 
 /// User settings.
-/// Instanciate the same object in your stylesheets to override defaults.
 ///
 /// @type Map
 ///
 /// @example scss Override defaults
+/// // Instanciate the same object in your stylesheets to override defaults.
 /// $filters-settings: (
 ///   ie-support: false
 /// );

@@ -440,6 +440,53 @@
     
     
 
+<h3 class="item__sub-heading">Map structure</h3>
+
+<table class="item__parameters">
+  <thead>
+    <tr>
+      <th scope="col"><span class="visually-hidden">Map key </span>Name</th>
+      <th scope="col"><span class="visually-hidden">Map key </span>Description</th>
+      <th scope="col"><span class="visually-hidden">Map key </span>Type</th>
+      <th scope="col"><span class="visually-hidden">Map key </span>Value</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr class="item__parameter">
+        <th scope="row" data-label="name"><code>data-type</code></th>
+        <td data-label="desc"><p>Encoding of the SVG filters as data URI: raw | escaped | base64.</p>
+</td>
+        <td data-label="type">
+        String
+        </td>
+        <td data-label="default">
+        
+          <code>&#39;raw&#39;</code>
+        
+        </td>
+      </tr>
+    
+      <tr class="item__parameter">
+        <th scope="row" data-label="name"><code>ie-support</code></th>
+        <td data-label="desc"><p>Whether to add IE proprietary filters or not.</p>
+</td>
+        <td data-label="type">
+        Boolean
+        </td>
+        <td data-label="default">
+        
+          <code>true</code>
+        
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+
+
   
     
     
@@ -530,8 +577,7 @@
     
   <h3 class="item__sub-heading">Description</h3>
 
-  <div class="item__description"><p>User settings.
-Instanciate the same object in your stylesheets to override defaults.</p>
+  <div class="item__description"><p>User settings.</p>
 </div>
 
 
@@ -568,7 +614,8 @@ Instanciate the same object in your stylesheets to override defaults.</p>
     <div class="example__description"><p>Override defaults</p>
 </div>
     
-    <pre class="example__code"><code class="language-scss">$filters-settings: (
+    <pre class="example__code"><code class="language-scss">// Instanciate the same object in your stylesheets to override defaults.
+$filters-settings: (
   ie-support: false
 );</code></pre>
   </div>
