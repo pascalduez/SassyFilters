@@ -34,6 +34,7 @@
 <div class="sidebar__body">
   
   
+    <button type="button" class="btn-toggle  js-btn-toggle" data-alt="Open all">Close all</button>
 
     
     
@@ -302,8 +303,8 @@
             
           
             
-            <li class="sidebar__item  sassdoc__item" data-name="svg-filter" data-type="mixin">
-              <a href="#mixin-svg-filter">svg-filter
+            <li class="sidebar__item  sassdoc__item" data-name="output" data-type="mixin">
+              <a href="#mixin-output">output
               
               
               </a>
@@ -311,8 +312,8 @@
             
           
             
-            <li class="sidebar__item  sassdoc__item" data-name="output" data-type="mixin">
-              <a href="#mixin-output">output
+            <li class="sidebar__item  sassdoc__item" data-name="svg-filter" data-type="mixin">
+              <a href="#mixin-svg-filter">svg-filter
               
               
               </a>
@@ -416,15 +417,6 @@
 
 
   
-
-  
-  
-    
-
-  
-  
-
-  
     
     
   <h3 class="item__sub-heading">Description</h3>
@@ -447,6 +439,53 @@
   
     
     
+
+<h3 class="item__sub-heading">Map structure</h3>
+
+<table class="item__parameters">
+  <thead>
+    <tr>
+      <th scope="col"><span class="visually-hidden">Map key </span>Name</th>
+      <th scope="col"><span class="visually-hidden">Map key </span>Description</th>
+      <th scope="col"><span class="visually-hidden">Map key </span>Type</th>
+      <th scope="col"><span class="visually-hidden">Map key </span>Value</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr class="item__parameter">
+        <th scope="row" data-label="name"><code>data-type</code></th>
+        <td data-label="desc"><p>Encoding of the SVG filters as data URI: raw | escaped | base64.</p>
+</td>
+        <td data-label="type">
+        String
+        </td>
+        <td data-label="default">
+        
+          <code>&#39;raw&#39;</code>
+        
+        </td>
+      </tr>
+    
+      <tr class="item__parameter">
+        <th scope="row" data-label="name"><code>ie-support</code></th>
+        <td data-label="desc"><p>Whether to add IE proprietary filters or not.</p>
+</td>
+        <td data-label="type">
+        Boolean
+        </td>
+        <td data-label="default">
+        
+          <code>true</code>
+        
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+
 
   
     
@@ -534,21 +573,11 @@
 
 
   
-
-  
-  
-    
-
-  
-  
-
-  
     
     
   <h3 class="item__sub-heading">Description</h3>
 
-  <div class="item__description"><p>User settings.
-Instanciate the same object in your stylesheets to override defaults.</p>
+  <div class="item__description"><p>User settings.</p>
 </div>
 
 
@@ -585,7 +614,8 @@ Instanciate the same object in your stylesheets to override defaults.</p>
     <div class="example__description"><p>Override defaults</p>
 </div>
     
-    <pre class="example__code"><code class="language-scss">$filters-settings: (
+    <pre class="example__code"><code class="language-scss">// Instanciate the same object in your stylesheets to override defaults.
+$filters-settings: (
   ie-support: false
 );</code></pre>
   </div>
@@ -722,13 +752,6 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
-
-  
-
-  
-  
-    
-  
 
   
     
@@ -910,13 +933,6 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
   
-
-  
-  
-    
-  
-
-  
     
     
   <h3 class="item__sub-heading">Description</h3>
@@ -1094,13 +1110,6 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
-
-  
-
-  
-  
-    
-  
 
   
     
@@ -1316,13 +1325,6 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
-
-  
-
-  
-  
-    
-  
 
   
     
@@ -1549,13 +1551,6 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
   
-
-  
-  
-    
-  
-
-  
     
     
   <h3 class="item__sub-heading">Description</h3>
@@ -1733,13 +1728,6 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
-
-  
-
-  
-  
-    
-  
 
   
     
@@ -1921,13 +1909,6 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
   
-
-  
-  
-    
-  
-
-  
     
     
   <h3 class="item__sub-heading">Description</h3>
@@ -2105,13 +2086,6 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
-
-  
-
-  
-  
-    
-  
 
   
     
@@ -2293,13 +2267,6 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
   
-
-  
-  
-    
-  
-
-  
     
     
   <h3 class="item__sub-heading">Description</h3>
@@ -2477,13 +2444,6 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
-
-  
-
-  
-  
-    
-  
 
   
     
@@ -2698,15 +2658,6 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
-
-  
-
-  
-  
-    
-
-  
-  
 
   
     
@@ -2962,15 +2913,6 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
-
-  
-
-  
-  
-    
-
-  
-  
 
   
     
@@ -3260,15 +3202,6 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
   
-
-  
-  
-    
-
-  
-  
-
-  
     
     
   <h3 class="item__sub-heading">Description</h3>
@@ -3553,15 +3486,6 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
   
-
-  
-  
-    
-
-  
-  
-
-  
     
     
   <h3 class="item__sub-heading">Description</h3>
@@ -3719,7 +3643,7 @@ Instanciate the same object in your stylesheets to override defaults.</p>
       <ul class="list-unstyled  list-inline">
     
 
-    <li><a href="#mixin-svg-filter"><code>svg-filter</code></a></li>
+    <li><a href="#mixin-output"><code>output</code></a></li>
   
 
 
@@ -3728,7 +3652,7 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
     
 
-    <li><a href="#mixin-output"><code>output</code></a></li>
+    <li><a href="#mixin-svg-filter"><code>svg-filter</code></a></li>
   
 
 
@@ -3854,13 +3778,6 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
-
-  
-
-  
-  
-    
-  
 
   
     
@@ -4058,13 +3975,6 @@ Instanciate the same object in your stylesheets to override defaults.</p>
 
 
 
-
-  
-
-  
-  
-    
-  
 
   
     
@@ -4304,6 +4214,239 @@ Print final conbined filters output.</p>
 
 </section>
               
+                <section class="main__item  item" id="mixin-output">
+
+<h3 class="item__heading">
+  
+
+  <a class="item__name" href="#mixin-output">output</a>
+
+  
+
+  
+</h3>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+<div class="relative  clear  code--collapsed">
+  <pre class="item__code  item__code--togglable  language-scss"
+    data-current-state="collapsed"
+    data-expanded="@mixin output($output) { 
+  //
+  // Webkit, Blink
+  //
+  -webkit-filter: map-get($output, css);
+
+  //
+  // Gecko
+  //
+  $output: _preprocess-svg-filters($output);
+
+  filter: inline-svg(
+            $svgStr: map-get($output, svg),
+            $fragment: map-get($output, id)
+          );
+
+  //
+  // IE
+  //
+  $ie-support: conf(ie-support)
+               and map-has-key($output, ie)
+               and not empty(map-get($output, ie));
+
+  @if $ie-support {
+    $output: _preprocess-ie-filters($output);
+
+    // IE 8+
+    -ms-filter: map-get($output, gte-ie8);
+    // IE &lt; 8
+    filter: map-get($output, lt-ie8);
+  }
+ }"
+    data-collapsed="@mixin output($output) { ... }"><code>@mixin output($output) { ... }</code></pre>
+
+  
+    <a href="https://github.com/pascalduez/SassyFilters/tree/master/stylesheets/output/_output.scss" class="item__source-link" target="_blank">View source</a>
+  
+</div>
+
+
+
+
+
+
+  
+    
+    
+  <h3 class="item__sub-heading">Description</h3>
+
+  <div class="item__description"><p>Ouput mixin, print final cross-browser filters declarations.
+Print final filters output.</p>
+</div>
+
+
+  
+    
+    <h3 class="item__sub-heading">Parameters</h3>
+
+
+
+  <table class="item__parameters">
+    <thead>
+      <tr>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Name</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Description</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Type</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$output</code></th>
+          <td data-label="desc"><p>a map of browser specific filters</p>
+</td>
+          <td data-label="type">
+          
+            Map
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;<span class="visually-hidden"> none</span>
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+
+  
+    
+    
+
+  
+    
+    
+
+  
+    
+    
+
+  
+    
+    
+
+
+  
+
+
+
+  
+
+
+
+  
+    
+      
+      <h3 class="item__sub-heading">Requires</h3>
+      <ul class="list-unstyled">
+    
+
+    
+      <li>
+        <a href="#function-inline-svg"><code>inline-svg</code></a>
+        
+      </li>
+    
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+</ul>
+
+
+  
+    
+    
+
+
+
+  
+
+    
+      
+      <h3 class="item__sub-heading">Used by</h3>
+      <ul class="list-unstyled  list-inline">
+    
+
+    <li><a href="#mixin-filters"><code>filters</code></a></li>
+  
+
+
+
+
+</ul>
+
+
+  
+    
+    
+
+  
+    
+    
+
+
+
+
+  
+    
+    
+
+  
+    
+    
+  
+    
+    
+
+  
+
+
+
+</section>
+              
                 <section class="main__item  item" id="mixin-svg-filter">
 
 <h3 class="item__heading">
@@ -4376,13 +4519,6 @@ Print final conbined filters output.</p>
 
 
 
-
-  
-
-  
-  
-    
-  
 
   
     
@@ -4512,246 +4648,6 @@ Print final SVG filter declaration.</p>
 
 
 
-
-
-  
-    
-    
-
-  
-    
-    
-
-
-
-
-  
-    
-    
-
-  
-    
-    
-  
-    
-    
-
-  
-
-
-
-</section>
-              
-                <section class="main__item  item" id="mixin-output">
-
-<h3 class="item__heading">
-  
-
-  <a class="item__name" href="#mixin-output">output</a>
-
-  
-
-  
-</h3>
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-    
-  
-
-
-<div class="relative  clear  code--collapsed">
-  <pre class="item__code  item__code--togglable  language-scss"
-    data-current-state="collapsed"
-    data-expanded="@mixin output($output) { 
-  //
-  // Webkit, Blink
-  //
-  -webkit-filter: map-get($output, css);
-
-  //
-  // Gecko
-  //
-  $output: _preprocess-svg-filters($output);
-
-  filter: inline-svg(
-            $svgStr: map-get($output, svg),
-            $fragment: map-get($output, id)
-          );
-
-  //
-  // IE
-  //
-  $ie-support: conf(ie-support)
-               and map-has-key($output, ie)
-               and not empty(map-get($output, ie));
-
-  @if $ie-support {
-    $output: _preprocess-ie-filters($output);
-
-    // IE 8+
-    -ms-filter: map-get($output, gte-ie8);
-    // IE &lt; 8
-    filter: map-get($output, lt-ie8);
-  }
- }"
-    data-collapsed="@mixin output($output) { ... }"><code>@mixin output($output) { ... }</code></pre>
-
-  
-    <a href="https://github.com/pascalduez/SassyFilters/tree/master/stylesheets/output/_output.scss" class="item__source-link" target="_blank">View source</a>
-  
-</div>
-
-
-
-
-
-
-  
-
-  
-  
-    
-  
-
-  
-    
-    
-  <h3 class="item__sub-heading">Description</h3>
-
-  <div class="item__description"><p>Ouput mixin, print final cross-browser filters declarations.
-Print final filters output.</p>
-</div>
-
-
-  
-    
-    <h3 class="item__sub-heading">Parameters</h3>
-
-
-
-  <table class="item__parameters">
-    <thead>
-      <tr>
-        <th scope="col"><span class="visually-hidden"> parameter </span>Name</th>
-        <th scope="col"><span class="visually-hidden"> parameter </span>Description</th>
-        <th scope="col"><span class="visually-hidden"> parameter </span>Type</th>
-        <th scope="col"><span class="visually-hidden"> parameter </span>Default value</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-        <tr class="item__parameter">
-          <th scope="row" data-label="name"><code>$output</code></th>
-          <td data-label="desc"><p>a map of browser specific filters</p>
-</td>
-          <td data-label="type">
-          
-            Map
-          
-          </td>
-          <td data-label="default">
-          
-            &mdash;<span class="visually-hidden"> none</span>
-          
-          </td>
-        </tr>
-      
-    </tbody>
-  </table>
-
-
-
-  
-    
-    
-
-  
-    
-    
-
-  
-    
-    
-
-  
-    
-    
-
-
-  
-
-
-
-  
-
-
-
-  
-    
-      
-      <h3 class="item__sub-heading">Requires</h3>
-      <ul class="list-unstyled">
-    
-
-    
-      <li>
-        <a href="#function-inline-svg"><code>inline-svg</code></a>
-        
-      </li>
-    
-  
-
-
-
-  
-
-
-
-  
-
-
-
-
-</ul>
-
-
-  
-    
-    
-
-
-
-  
-
-    
-      
-      <h3 class="item__sub-heading">Used by</h3>
-      <ul class="list-unstyled  list-inline">
-    
-
-    <li><a href="#mixin-filters"><code>filters</code></a></li>
-  
-
-
-
-
-</ul>
 
 
   
