@@ -200,7 +200,10 @@ module.exports = function(grunt) {
           },
           package: pkg,
           basePath: 'https://github.com/pascalduez/SassyFilters/tree/master/stylesheets',
-          theme: 'default'
+          theme: 'default',
+          force: true,
+          interactive: false,
+          autofill: ['content', 'requires', 'throws']
         }
       }
     }
