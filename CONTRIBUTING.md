@@ -1,4 +1,4 @@
-# Contributing to SassyIcons
+# Contributing to SassyFilters
 
 
 * Respectful, friendly and constructive feedback `goto welcome;`
