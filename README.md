@@ -191,7 +191,7 @@ There are different ways of dealing with cross browser filters that are worth ch
 
 ## Authors
 
-[Pascal Duez](http://pascalduez.me)
+[Pascal Duez](https://github.com/pascalduez)
 
 
 
