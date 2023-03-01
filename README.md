@@ -1,3 +1,5 @@
+<div align="center">⚠️ Archived project</div>
+
 # SassyFilters
 
 Cross-Browser configurable CSS-SVG filters.  
